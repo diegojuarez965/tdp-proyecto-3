@@ -1,4 +1,4 @@
-package Principal;
+package GUI;
 
 public class GUI {
 

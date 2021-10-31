@@ -1,4 +1,4 @@
-package Principal;
+package Posicion;
 
 public class PosicionLogica {
 

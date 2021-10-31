@@ -1,4 +1,4 @@
-package Principal;
+package Entidad;
 
 public abstract class Entidad {
 

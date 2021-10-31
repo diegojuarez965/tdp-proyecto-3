@@ -1,4 +1,4 @@
-package Principal;
+package Sonido;
 
 public class Sonido {
 

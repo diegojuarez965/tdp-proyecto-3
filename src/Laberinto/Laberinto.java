@@ -1,4 +1,4 @@
-package Principal;
+package Laberinto;
 
 public class Laberinto {
 
