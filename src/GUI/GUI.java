@@ -105,8 +105,8 @@ public class GUI extends JFrame{
 		});
 		botonMusica.setBackground(Color.DARK_GRAY);
 		botonMusica.setBounds(10, 312, 164, 23);
-		botonMusica.setSelectedIcon(new ImageIcon(GUI.class.getResource("/com/sun/javafx/webkit/prism/resources/mediaUnmute.png")));
-		botonMusica.setIcon(new ImageIcon(GUI.class.getResource("/com/sun/javafx/webkit/prism/resources/mediaMute.png")));
+		botonMusica.setSelectedIcon(new ImageIcon(GUI.class.getResource("/images/mediaUnmute.png")));
+		botonMusica.setIcon(new ImageIcon(GUI.class.getResource("/images/mediaMute.png")));
 		botonMusica.setContentAreaFilled(false);
 		botonMusica.setOpaque(true);
 		
@@ -125,8 +125,8 @@ public class GUI extends JFrame{
 		});
 		botonEfectos.setBackground(Color.DARK_GRAY);
 		botonEfectos.setBounds(10, 393, 164, 23);
-		botonEfectos.setSelectedIcon(new ImageIcon(GUI.class.getResource("/com/sun/javafx/webkit/prism/resources/mediaUnmute.png")));
-		botonEfectos.setIcon(new ImageIcon(GUI.class.getResource("/com/sun/javafx/webkit/prism/resources/mediaMute.png")));
+		botonEfectos.setSelectedIcon(new ImageIcon(GUI.class.getResource("/images/mediaUnmute.png")));
+		botonEfectos.setIcon(new ImageIcon(GUI.class.getResource("/images/mediaMute.png")));
 		botonEfectos.setContentAreaFilled(false);
 		botonEfectos.setOpaque(true);
 		
