@@ -3,11 +3,13 @@ package Laberinto;
 import java.util.List;
 
 import Entidad.Entidad;
+import Estado.Normal;
 import Juego.Juego;
 import Loot.Loot;
 import Pared.Pared;
 import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
+import Posicion.Posicion;
 
 public class Laberinto {
 	
@@ -47,18 +49,23 @@ public class Laberinto {
 				break;
 			}
 		}
+		juego.actualizarEntidadVisual(personaje);
 	}
 	private void moverDer() {
-		
+		Posicion posicion = personaje.obtenerPosicion();
+		posicion.setX(posicion.obtenerX()+5);
 	}
 	private void moverIzq() {
-		
+		Posicion posicion = personaje.obtenerPosicion();
+		posicion.setX(posicion.obtenerX()-5);
 	}
 	private void moverArriba() {
-		
+		Posicion posicion = personaje.obtenerPosicion();
+		posicion.setY(posicion.obtenerY()-5);
 	}
 	private void moverAbajo() {
-		
+		Posicion posicion = personaje.obtenerPosicion();
+		posicion.setY(posicion.obtenerY()+5);
 	}
 	
 	public void agregarEnemigo(Enemigo e) {
@@ -66,10 +73,11 @@ public class Laberinto {
 		juego.mostrarEntidadVisual(e);
 	}
 	public void agregarLoot(Loot e) {
-		int x = e.obtenerPosicion().obtenerX();
-		int y = e.obtenerPosicion().obtenerY();
+		int x = e.obtenerPosicion().obtenerX()/e.obtenerPosicion().obtenerAncho();
+		int y = e.obtenerPosicion().obtenerY()/e.obtenerPosicion().obtenerAlto();
 		entidades[x][y] = e;
 		juego.mostrarEntidadVisual(e);
+		lootRestante++;
 	}
 	public void agregarPared(Pared p) {
 		int x = p.obtenerPosicion().obtenerX()/p.obtenerPosicion().obtenerAncho();
@@ -79,6 +87,7 @@ public class Laberinto {
 	}
 	public void agregarPersonajeP(PersonajePrincipal p) {
 		personaje = p;
+		p.setEstado(new Normal());
 		juego.mostrarEntidadVisual(p);
 	}
 }

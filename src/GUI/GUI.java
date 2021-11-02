@@ -53,7 +53,7 @@ public class GUI extends JFrame{
 		setTitle("Man-Pac");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		setSize(1000,800);
+		setSize(1000,839);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
@@ -65,7 +65,7 @@ public class GUI extends JFrame{
 		panelInformacion.setBackground(Color.GRAY);
 		contentPane.add(panelInformacion);
 		panelInformacion.setBorder(new LineBorder(Color.BLACK));
-		panelInformacion.setBounds(800, 0, 184, 761);
+		panelInformacion.setBounds(800, 0, 184, 800);
 		panelInformacion.setLayout(null);
 		
 		labelVidas = new JLabel("Vidas: ");
@@ -143,7 +143,7 @@ public class GUI extends JFrame{
 				switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_RIGHT: {
-					juego.mover(Laberinto.MOVER_ABAJO);
+					juego.mover(Laberinto.MOVER_DERECHA);
 					break;
 				}
 				case KeyEvent.VK_LEFT: {

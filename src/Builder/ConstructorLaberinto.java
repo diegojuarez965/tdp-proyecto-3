@@ -18,5 +18,4 @@ public interface ConstructorLaberinto {
 	
 	public Laberinto obtenerLaberinto();
 	
-	
 }
