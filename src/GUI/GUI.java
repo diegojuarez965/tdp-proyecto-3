@@ -143,7 +143,7 @@ public class GUI extends JFrame{
 				switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_RIGHT: {
-					juego.mover(Laberinto.MOVER_ABAJO);
+					juego.mover(Laberinto.MOVER_DERECHA);
 					break;
 				}
 				case KeyEvent.VK_LEFT: {

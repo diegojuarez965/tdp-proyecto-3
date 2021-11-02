@@ -115,7 +115,7 @@ public class Tema1 implements FactoryTemas{
 	@Override
 	public PocionVelocidad nuevoPocionVelocidad() {
 		PocionVelocidad pV;
-		String skinPocionVelocidad = "/images/arabeSkinVelocidad.png";
+		String skinPocionVelocidad = "/images/arabePocionVelocidad.png";
 		Posicion p = new PosicionLogica(0, 0);
 		pV = new PocionVelocidad(p, skinPocionVelocidad);
 		pV.setVisitor(new VisitorPocionV(pV));

@@ -16,9 +16,9 @@ public class Director {
 	
 	public void nuevoNivel(Juego j) {
 		c.resetBuilder(j);
-		c.construirParedes();
-		c.construirLoot();
-		c.construirEnemigos();
 		c.construirPersonaje();
+		c.construirEnemigos();
+		c.construirLoot();
+		c.construirParedes();
 	}
 }
