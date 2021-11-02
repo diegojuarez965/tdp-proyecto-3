@@ -9,6 +9,8 @@ public class Launcher {
 	public static void main(String []args) {
 		GUI gui = new GUI();
 		Juego juego = new Juego();
-		gui.setJuego(juego);
+		juego.setGUI(gui);
+		gui.mostrarMensajeTemas();
+		gui.setUpJuego(juego);
 	}
 }

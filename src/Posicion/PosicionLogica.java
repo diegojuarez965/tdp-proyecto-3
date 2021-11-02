@@ -1,10 +1,12 @@
 package Posicion;
 
-public class PosicionLogica {
+import java.awt.Rectangle;
+
+public class PosicionLogica implements Posicion{
 	
 	private int x,y;
-	private int ancho= 40;
-	private int alto= 40;
+	private final int ancho = 40;
+	private final int alto = 40;
 	
 	public PosicionLogica(int x,int y) {
 		this.x=x;
@@ -36,10 +38,9 @@ public class PosicionLogica {
 	}
 	
 	public boolean colisionan(Posicion p) {
-		boolean toReturn=false;
-		if(p.obtenerX()==x && p.obtenerY()==y)
-			toReturn=true;
-		return toReturn;
+		Rectangle primero = new Rectangle(x, y, ancho, alto);
+		Rectangle posChequear = new Rectangle(p.obtenerX(),p.obtenerY(),p.obtenerAncho(),p.obtenerAlto());
+		return primero.intersects(posChequear);
 	}
 	
 }

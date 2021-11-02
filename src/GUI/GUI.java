@@ -14,8 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import Entidad.Entidad;
+import Factory.Tema1;
 import Juego.Juego;
 import Posicion.Posicion;
+import Laberinto.Laberinto;
 
 import javax.swing.JProgressBar;
 import javax.swing.JToggleButton;
@@ -141,27 +143,29 @@ public class GUI extends JFrame{
 				switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_RIGHT: {
-					juego.mover(juego.MOVER_DERECHA);
+					juego.mover(Laberinto.MOVER_ABAJO);
 					break;
 				}
 				case KeyEvent.VK_LEFT: {
-					juego.mover(juego.MOVER_IZQUIERDA);
+					juego.mover(Laberinto.MOVER_IZQUIERDA);
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
-					juego.mover(juego.MOVER_ABAJO);
+					juego.mover(Laberinto.MOVER_ABAJO);
 					break;
 				}
 				case KeyEvent.VK_UP: {
-					juego.mover(juego.MOVER_ARRIBA);
+					juego.mover(Laberinto.MOVER_ARRIBA);
 					break;
 				}
 				}
 			}
 		});
-		
 	}
 	
+	public void mostrarMensajeTemas() {
+		
+	}
 	public void actualizarEntidadVisual(Entidad e) {
 		JLabel grafico = mapeo.get(e);
 		Posicion posEntidad = e.obtenerPosicion();
@@ -173,6 +177,7 @@ public class GUI extends JFrame{
 		Posicion posEntidad = e.obtenerPosicion();
 		temp.setBounds(posEntidad.obtenerX(), posEntidad.obtenerY(), posEntidad.obtenerAncho(), posEntidad.obtenerAlto());
 		temp.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
+		temp.setVisible(true);
 		mapeo.put(e, temp);
 	}
 	public void eliminarEntidadVisual(Entidad e) {
@@ -180,11 +185,6 @@ public class GUI extends JFrame{
 		contentPane.remove(eliminar);
 		eliminar = null;
 	}
-	
-	public void setJuego(Juego j) {
-		juego = j;
-	}
-	
 	public void setMaxProgreso(int progreso) {
 		barraProgreso.setMaximum(progreso);
 	}
@@ -194,7 +194,6 @@ public class GUI extends JFrame{
 	public void incrementarProgreso() {
 		barraProgreso.setValue(barraProgreso.getValue()+1);
 	}
-	
 	public void setPuntaje(int p) {
 		labelPuntos.setText("Puntos: "+p);
 	}
@@ -204,7 +203,11 @@ public class GUI extends JFrame{
 	public void setExplosivos(int e) {
 		labelExplosivos.setText("Explosivos: "+e);
 	}
-	
+	public void setUpJuego(Juego j) {
+		this.juego = j;
+		juego.setTema(new Tema1());
+		juego.pasarNivel();
+	}
 	private void pararMusica() {
 		juego.pararMusica();
 	}

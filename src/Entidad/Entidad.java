@@ -4,38 +4,29 @@ import Visitor.Visitor;
 
 public abstract class Entidad {
 	
-	private Posicion p;
-	private String skin;
-	private Visitor visitor;
-	private int alto= 40;
-	private int ancho= 40;
+	protected Posicion p;
+	protected String skin;
+	protected Visitor visitor;
 	
-	public Entidad(Posicion p,String skin,Visitor visitor) {
+	public Entidad(Posicion p,String skin) {
 		this.p=p;
 		this.skin=skin;
-		this.visitor=visitor;
-	}
-	
-	public Posicion obtenerPosicion() {
-		return p;
-	}
-	
-	public String obtenerSkin() {
-		return skin;
 	}
 	
 	public Visitor obtenerVisitor() {
 		return visitor;
 	}
-	
-	public int obtenerAlto() {
-		return alto;
+	public Posicion obtenerPosicion() {
+		return p;
+	}
+	public void setVisitor(Visitor v) {
+		visitor=  v;
 	}
 	
-	public int obtenerAncho() {
-		return ancho;
-	}
+	public abstract String obtenerSkin();
 	
 	public abstract void accept(Visitor v);
+	
+	
 	
 }
