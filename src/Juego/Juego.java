@@ -19,7 +19,7 @@ public class Juego {
 	private int nivel;
 	
 	public Juego() {
-		nivel = 1;
+		nivel = 2;
 	}
 	
 	public void setGUI(GUI g) {
@@ -45,9 +45,9 @@ public class Juego {
 		ConstructorLaberinto cl = null;
 		if(nivel==1)
 			cl = new ConstructorNivel1(tema);
-		/*else if(nivel==2)
+		else if(nivel==2)
 			cl = new ConstructorNivel2(tema);
-		else if(nivel==3)
+		/*else if(nivel==3)
 			cl = new ConstructorNivel3(tema);*/
 		director = new Director(cl);
 		director.nuevoNivel(this);

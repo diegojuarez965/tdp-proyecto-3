@@ -1,6 +1,5 @@
 package Builder;
 
-import Entidad.Entidad;
 import Factory.FactoryTemas;
 import Juego.Juego;
 import Laberinto.Laberinto;
@@ -10,6 +9,10 @@ import Loot.Loot2;
 import Loot.LootEspecial1;
 import Loot.PocionVelocidad;
 import Pared.Pared;
+import Personajes.Enemigo1;
+import Personajes.Enemigo2;
+import Personajes.Enemigo3;
+import Personajes.Enemigo4;
 import Personajes.PersonajePrincipal;
 
 public class ConstructorNivel1 implements ConstructorLaberinto{
@@ -184,8 +187,28 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 	}
 	@Override
 	public void construirEnemigos() {
-		// TODO Auto-generated method stub
-		
+		/*
+		//Enemigo1
+		Enemigo1 enemigo1 = Tema.nuevoEnemigo1();
+		enemigo1.obtenerPosicion().setX(9*enemigo1.obtenerPosicion().obtenerAncho());
+		enemigo1.obtenerPosicion().setY(9*enemigo1.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo1);
+		//Enemigo2
+		Enemigo2 enemigo2 = Tema.nuevoEnemigo2();
+	    enemigo2.obtenerPosicion().setX(9*enemigo2.obtenerPosicion().obtenerAncho());
+	    enemigo2.obtenerPosicion().setY(9*enemigo2.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo2);
+		//Enemigo3
+	    Enemigo3 enemigo3 = Tema.nuevoEnemigo3();
+	    enemigo3.obtenerPosicion().setX(9*enemigo3.obtenerPosicion().obtenerAncho());
+	    enemigo3.obtenerPosicion().setY(9*enemigo3.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo3);
+		//Enemigo4
+		Enemigo4 enemigo4 = Tema.nuevoEnemigo4();
+	    enemigo4.obtenerPosicion().setX(9*enemigo4.obtenerPosicion().obtenerAncho());
+	    enemigo4.obtenerPosicion().setY(9*enemigo4.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo4);
+		*/
 	}
 
 	@Override

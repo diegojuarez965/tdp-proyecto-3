@@ -3,10 +3,17 @@ package Builder;
 import Factory.FactoryTemas;
 import Juego.Juego;
 import Laberinto.Laberinto;
+import Loot.Explosivo;
 import Loot.Loot1;
 import Loot.Loot2;
 import Loot.LootEspecial1;
+import Loot.PocionVelocidad;
 import Pared.Pared;
+import Personajes.Enemigo1;
+import Personajes.Enemigo2;
+import Personajes.Enemigo3;
+import Personajes.Enemigo4;
+import Personajes.PersonajePrincipal;
 
 public class ConstructorNivel2 implements ConstructorLaberinto{
 	
@@ -19,13 +26,57 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 
 	@Override
 	public void construirParedes() {
-		for(int x = 0; x<20; x++) {
-			Pared paredTemp = Tema.nuevoPared();
-			paredTemp.obtenerPosicion().setX(x*paredTemp.obtenerPosicion().obtenerAncho());
-			lab.agregarPared(paredTemp);
-		}
-		
+		crearParedesX(0,19,0);
+		crearParedesX(0,19,19);
+		crearParedesY(1,18,0);
+		crearParedesY(1,18,19);
+		crearParedesX(2,8,2);
+		crearParedesX(10,17,2);
+		crearParedesX(2,8,17);
+		crearParedesX(10,17,17);
+		crearParedesX(6,13,4);
+		crearParedesX(6,13,15);
+		crearParedesY(3,9,2);
+		crearParedesY(11,16,2);
+		crearParedesY(3,9,17);
+		crearParedesY(11,16,17);
+		crearParedesY(6,13,4);
+		crearParedesY(6,13,15);
+		crearParedesY(6,9,6);
+		crearParedesY(6,9,12);
+		crearParedesY(6,9,13);
+		crearParedesY(11,13,6);
+		crearParedesY(11,13,12);
+		crearParedesY(11,13,13);
+		crearParedesY(8,11,8);
+		crearParedesY(8,11,10);
+		crearParedesX(7,8,6);
+		crearParedesX(10,11,6);
+		crearParedesX(7,8,13);
+		crearParedesX(10,11,13);
+		crearParedesX(4,4,4);
+		crearParedesX(15,15,4);
+		crearParedesX(4,4,15);
+		crearParedesX(15,15,15);
+		crearParedesX(9,9,11);
 	}
+	
+	private void crearParedesX(int desdeX, int hastaX, int Y) {
+        for(int X = desdeX; X<=hastaX; X++) {
+            Pared paredTemp = Tema.nuevoPared();
+            paredTemp.obtenerPosicion().setX(X*paredTemp.obtenerPosicion().obtenerAncho());
+            paredTemp.obtenerPosicion().setY(Y*paredTemp.obtenerPosicion().obtenerAlto());
+            lab.agregarPared(paredTemp);
+        }
+    }
+    private void crearParedesY(int desdeY, int hastaY, int X) {
+        for(int Y = desdeY; Y<=hastaY; Y++) {
+            Pared paredTemp = Tema.nuevoPared();
+            paredTemp.obtenerPosicion().setX(X*paredTemp.obtenerPosicion().obtenerAncho());
+            paredTemp.obtenerPosicion().setY(Y*paredTemp.obtenerPosicion().obtenerAlto());
+            lab.agregarPared(paredTemp);
+        }
+    }
 
 	@Override
 	public void construirLoot() {
@@ -69,19 +120,86 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 		crearLootEspecial1(18,1);
 		crearLootEspecial1(1,18);
 		//PocionVelocidad
+		crearPocionVelocidad(3,3);
+		crearPocionVelocidad(16,16);
 		//Explosivo
+		crearExplosivo(7,7);
+		crearExplosivo(11,12);
+	}
+	
+	private void crearLoot1X(int desdeX, int hastaX, int Y) {
+		for(int X = desdeX; X<=hastaX; X++) {
+			Loot1 lootTemp = Tema.nuevoLoot1();
+			lootTemp.obtenerPosicion().setX(X*lootTemp.obtenerPosicion().obtenerAncho());
+			lootTemp.obtenerPosicion().setY(Y*lootTemp.obtenerPosicion().obtenerAlto());
+			lab.agregarLoot(lootTemp);
+		}
+	}
+	private void crearLoot1Y(int desdeY, int hastaY, int X) {
+		for(int Y = desdeY; Y<=hastaY; Y++) {
+			Loot1 lootTemp = Tema.nuevoLoot1();
+			lootTemp.obtenerPosicion().setX(X*lootTemp.obtenerPosicion().obtenerAncho());
+			lootTemp.obtenerPosicion().setY(Y*lootTemp.obtenerPosicion().obtenerAlto());
+			lab.agregarLoot(lootTemp);
+		}
+	}
+	private void crearLootEspecial1(int X, int Y) {
+		LootEspecial1 lootEspecialTemp = Tema.nuevoLootEspecial1();
+		lootEspecialTemp.obtenerPosicion().setX(X*lootEspecialTemp.obtenerPosicion().obtenerAncho());
+		lootEspecialTemp.obtenerPosicion().setY(Y*lootEspecialTemp.obtenerPosicion().obtenerAlto());
+		lab.agregarLoot(lootEspecialTemp);
+	}
+	private void crearPocionVelocidad(int X, int Y) {
+		PocionVelocidad velocidadTemp = Tema.nuevoPocionVelocidad();
+		velocidadTemp.obtenerPosicion().setX(X*velocidadTemp.obtenerPosicion().obtenerAncho());
+		velocidadTemp.obtenerPosicion().setY(Y*velocidadTemp.obtenerPosicion().obtenerAlto());
+		lab.agregarLoot(velocidadTemp);
+	}
+	private void crearExplosivo(int X, int Y) {
+		Explosivo explosivoTemp = Tema.nuevoExplosivo();
+		explosivoTemp.obtenerPosicion().setX(X*explosivoTemp.obtenerPosicion().obtenerAncho());
+		explosivoTemp.obtenerPosicion().setY(Y*explosivoTemp.obtenerPosicion().obtenerAlto());
+		lab.agregarLoot(explosivoTemp);
+	}
+	private void crearLoot2(int X, int Y) {
+		Loot2 lootTemp = Tema.nuevoLoot2();
+		lootTemp.obtenerPosicion().setX(X*lootTemp.obtenerPosicion().obtenerAncho());
+		lootTemp.obtenerPosicion().setY(Y*lootTemp.obtenerPosicion().obtenerAlto());
+		lab.agregarLoot(lootTemp);
 	}
 
 	@Override
 	public void construirEnemigos() {
-		// TODO Auto-generated method stub
-		
+		/*
+		//Enemigo1
+		Enemigo1 enemigo1 = Tema.nuevoEnemigo1();
+		enemigo1.obtenerPosicion().setX(9*enemigo1.obtenerPosicion().obtenerAncho());
+		enemigo1.obtenerPosicion().setY(10*enemigo1.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo1);
+		//Enemigo2
+		Enemigo2 enemigo2 = Tema.nuevoEnemigo2();
+	    enemigo2.obtenerPosicion().setX(9*enemigo2.obtenerPosicion().obtenerAncho());
+	    enemigo2.obtenerPosicion().setY(10*enemigo2.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo2);
+		//Enemigo3
+	    Enemigo3 enemigo3 = Tema.nuevoEnemigo3();
+	    enemigo3.obtenerPosicion().setX(9*enemigo3.obtenerPosicion().obtenerAncho());
+	    enemigo3.obtenerPosicion().setY(10*enemigo3.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo3);
+		//Enemigo4
+		Enemigo4 enemigo4 = Tema.nuevoEnemigo4();
+	    enemigo4.obtenerPosicion().setX(9*enemigo4.obtenerPosicion().obtenerAncho());
+	    enemigo4.obtenerPosicion().setY(10*enemigo4.obtenerPosicion().obtenerAlto());
+		lab.agregarEnemigo(enemigo4);
+		*/
 	}
 
 	@Override
 	public void construirPersonaje() {
-		// TODO Auto-generated method stub
-		
+		PersonajePrincipal personajePrincipal = Tema.nuevoPersonajePrincipal();
+		personajePrincipal.obtenerPosicion().setX(17*personajePrincipal.obtenerPosicion().obtenerAncho());
+		personajePrincipal.obtenerPosicion().setY(18*personajePrincipal.obtenerPosicion().obtenerAlto());
+		lab.agregarPersonajeP(personajePrincipal);
 	}
 
 	@Override
@@ -94,53 +212,4 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 		lab = new Laberinto(j);
 	}
 	
-	private void crearParedesX(int desdeX, int hastaX, int Y) {
-        for(int X = desdeX; X<=hastaX; X++) {
-            Pared paredTemp = Tema.nuevoPared();
-            paredTemp.obtenerPosicion().setX(X*paredTemp.obtenerPosicion().obtenerAncho());
-            paredTemp.obtenerPosicion().setY(Y*paredTemp.obtenerPosicion().obtenerAlto());
-            lab.agregarPared(paredTemp);
-        }
-    }
-    private void crearParedesY(int desdeY, int hastaY, int X) {
-        for(int Y = desdeY; Y<=hastaY; Y++) {
-            Pared paredTemp = Tema.nuevoPared();
-            paredTemp.obtenerPosicion().setX(X*paredTemp.obtenerPosicion().obtenerAncho());
-            paredTemp.obtenerPosicion().setY(Y*paredTemp.obtenerPosicion().obtenerAlto());
-            lab.agregarPared(paredTemp);
-        }
-    }
-    
-    private void crearLoot1X(int desdeX, int hastaX, int Y) {
-        for(int X = desdeX; X<=hastaX; X++) {
-            Loot1 loot1Temp = Tema.nuevoLoot1();
-            loot1Temp.obtenerPosicion().setX(X*loot1Temp.obtenerPosicion().obtenerAncho());
-            loot1Temp.obtenerPosicion().setY(Y*loot1Temp.obtenerPosicion().obtenerAlto());
-            lab.agregarLoot(loot1Temp);;
-        }
-    }
-    
-    private void crearLoot1Y(int desdeY, int hastaY, int X) {
-        for(int Y = desdeY; Y<=hastaY; Y++) {
-            Loot1 loot1Temp = Tema.nuevoLoot1();
-            loot1Temp.obtenerPosicion().setX(X*loot1Temp.obtenerPosicion().obtenerAncho());
-            loot1Temp.obtenerPosicion().setY(Y*loot1Temp.obtenerPosicion().obtenerAlto());
-            lab.agregarLoot(loot1Temp);
-        }
-    }
-    
-    private void crearLoot2(int X, int Y) {
-            Loot2 loot2Temp = Tema.nuevoLoot2();
-            loot2Temp.obtenerPosicion().setX(X*loot2Temp.obtenerPosicion().obtenerAncho());
-            loot2Temp.obtenerPosicion().setY(Y*loot2Temp.obtenerPosicion().obtenerAlto());
-            lab.agregarLoot(loot2Temp);;
-        }
-    
-    private void crearLootEspecial1(int X, int Y) {
-        LootEspecial1 lootEspecial1Temp = Tema.nuevoLootEspecial1();
-        lootEspecial1Temp.obtenerPosicion().setX(X*lootEspecial1Temp.obtenerPosicion().obtenerAncho());
-        lootEspecial1Temp.obtenerPosicion().setY(Y*lootEspecial1Temp.obtenerPosicion().obtenerAlto());
-        lab.agregarLoot(lootEspecial1Temp);;
-    }
-    
 }

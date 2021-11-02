@@ -53,7 +53,7 @@ public class GUI extends JFrame{
 		setTitle("Man-Pac");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setLayout(null);
-		setSize(1000,839);
+		setSize(1000,600);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
