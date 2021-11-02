@@ -70,6 +70,7 @@ public class Laberinto {
 		int y = e.obtenerPosicion().obtenerY();
 		entidades[x][y] = e;
 		juego.mostrarEntidadVisual(e);
+		lootRestante++;
 	}
 	public void agregarPared(Pared p) {
 		int x = p.obtenerPosicion().obtenerX()/p.obtenerPosicion().obtenerAncho();

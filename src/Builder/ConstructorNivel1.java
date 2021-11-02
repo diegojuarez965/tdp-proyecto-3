@@ -20,8 +20,22 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 			Pared paredTemp = Tema.nuevoPared();
 			paredTemp.obtenerPosicion().setX(x*paredTemp.obtenerPosicion().obtenerAncho());
 			lab.agregarPared(paredTemp);
+			
+			Pared paredTemp2 = Tema.nuevoPared();
+			paredTemp2.obtenerPosicion().setY(19*paredTemp2.obtenerPosicion().obtenerAlto());
+			paredTemp2.obtenerPosicion().setX(x*paredTemp2.obtenerPosicion().obtenerAncho());
+			lab.agregarPared(paredTemp2);
 		}
-		
+		for(int y = 1; y<19; y++) {
+			Pared paredTemp = Tema.nuevoPared();
+			paredTemp.obtenerPosicion().setY(y*paredTemp.obtenerPosicion().obtenerAlto());
+			lab.agregarPared(paredTemp);
+			
+			Pared paredTemp2 = Tema.nuevoPared();
+			paredTemp2.obtenerPosicion().setY(19*paredTemp2.obtenerPosicion().obtenerAlto());
+			paredTemp2.obtenerPosicion().setX(y*paredTemp2.obtenerPosicion().obtenerAncho());
+			lab.agregarPared(paredTemp2);
+		}
 	}
 
 	@Override
@@ -48,7 +62,7 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 	}
 
 	@Override
-	public void reset(Juego j) {
+	public void resetBuilder(Juego j) {
 		lab = new Laberinto(j);
 	}
 

@@ -6,7 +6,7 @@ import Laberinto.Laberinto;
 public interface ConstructorLaberinto {
 	
 	
-	public void reset(Juego j);
+	public void resetBuilder(Juego j);
 	
 	public void construirParedes();
 	
