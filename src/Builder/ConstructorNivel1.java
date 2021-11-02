@@ -48,7 +48,7 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 	}
 
 	@Override
-	public void reset(Juego j) {
+	public void resetBuilder(Juego j) {
 		lab = new Laberinto(j);
 	}
 
