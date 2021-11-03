@@ -15,7 +15,7 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	
-	public void accept(Visitor v) {
-		
+	public boolean accept(Visitor v) {
+		return false;
 	}
 }

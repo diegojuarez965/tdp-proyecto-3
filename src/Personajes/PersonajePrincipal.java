@@ -3,6 +3,7 @@ package Personajes;
 import Posicion.Posicion;
 import Visitor.Visitor;
 import Estado.Estado;
+import Laberinto.Laberinto;
 
 public class PersonajePrincipal extends Personaje{
 
@@ -17,28 +18,28 @@ public class PersonajePrincipal extends Personaje{
 	}
 	
 	public void moverVisual() {
-		
+		laberinto.actualizarEntidadVisual(this);
 	}
 	
 	public void setEstado(Estado e) {
 		estado = e;
 	}
-	
+	public void setLaberinto(Laberinto lab) {
+		laberinto = lab;
+	}
 	public String obtenerSkinNormal() {
 		return skin;
 	}
 	public String obtenerSkinVeloz() {
 		return skinVeloz;
 	}
-
 	@Override
 	public String obtenerSkin() {
 		return estado.obtenerSkin(this);
 	}
 
 	@Override
-	public void accept(Visitor v) {
-		// TODO Auto-generated method stub
-		
+	public boolean accept(Visitor v) {
+		return false;
 	}
 }

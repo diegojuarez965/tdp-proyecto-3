@@ -1,5 +1,6 @@
 package Builder;
 
+import Estado.Normal;
 import Factory.FactoryTemas;
 import Juego.Juego;
 import Laberinto.Laberinto;
@@ -216,6 +217,8 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 		PersonajePrincipal personajePrincipal = Tema.nuevoPersonajePrincipal();
 		personajePrincipal.obtenerPosicion().setX(17*personajePrincipal.obtenerPosicion().obtenerAncho());
 		personajePrincipal.obtenerPosicion().setY(18*personajePrincipal.obtenerPosicion().obtenerAlto());
+		personajePrincipal.setEstado(new Normal());
+		personajePrincipal.setLaberinto(lab);
 		lab.agregarPersonajeP(personajePrincipal);
 	}
 

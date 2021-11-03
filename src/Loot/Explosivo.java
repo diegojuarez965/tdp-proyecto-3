@@ -9,7 +9,8 @@ public class Explosivo extends LootEspecial2{
 		super(p, skin);
 	}
 	
-	public void accept(Visitor v) {
+	public boolean accept(Visitor v) {
 		
+		return true;
 	}
 }

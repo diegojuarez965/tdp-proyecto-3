@@ -25,7 +25,7 @@ public abstract class Entidad {
 	
 	public abstract String obtenerSkin();
 	
-	public abstract void accept(Visitor v);
+	public abstract boolean accept(Visitor v);
 	
 	
 	

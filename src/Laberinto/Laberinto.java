@@ -1,5 +1,6 @@
 package Laberinto;
 
+import java.math.MathContext;
 import java.util.List;
 
 import Entidad.Entidad;
@@ -53,19 +54,52 @@ public class Laberinto {
 	}
 	private void moverDer() {
 		Posicion posicion = personaje.obtenerPosicion();
-		posicion.setX(posicion.obtenerX()+5);
+		Entidad entidadTemp = entidades[(posicion.obtenerX()/40)+1][posicion.obtenerY()/40];
+		if(posicion.obtenerY()%40==0) {
+			if(entidadTemp!=null) {
+				if(entidadTemp.accept(personaje.obtenerVisitor()))
+					posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
+			}
+			else
+				posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
+		} 
+			
 	}
 	private void moverIzq() {
 		Posicion posicion = personaje.obtenerPosicion();
-		posicion.setX(posicion.obtenerX()-5);
+		Entidad entidadTemp = entidades[(int) Math.round(Math.ceil((double)posicion.obtenerX()/40))-1][posicion.obtenerY()/40];
+		if(posicion.obtenerY()%40==0) {
+			if(entidadTemp!=null) {
+				if(entidadTemp.accept(personaje.obtenerVisitor()))
+					posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
+			}
+			else
+				posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
+		}
 	}
 	private void moverArriba() {
 		Posicion posicion = personaje.obtenerPosicion();
-		posicion.setY(posicion.obtenerY()-5);
+		Entidad entidadTemp = entidades[posicion.obtenerX()/40][(int) Math.round(Math.ceil((double)posicion.obtenerY()/40))-1];
+		if(posicion.obtenerX()%40==0) {
+			if(entidadTemp!=null) {
+				if(entidadTemp.accept(personaje.obtenerVisitor()))
+					posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
+			}
+			else
+				posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
+		}
 	}
 	private void moverAbajo() {
 		Posicion posicion = personaje.obtenerPosicion();
-		posicion.setY(posicion.obtenerY()+5);
+		Entidad entidadTemp = entidades[posicion.obtenerX()/40][(posicion.obtenerY()/40)+1];
+		if(posicion.obtenerX()%40==0) {
+			if(entidadTemp!=null) {
+				if(entidadTemp.accept(personaje.obtenerVisitor()))
+					posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
+			}
+			else
+				posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
+		}
 	}
 	
 	public void agregarEnemigo(Enemigo e) {
@@ -87,7 +121,9 @@ public class Laberinto {
 	}
 	public void agregarPersonajeP(PersonajePrincipal p) {
 		personaje = p;
-		p.setEstado(new Normal());
 		juego.mostrarEntidadVisual(p);
+	}
+	public void actualizarEntidadVisual(Entidad e) {
+		juego.actualizarEntidadVisual(e);
 	}
 }

@@ -10,8 +10,8 @@ public class Pared extends Entidad{
 		super(p, skin);
 	}
 
-	public void accept(Visitor v) {
-		
+	public boolean accept(Visitor v) {
+		return false;
 	}
 	
 	public String obtenerSkin() {

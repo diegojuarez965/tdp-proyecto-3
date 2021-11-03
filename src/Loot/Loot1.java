@@ -14,7 +14,8 @@ public class Loot1 extends Loot{
 		return puntaje;
 	}
 	
-	public void accept(Visitor v) {
+	public boolean accept(Visitor v) {
 		
+		return true;
 	}
 }
