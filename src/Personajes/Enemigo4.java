@@ -4,7 +4,7 @@ import Posicion.Posicion;
 
 public class Enemigo4 extends Enemigo{
 
-	public Enemigo4(Posicion p, Posicion pGrilla, String skin, String skinHuida) {
+	public Enemigo4(Posicion p, String skin, String skinHuida) {
 		super(p, skin, skinHuida);
 		// TODO Auto-generated constructor stub
 	}
