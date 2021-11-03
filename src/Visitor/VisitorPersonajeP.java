@@ -19,7 +19,6 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitPocionVelocidad(PocionVelocidad pV) {
-		// TODO Auto-generated method stub
 		
 	}
 

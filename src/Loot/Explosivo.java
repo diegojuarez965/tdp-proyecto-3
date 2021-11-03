@@ -10,7 +10,7 @@ public class Explosivo extends LootEspecial2{
 	}
 	
 	public boolean accept(Visitor v) {
-		
+		v.visitExplosivo(this);
 		return true;
 	}
 }

@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 
 import Entidad.Entidad;
 import Factory.Tema1;
+import Factory.Tema2;
 import Juego.Juego;
 import Posicion.Posicion;
 import Laberinto.Laberinto;
@@ -205,7 +206,7 @@ public class GUI extends JFrame{
 	}
 	public void setUpJuego(Juego j) {
 		this.juego = j;
-		juego.setTema(new Tema1());
+		juego.setTema(new Tema2());
 		juego.pasarNivel();
 	}
 	private void pararMusica() {
