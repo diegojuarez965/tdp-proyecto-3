@@ -54,8 +54,8 @@ public class Laberinto {
 	}
 	private void moverDer() {
 		Posicion posicion = personaje.obtenerPosicion();
-		Entidad entidadTemp = entidades[(posicion.obtenerX()/40)+1][posicion.obtenerY()/40];
-		if(posicion.obtenerY()%40==0) {
+		Entidad entidadTemp = entidades[(posicion.obtenerX()/posicion.obtenerAncho())+1][posicion.obtenerY()/posicion.obtenerAlto()];
+		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
 				if(entidadTemp.accept(personaje.obtenerVisitor()))
 					posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
@@ -67,8 +67,8 @@ public class Laberinto {
 	}
 	private void moverIzq() {
 		Posicion posicion = personaje.obtenerPosicion();
-		Entidad entidadTemp = entidades[(int) Math.round(Math.ceil((double)posicion.obtenerX()/40))-1][posicion.obtenerY()/40];
-		if(posicion.obtenerY()%40==0) {
+		Entidad entidadTemp = entidades[(int) Math.round(Math.ceil((double)posicion.obtenerX()/posicion.obtenerAncho()))-1][posicion.obtenerY()/posicion.obtenerAlto()];
+		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
 				if(entidadTemp.accept(personaje.obtenerVisitor()))
 					posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
@@ -79,8 +79,8 @@ public class Laberinto {
 	}
 	private void moverArriba() {
 		Posicion posicion = personaje.obtenerPosicion();
-		Entidad entidadTemp = entidades[posicion.obtenerX()/40][(int) Math.round(Math.ceil((double)posicion.obtenerY()/40))-1];
-		if(posicion.obtenerX()%40==0) {
+		Entidad entidadTemp = entidades[posicion.obtenerX()/posicion.obtenerAncho()][(int) Math.round(Math.ceil((double)posicion.obtenerY()/posicion.obtenerAlto()))-1];
+		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
 				if(entidadTemp.accept(personaje.obtenerVisitor()))
 					posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
@@ -91,8 +91,8 @@ public class Laberinto {
 	}
 	private void moverAbajo() {
 		Posicion posicion = personaje.obtenerPosicion();
-		Entidad entidadTemp = entidades[posicion.obtenerX()/40][(posicion.obtenerY()/40)+1];
-		if(posicion.obtenerX()%40==0) {
+		Entidad entidadTemp = entidades[posicion.obtenerX()/posicion.obtenerAncho()][(posicion.obtenerY()/posicion.obtenerAlto())+1];
+		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
 				if(entidadTemp.accept(personaje.obtenerVisitor()))
 					posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
@@ -125,5 +125,11 @@ public class Laberinto {
 	}
 	public void actualizarEntidadVisual(Entidad e) {
 		juego.actualizarEntidadVisual(e);
+	}
+	public PersonajePrincipal obtenerPersonajePrincipal() {
+		return personaje;
+	}
+	public Iterable<Enemigo> obtenerEnemigos(){
+		return enemigos;
 	}
 }

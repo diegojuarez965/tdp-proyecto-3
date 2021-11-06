@@ -15,7 +15,7 @@ public class LootEspecial1 extends Loot{
 	}
 	
 	public boolean accept(Visitor v) {
-		
+		v.visitLootEspecial1(this);
 		return true;
 	}
 }

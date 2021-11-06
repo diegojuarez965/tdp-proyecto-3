@@ -10,7 +10,7 @@ public class PocionVelocidad extends LootEspecial2{
 	}
 
 	public boolean accept(Visitor v) {
-		
+		v.visitPocionVelocidad(this);
 		return true;
 	}
 }
