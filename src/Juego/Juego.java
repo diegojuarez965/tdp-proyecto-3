@@ -19,7 +19,7 @@ public class Juego {
 	private int nivel;
 	
 	public Juego() {
-		nivel = 1;
+		nivel = 3;
 	}
 	
 	public void setGUI(GUI g) {
