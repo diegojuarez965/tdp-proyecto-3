@@ -1,5 +1,6 @@
 package Builder;
 
+import Comportamiento.Ataque;
 import Estado.Normal;
 import Factory.FactoryTemas;
 import Juego.Juego;
@@ -10,6 +11,7 @@ import Loot.Loot2;
 import Loot.LootEspecial1;
 import Loot.PocionVelocidad;
 import Pared.Pared;
+import Personajes.Enemigo;
 import Personajes.Enemigo1;
 import Personajes.Enemigo2;
 import Personajes.Enemigo3;
@@ -53,10 +55,7 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 		crearParedesX(14, 15, 3);
 		crearParedesX(6, 13, 5);
 		crearParedesY(7, 12, 6);
-		crearParedesY(5, 9, 15);
 		crearParedesY(14, 15, 6);
-		crearParedesY(11, 14, 15);
-		crearParedesY(16, 17, 15);
 		crearParedesX(6, 7, 17);
 		crearParedesX(9, 10, 17);
 		crearParedesX(12, 13, 17);
@@ -115,7 +114,6 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 		crearLoot1Y(2, 3, 10);
 		crearLoot1Y(2, 3, 13);
 		crearLoot1X(12, 13, 9);
-		crearLoot1X(8, 9, 14);
 		crearLoot1X(2, 2, 6);
 		crearLoot1X(2, 2, 12);
 		crearLoot1X(4, 4, 10);
@@ -130,9 +128,10 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 		crearLoot1X(13, 13, 13);
 		crearLoot1X(14, 14, 5);
 		crearLoot1X(15, 15, 10);
-		crearLoot1X(15, 15, 15);
 		crearLoot1X(17, 17, 6);
 		crearLoot1X(17, 17, 12);
+		crearLoot1X(8, 9, 14);
+		crearLoot1X(15, 15, 15);
 		crearPocionVelocidad(1, 1);
 		crearPocionVelocidad(18, 1);
 		crearPocionVelocidad(1, 18);
@@ -188,30 +187,23 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 	}
 	@Override
 	public void construirEnemigos() {
-		/*
-		//Enemigo1
-		Enemigo1 enemigo1 = Tema.nuevoEnemigo1();
-		enemigo1.obtenerPosicion().setX(9*enemigo1.obtenerPosicion().obtenerAncho());
-		enemigo1.obtenerPosicion().setY(9*enemigo1.obtenerPosicion().obtenerAlto());
-		lab.agregarEnemigo(enemigo1);
-		//Enemigo2
+		Enemigo1 enemigo = Tema.nuevoEnemigo1();
+		crearEnemigo(enemigo);
 		Enemigo2 enemigo2 = Tema.nuevoEnemigo2();
-	    enemigo2.obtenerPosicion().setX(9*enemigo2.obtenerPosicion().obtenerAncho());
-	    enemigo2.obtenerPosicion().setY(9*enemigo2.obtenerPosicion().obtenerAlto());
-		lab.agregarEnemigo(enemigo2);
-		//Enemigo3
-	    Enemigo3 enemigo3 = Tema.nuevoEnemigo3();
-	    enemigo3.obtenerPosicion().setX(9*enemigo3.obtenerPosicion().obtenerAncho());
-	    enemigo3.obtenerPosicion().setY(9*enemigo3.obtenerPosicion().obtenerAlto());
-		lab.agregarEnemigo(enemigo3);
-		//Enemigo4
+		crearEnemigo(enemigo2);
+		Enemigo3 enemigo3 = Tema.nuevoEnemigo3();
+		crearEnemigo(enemigo3);
 		Enemigo4 enemigo4 = Tema.nuevoEnemigo4();
-	    enemigo4.obtenerPosicion().setX(9*enemigo4.obtenerPosicion().obtenerAncho());
-	    enemigo4.obtenerPosicion().setY(9*enemigo4.obtenerPosicion().obtenerAlto());
-		lab.agregarEnemigo(enemigo4);
-		*/
+		crearEnemigo(enemigo4);
 	}
-
+	private void crearEnemigo(Enemigo enemigo) {
+		enemigo.obtenerPosicion().setX(9*enemigo.obtenerPosicion().obtenerAncho());
+		enemigo.obtenerPosicion().setY(9*enemigo.obtenerPosicion().obtenerAlto());
+		enemigo.setEstrategia(new Ataque());
+		enemigo.aumentarVelocidad();
+		lab.agregarEnemigo(enemigo);
+	}
+	
 	@Override
 	public void construirPersonaje() {
 		PersonajePrincipal personajePrincipal = Tema.nuevoPersonajePrincipal();

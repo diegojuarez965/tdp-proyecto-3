@@ -14,15 +14,19 @@ public abstract class Personaje extends Entidad{
 		super(p, skin);
 	}
 	
-	private int velocidad = 10; //Cantidad de pixeles que se mueve el Personaje a la vez.
+	private int velocidad = 5; //Cantidad de pixeles que se mueve el Personaje a la vez.
 	
 	public int obtenerVelocidad() {
 		return velocidad;
 	}
 	public void aumentarVelocidad() {
-		velocidad += 10;
+		velocidad = 10;
 	}
 	public void disminuirVelocidad() {
-		velocidad -=10;
+		velocidad = 5;
+	}
+	
+	public Laberinto obtenerLaberinto() {
+		return laberinto;
 	}
 }

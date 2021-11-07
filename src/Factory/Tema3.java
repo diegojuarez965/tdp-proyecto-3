@@ -37,38 +37,35 @@ public class Tema3 implements FactoryTemas{
 
 	@Override
 	public Enemigo2 nuevoEnemigo2() {
-		/*Enemigo1 enemigo;
+		Enemigo2 enemigo;
 		String skinNormal = "/images/amongInkyAtaque.png";
 		String skinHuida = "/images/amongHuida.png";
 		Posicion p = new PosicionLogica(0, 0);
 		enemigo = new Enemigo2(p, skinNormal, skinHuida);
 		enemigo.setVisitor(new VisitorEnemigo(enemigo));
-		return enemigo;*/
-		return null;
+		return enemigo;
 	}
 
 	@Override
 	public Enemigo3 nuevoEnemigo3() {
-		/*Enemigo1 enemigo;
+		Enemigo3 enemigo;
 		String skinNormal = "/images/amongPinkyAtaque.png";
 		String skinHuida = "/images/amongHuida.png";
 		Posicion p = new PosicionLogica(0, 0);
 		enemigo = new Enemigo3(p, skinNormal, skinHuida);
 		enemigo.setVisitor(new VisitorEnemigo(enemigo));
-		return enemigo;*/
-		return null;
+		return enemigo;
 	}
 
 	@Override
 	public Enemigo4 nuevoEnemigo4() {
-		/*Enemigo1 enemigo;
+		Enemigo4 enemigo;
 		String skinNormal = "/images/amongClydeAtaque.png";
 		String skinHuida = "/images/amongHuida.png";
 		Posicion p = new PosicionLogica(0, 0);
 		enemigo = new Enemigo4(p, skinNormal, skinHuida);
 		enemigo.setVisitor(new VisitorEnemigo(enemigo));
-		return enemigo;*/
-		return null;
+		return enemigo;
 	}
 
 	@Override

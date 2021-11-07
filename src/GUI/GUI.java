@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -70,19 +71,19 @@ public class GUI extends JFrame{
 		panelInformacion.setBounds(800, 0, 184, 800);
 		panelInformacion.setLayout(null);
 		
-		labelVidas = new JLabel("Vidas: ");
+		labelVidas = new JLabel("Vidas: 3");
 		labelVidas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelVidas.setForeground(Color.WHITE);
 		labelVidas.setBounds(10, 36, 164, 14);
 		panelInformacion.add(labelVidas);
 		
-		labelExplosivos = new JLabel("Explosivos: ");
+		labelExplosivos = new JLabel("Explosivos: 0");
 		labelExplosivos.setForeground(Color.WHITE);
 		labelExplosivos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelExplosivos.setBounds(10, 61, 164, 14);
 		panelInformacion.add(labelExplosivos);
 		
-		labelPuntos = new JLabel("Puntos: ");
+		labelPuntos = new JLabel("Puntos: 0");
 		labelPuntos.setForeground(Color.WHITE);
 		labelPuntos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelPuntos.setBounds(10, 11, 164, 14);
@@ -160,6 +161,10 @@ public class GUI extends JFrame{
 					juego.mover(Laberinto.MOVER_ARRIBA);
 					break;
 				}
+				case KeyEvent.VK_SPACE: {
+					juego.ponerExplosivo();
+					break;
+				}
 				}
 			}
 		});
@@ -171,21 +176,25 @@ public class GUI extends JFrame{
 	public void actualizarEntidadVisual(Entidad e) {
 		JLabel grafico = mapeo.get(e);
 		Posicion posEntidad = e.obtenerPosicion();
-		grafico.setLocation(posEntidad.obtenerX(), posEntidad.obtenerY());
+		if(grafico!=null) {
+			grafico.setLocation(posEntidad.obtenerX(), posEntidad.obtenerY());
+			grafico.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
+		}
 	}
 	public void mostrarEntidadVisual(Entidad e) {
 		JLabel temp = new JLabel("");
-		contentPane.add(temp);
 		Posicion posEntidad = e.obtenerPosicion();
 		temp.setBounds(posEntidad.obtenerX(), posEntidad.obtenerY(), posEntidad.obtenerAncho(), posEntidad.obtenerAlto());
 		temp.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
 		temp.setVisible(true);
+		contentPane.add(temp);
+		temp.repaint();
 		mapeo.put(e, temp);
 	}
 	public void eliminarEntidadVisual(Entidad e) {
 		JLabel eliminar = mapeo.remove(e);
 		contentPane.remove(eliminar);
-		eliminar = null;
+		this.repaint();
 	}
 	public void setMaxProgreso(int progreso) {
 		barraProgreso.setMaximum(progreso);
