@@ -37,31 +37,33 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 		crearParedesX(10,17,2);
 		crearParedesX(2,8,17);
 		crearParedesX(10,17,17);
-		crearParedesX(6,13,4);
-		crearParedesX(6,13,15);
-		crearParedesY(3,9,2);
-		crearParedesY(11,16,2);
-		crearParedesY(3,9,17);
-		crearParedesY(11,16,17);
-		crearParedesY(6,13,4);
-		crearParedesY(6,13,15);
-		crearParedesY(6,9,6);
-		crearParedesY(6,9,12);
-		crearParedesY(6,9,13);
-		crearParedesY(11,13,6);
-		crearParedesY(11,13,12);
-		crearParedesY(11,13,13);
-		crearParedesY(8,11,8);
-		crearParedesY(8,11,10);
-		crearParedesX(7,8,6);
-		crearParedesX(10,11,6);
-		crearParedesX(7,8,13);
-		crearParedesX(10,11,13);
-		crearParedesX(4,4,4);
-		crearParedesX(15,15,4);
-		crearParedesX(4,4,15);
-		crearParedesX(15,15,15);
-		crearParedesX(9,9,11);
+		crearParedesX(6, 13, 15);
+		crearParedesY(3, 9, 2);
+		crearParedesY(11, 16, 2);
+		crearParedesY(3, 9, 17);
+		crearParedesY(11, 16, 17);
+		crearParedesY(6, 13, 4);
+		crearParedesY(6, 13, 15);
+		crearParedesY(6, 9, 6);
+		crearParedesY(6, 9, 12);
+		crearParedesY(6, 9, 13);
+		crearParedesX(6, 8, 4);
+		crearParedesX(10, 13, 4);
+		crearParedesX(6, 8, 12);
+		crearParedesX(6, 8, 13);
+		crearParedesX(10, 13, 12);
+		crearParedesX(10, 13, 13);
+		crearParedesX(12, 13, 11);
+		crearParedesY(7, 10, 8);
+		crearParedesY(7, 10, 10);
+		crearParedesX(4, 4, 4);
+		crearParedesX(4, 4, 15);
+		crearParedesX(6, 6, 11);
+		crearParedesX(8, 8, 5);
+		crearParedesX(10, 10, 5);
+		crearParedesX(9, 9, 10);
+		crearParedesX(15, 15, 4);
+		crearParedesX(15, 15, 15);
 	}
 	
 	private void crearParedesX(int desdeX, int hastaX, int Y) {
@@ -85,40 +87,36 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 	public void construirLoot() {
 		//Loot1
 		crearLoot1X(1,17,1);
-		crearLoot1X(4,16,3);
-		crearLoot1X(3,16,5);
-		crearLoot1X(3,16,14);
-		crearLoot1X(3,15,16);
-		crearLoot1X(2,17,18);
-		crearLoot1Y(2,17,1);
-		crearLoot1Y(6,13,3);
-		crearLoot1Y(6,13,5);
-		crearLoot1Y(6,13,14);
-		crearLoot1Y(6,13,16);
-		crearLoot1Y(2,18,18);
-		crearLoot1X(8,11,7);
-		crearLoot1Y(8,12,7);
-		crearLoot1Y(8,11,11);
-		crearLoot1X(9,9,2);
-		crearLoot1X(3,3,4);
-		crearLoot1X(5,5,4);
-		crearLoot1X(14,14,4);
-		crearLoot1X(16,16,4);
-		crearLoot1X(9,9,6);
-		crearLoot1X(2,2,10);
-		crearLoot1X(6,6,10);
-		crearLoot1X(12,13,10);
-		crearLoot1X(17,17,10);
-		crearLoot1X(8,8,12);
-		crearLoot1X(10,10,12);
-		crearLoot1X(9,9,13);
-		crearLoot1X(3,3,15);
-		crearLoot1X(5,5,15);
-		crearLoot1X(14,14,15);
-		crearLoot1X(16,16,15);
-		crearLoot1X(9,9,17);
+		crearLoot1X(2, 18, 18);
+		crearLoot1Y(2, 17, 1);
+		crearLoot1Y(2, 17, 18);
+		crearLoot1X(4, 16, 3);
+		crearLoot1X(3, 15, 16);
+		crearLoot1Y(4, 15, 3);
+		crearLoot1Y(4, 15, 16);
+		crearLoot1X(4, 15, 14);
+		crearLoot1Y(4, 13, 5);
+		crearLoot1Y(4, 13, 14);
+		crearLoot1Y(5, 11, 11);
+		crearLoot1Y(8, 11, 7);
+		crearLoot1X(6, 7, 5);
+		crearLoot1X(12, 13, 5);
+		crearLoot1X(7, 10, 6);
+		crearLoot1X(12, 13, 10);
+		crearLoot1Y(12, 13, 9);
+		crearLoot1Y(4, 5, 9);
+		crearLoot1X(9, 9, 2);
+		crearLoot1X(4, 4, 5);
+		crearLoot1X(15, 15, 5);
+		crearLoot1X(2, 2, 10);
+		crearLoot1X(6, 6, 10);
+		crearLoot1X(5, 5, 15);
+		crearLoot1X(8, 8, 11);
+		crearLoot1X(10, 10, 11);
+		crearLoot1X(9, 9, 17);
+		crearLoot1X(14, 14, 15);
 		//Loot2
-		crearLoot2(9,12);
+		crearLoot2(9,11);
 		//LootEspecial1
 		crearLootEspecial1(18,1);
 		crearLootEspecial1(1,18);
@@ -127,7 +125,7 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 		crearPocionVelocidad(16,16);
 		//Explosivo
 		crearExplosivo(7,7);
-		crearExplosivo(11,12);
+		crearExplosivo(17,10);
 	}
 	
 	private void crearLoot1X(int desdeX, int hastaX, int Y) {

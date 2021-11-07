@@ -145,6 +145,8 @@ public class Tema1 implements FactoryTemas{
 		return null;
 	}
 
-	
+	public String toString() {
+		return "Tema Arabe";
+	}
 
 }

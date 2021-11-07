@@ -145,4 +145,8 @@ public class Tema2 implements FactoryTemas{
 		return null;
 	}
 
+	
+	public String toString() {
+		return "Tema Minecraft";
+	}
 }

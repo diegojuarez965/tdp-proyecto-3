@@ -14,6 +14,7 @@ import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Personajes.Enemigo;
 import Posicion.Posicion;
+import Sonido.Sonido;
 
 public class Juego {
 	
@@ -23,14 +24,17 @@ public class Juego {
 	private Laberinto laberinto;
 	private int nivel, puntos, vidas, explosivos;
 	private boolean musica, efectos;
+	private Sonido sonido;
+	private ConstructorLaberinto constructor;
 	
 	public Juego() {
-		nivel = 1;
+		nivel = 2;
 		puntos = 0;
 		vidas = 3;
 		explosivos = 0;
 		musica = true;
 		efectos = true;
+		sonido = new Sonido();
 	}
 	
 	public void setGUI(GUI g) {
@@ -53,20 +57,25 @@ public class Juego {
 		gui.eliminarEntidadVisual(e);
 	}
 	public void pasarNivel() {
-		ConstructorLaberinto cl = null;
-		if(nivel==1)
-			cl = new ConstructorNivel1(tema);
-		else if(nivel==2)
-			cl = new ConstructorNivel2(tema);
-		else if(nivel==3)
-			cl = new ConstructorNivel3(tema);
-		nivel++;
-		director = new Director(cl);
-		director.nuevoNivel(this);
-		laberinto = cl.obtenerLaberinto();
-		gui.resetProgreso();
-		gui.setMaxProgreso(laberinto.obtenerLootRestante());
-		//laberinto.run();
+		if(laberinto!=null)
+			laberinto.parar();
+		if(nivel>3)
+			finalizarJuego();
+		else {
+			if(nivel==1)
+				constructor = new ConstructorNivel1(tema);
+			else if(nivel==2)
+				constructor = new ConstructorNivel2(tema);
+			else if(nivel==3)
+				constructor = new ConstructorNivel3(tema);
+			nivel++;
+			director = new Director(constructor);
+			director.nuevoNivel(this);
+			laberinto = constructor.obtenerLaberinto();
+			gui.resetProgreso();
+			gui.setMaxProgreso(laberinto.obtenerLootRestante());
+			laberinto.start();
+		}
 	}
 	public void reproducirMusica() {
 		
@@ -88,6 +97,12 @@ public class Juego {
 	public void restarVida() {
 		vidas--;
 		gui.setVidas(vidas);
+		if(vidas==0) 
+			finalizarJuego();
+		else {
+			constructor.construirEnemigos();
+			constructor.construirPersonaje();
+		}
 	}
 	public void sumarExplosivo() {
 		explosivos++;

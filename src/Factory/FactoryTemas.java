@@ -27,4 +27,6 @@ public interface FactoryTemas {
 	public Explosivo nuevoExplosivo();
 	
 	public String nuevoMusica();
+	
+	public String toString();
 }

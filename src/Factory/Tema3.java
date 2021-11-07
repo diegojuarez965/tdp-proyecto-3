@@ -144,4 +144,8 @@ public class Tema3 implements FactoryTemas{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public String toString() {
+		return "Tema Among Us";
+	}
 }

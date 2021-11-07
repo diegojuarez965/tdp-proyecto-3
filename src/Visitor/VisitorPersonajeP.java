@@ -2,6 +2,8 @@ package Visitor;
 
 import java.util.Timer;
 
+import Builder.ConstructorLaberinto;
+import Builder.ConstructorNivel1;
 import Comportamiento.Ataque;
 import Comportamiento.Huida;
 import Estado.Normal;
@@ -44,7 +46,7 @@ public class VisitorPersonajeP implements Visitor{
                         t.cancel();
                     }
                 }, 
-                5000 
+                10000 
         );
 	}
 
@@ -60,6 +62,7 @@ public class VisitorPersonajeP implements Visitor{
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(l);
 		for(Enemigo e : lab.obtenerEnemigos()) {
+			e.setVulnerable(true);
 			e.setEstrategia(new Huida());
 			e.disminuirVelocidad();
 			lab.actualizarEntidadVisual(e);
@@ -70,6 +73,7 @@ public class VisitorPersonajeP implements Visitor{
                     @Override
                     public void run() {
                         for(Enemigo e: lab.obtenerEnemigos()) {
+                        	e.setVulnerable(false);
                         	e.setEstrategia(new Ataque());
                         	e.aumentarVelocidad();
                         	lab.actualizarEntidadVisual(e);
@@ -77,7 +81,7 @@ public class VisitorPersonajeP implements Visitor{
                         t.cancel();
                     }
                 }, 
-                8000 
+                15000 
         );
 	}
 
@@ -104,9 +108,26 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public boolean visitEnemigo(Enemigo e) {
-		return false;
-		// TODO Auto-generated method stub
-		
+		boolean puedeMoverse;
+		Laberinto lab = personaje.obtenerLaberinto();
+		if(e.esVulnerable()) {
+			Posicion posEnemigo = e.obtenerPosicion();
+			posEnemigo.setX(posEnemigo.obtenerAncho()*9);
+			posEnemigo.setY(posEnemigo.obtenerAlto()*9);
+			lab.actualizarEntidadVisual(e);
+			puedeMoverse = true;
+		}
+		else {
+			/*ConstructorLaberinto constructor = lab.obtenerConstructor();
+			for(Enemigo enemigos : lab.obtenerEnemigos())
+				lab.eliminarEntidadVisual(enemigos);
+			lab.eliminarEntidadVisual(lab.obtenerPersonajePrincipal());
+			constructor.construirEnemigos();
+			constructor.construirPersonaje();*/
+			lab.restarVida();
+			puedeMoverse = false;
+		}
+		return puedeMoverse;
 	}
 
 	@Override

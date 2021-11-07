@@ -13,7 +13,7 @@ import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 
-public class Laberinto implements Runnable{
+public class Laberinto extends Thread{
 	
 	private int lootRestante;
 	private Juego juego;
@@ -55,6 +55,9 @@ public class Laberinto implements Runnable{
 			}
 		}
 		juego.actualizarEntidadVisual(personaje);
+		for(Enemigo e : enemigos) 
+			if(e.obtenerPosicion().colisionan(personaje.obtenerPosicion()))
+				e.accept(personaje.obtenerVisitor());
 	}
 	private void moverDer() {
 		Posicion posicion = personaje.obtenerPosicion();
@@ -153,6 +156,11 @@ public class Laberinto implements Runnable{
 		
 	}
 	public void restarVida() {
+		for(Enemigo e : enemigos)
+			juego.eliminarEntidadVisual(e);
+		enemigos = new LinkedList<Enemigo>();
+		juego.eliminarEntidadVisual(personaje);
+		personaje = null;
 		juego.restarVida();
 	}
 	public void sumarExplosivo() {
