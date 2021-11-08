@@ -30,7 +30,7 @@ public class Juego {
 	private Hilo hilo;
 	
 	public Juego() {
-		nivel = 2;
+		nivel = 1;
 		puntos = 0;
 		vidas = 3;
 		explosivos = 0;
