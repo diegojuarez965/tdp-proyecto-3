@@ -10,6 +10,7 @@ import Builder.Director;
 import Entidad.Entidad;
 import Factory.FactoryTemas;
 import GUI.GUI;
+import Hilo.Hilo;
 import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Personajes.Enemigo;
@@ -26,6 +27,7 @@ public class Juego {
 	private boolean musica, efectos;
 	private Sonido sonido;
 	private ConstructorLaberinto constructor;
+	private Hilo hilo;
 	
 	public Juego() {
 		nivel = 2;
@@ -57,8 +59,8 @@ public class Juego {
 		gui.eliminarEntidadVisual(e);
 	}
 	public void pasarNivel() {
-		if(laberinto!=null)
-			laberinto.parar();
+		if(hilo!=null)
+			hilo.parar();
 		if(nivel>3)
 			finalizarJuego();
 		else {
@@ -72,9 +74,10 @@ public class Juego {
 			director = new Director(constructor);
 			director.nuevoNivel(this);
 			laberinto = constructor.obtenerLaberinto();
+			hilo= new Hilo(laberinto);
 			gui.resetProgreso();
 			gui.setMaxProgreso(laberinto.obtenerLootRestante());
-			laberinto.start();
+			hilo.start();
 		}
 	}
 	public void reproducirMusica() {

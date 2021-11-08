@@ -3,7 +3,6 @@ package Laberinto;
 import java.math.MathContext;
 import java.util.LinkedList;
 import java.util.List;
-
 import Entidad.Entidad;
 import Estado.Normal;
 import Juego.Juego;
@@ -13,14 +12,13 @@ import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 
-public class Laberinto extends Thread{
+public class Laberinto {
 	
 	private int lootRestante;
 	private Juego juego;
 	private Entidad[][] entidades;
 	private List<Enemigo> enemigos;
 	private PersonajePrincipal personaje;
-	private boolean parar;
 	
 	public static final int MOVER_ABAJO = 0;
 	public static final int MOVER_ARRIBA = 1;
@@ -32,7 +30,6 @@ public class Laberinto extends Thread{
 		lootRestante = 0;
 		entidades = new Entidad[20][20];
 		enemigos = new LinkedList<Enemigo>();
-		parar = false;
 	}
 	
 	public synchronized void mover(int direccion) {
@@ -176,16 +173,5 @@ public class Laberinto extends Thread{
 	public void sumarPuntos(int puntos) {
 		juego.sumarPuntos(puntos);
 	}
-	public void run() {
-		while(!parar) {
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e1) {e1.printStackTrace();}
-			for(Enemigo e : enemigos)
-				e.moverSiguientePos();
-		}
-	}
-	public void parar() {
-		parar = true;
-	}
+	
 }
