@@ -3,12 +3,9 @@ package GUI;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -24,22 +21,22 @@ import Factory.Tema2;
 import Factory.Tema3;
 import Juego.Juego;
 import Posicion.Posicion;
+import Ranking.Ranking;
 import Laberinto.Laberinto;
+import Personajes.PersonajePrincipal;
 
 import javax.swing.JProgressBar;
 import javax.swing.JToggleButton;
-import javax.swing.LookAndFeel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import java.awt.Font;
 import java.awt.Toolkit;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GUI extends JFrame{
 
@@ -57,13 +54,14 @@ public class GUI extends JFrame{
 	private Juego juego;
 	private JToggleButton botonMusica;
 	private JToggleButton botonEfectos;
+	private Ranking ranking;
+	private String nombreJugador;
 
 	
 	public GUI() {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException e1) {	e1.printStackTrace();}
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException| UnsupportedLookAndFeelException e1) {e1.printStackTrace();}
 		setResizable(false);
 		setVisible(true);
 		setTitle("Man-Pac");
@@ -73,6 +71,8 @@ public class GUI extends JFrame{
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		
+		ranking = new Ranking();
+		cargarRanking();
 		
 		contentPane = getContentPane();
 		
@@ -183,15 +183,29 @@ public class GUI extends JFrame{
 			}
 		});
 		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				guardarRanking();
+			}
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				guardarRanking();
+			}
+		});
 	}
-	
+	public void mostrarMensajeNombre() {
+		nombreJugador = (String) JOptionPane.showInputDialog(contentPane, "Ingrese su nombre", "Ingresar Nombre", JOptionPane.WARNING_MESSAGE, null, null, null);
+		if(nombreJugador==null || nombreJugador.isEmpty() || nombreJugador.trim().isEmpty())
+			nombreJugador = "Anonimo";
+	}
 	public void mostrarMensajeTemas() {
 		FactoryTemas[] temas = {new Tema1(), new Tema2(), new Tema3()};
 		juego.setTema(temas[1]);
 		FactoryTemas temp = ((FactoryTemas) JOptionPane.showInputDialog(contentPane, "Seleccione un Tema grafico", "Seleccion de Tema", JOptionPane.INFORMATION_MESSAGE, null, temas, temas[0]));
 		if(temp!=null)
 			juego.setTema(temp);
-		juego.pasarNivel();
 	}
 	public void actualizarEntidadVisual(Entidad e) {
 		JLabel grafico = mapeo.get(e);
@@ -213,7 +227,8 @@ public class GUI extends JFrame{
 	}
 	public void eliminarEntidadVisual(Entidad e) {
 		JLabel eliminar = mapeo.remove(e);
-		contentPane.remove(eliminar);
+		if(eliminar!=null) 
+			contentPane.remove(eliminar);
 		this.repaint();
 	}
 	public void setMaxProgreso(int progreso) {
@@ -237,10 +252,36 @@ public class GUI extends JFrame{
 	public void setJuego(Juego j) {
 		this.juego = j;
 	}
+	public void finalizarJuego() {
+		guardarRanking();
+		if(JOptionPane.showConfirmDialog(contentPane, "Obtuviste "+juego.obtenerPuntos()+" puntos\nEl ranking es:\n"+ranking.toString()+"Desea reiniciar el juego?", null, JOptionPane.YES_NO_OPTION)==0)
+			reiniciarJuego();
+		else {
+			this.setVisible(false);
+			this.dispose();
+			System.exit(0);
+		}
+	}
 	private void pararMusica() {
 		juego.pararMusica();
 	}
 	private void mutearEfectosSonido() {
 		juego.pararEfectos();
+	}
+	private void reiniciarJuego() {
+		setPuntaje(0); 
+		setVidas(3);
+		setExplosivos(0);
+		cargarRanking();
+		mostrarMensajeNombre();
+		mostrarMensajeTemas();
+		juego.reiniciarJuego();
+	}
+	private void cargarRanking() {
+	    ranking.cargarRanking();
+	}
+	private void guardarRanking() {
+		ranking.agregarJugador(nombreJugador, juego.obtenerPuntos());
+		ranking.guardarRanking();
 	}
 }

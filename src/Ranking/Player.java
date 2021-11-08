@@ -7,24 +7,24 @@ public class Player implements Comparable<Player>, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -5566884611383241885L;
-	private String jugador;
+	private String nombre;
 	private Integer puntaje;
 	
 	public Player(String nombre, Integer puntos) {
-		jugador = nombre;
+		this.nombre = nombre;
 		puntaje = puntos;
 	}
 	
-	public String getPlayer () {
-		return jugador;
+	public String obtenerNombre() {
+		return nombre;
 	}
 	
-	public Integer getScore() {
+	public Integer obtenerPuntaje() {
 		return puntaje;
 	}
 	
 	@Override
 	public int compareTo(Player p) {
-		return puntaje.compareTo(p.getScore());
+		return puntaje.compareTo(p.obtenerPuntaje());
 	}
 }

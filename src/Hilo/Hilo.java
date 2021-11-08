@@ -18,9 +18,10 @@ public class Hilo extends Thread{
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e1) {e1.printStackTrace();}
-			Iterable<Enemigo> enemigos= lab.obtenerEnemigos();
-			for(Enemigo e : enemigos)
+			for(Enemigo e : lab.obtenerEnemigos()) {
 				e.moverSiguientePos();
+				lab.actualizarEntidadVisual(e);
+			}	
 		}
 	}
 	public void parar() {

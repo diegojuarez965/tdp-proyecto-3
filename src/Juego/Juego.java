@@ -1,5 +1,7 @@
 package Juego;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Timer;
 
 import Builder.ConstructorLaberinto;
@@ -10,7 +12,6 @@ import Builder.Director;
 import Entidad.Entidad;
 import Factory.FactoryTemas;
 import GUI.GUI;
-import Hilo.Hilo;
 import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Personajes.Enemigo;
@@ -27,7 +28,7 @@ public class Juego {
 	private boolean musica, efectos;
 	private Sonido sonido;
 	private ConstructorLaberinto constructor;
-	private Hilo hilo;
+	private HashMap<Timer, Entidad> TimersExplosivos;
 	
 	public Juego() {
 		nivel = 1;
@@ -37,6 +38,7 @@ public class Juego {
 		musica = true;
 		efectos = true;
 		sonido = new Sonido();
+		TimersExplosivos = new HashMap<Timer, Entidad>();
 	}
 	
 	public void setGUI(GUI g) {
@@ -59,8 +61,11 @@ public class Juego {
 		gui.eliminarEntidadVisual(e);
 	}
 	public void pasarNivel() {
-		if(hilo!=null)
-			hilo.parar();
+		for(Entry<Timer, Entidad> e : TimersExplosivos.entrySet()) {
+			e.getKey().cancel();
+			gui.eliminarEntidadVisual(e.getValue());
+		}
+		TimersExplosivos = new HashMap<Timer, Entidad>();
 		if(nivel>3)
 			finalizarJuego();
 		else {
@@ -74,10 +79,9 @@ public class Juego {
 			director = new Director(constructor);
 			director.nuevoNivel(this);
 			laberinto = constructor.obtenerLaberinto();
-			hilo= new Hilo(laberinto);
+			laberinto.iniciar();
 			gui.resetProgreso();
 			gui.setMaxProgreso(laberinto.obtenerLootRestante());
-			hilo.start();
 		}
 	}
 	public void reproducirMusica() {
@@ -92,6 +96,9 @@ public class Juego {
 	public void pararEfectos() {
 		
 	}
+	public int obtenerPuntos() {
+		return puntos;
+	}
 	public void sumarPuntos(int puntos) {
 		this.puntos += puntos;
 		gui.setPuntaje(this.puntos);
@@ -100,7 +107,7 @@ public class Juego {
 	public void restarVida() {
 		vidas--;
 		gui.setVidas(vidas);
-		if(vidas==0) 
+		if(vidas==0)
 			finalizarJuego();
 		else {
 			constructor.construirEnemigos();
@@ -127,20 +134,22 @@ public class Juego {
 			p.setAncho(200);
 			p.setAlto(200);
 			Timer t = new Timer();
+			TimersExplosivos.put(t, explosivo);
 	        t.schedule( 
 	                new java.util.TimerTask() {
 	                    @Override
 	                    public void run() {
+	                    	
 	                        for(Enemigo e: laberinto.obtenerEnemigos()) {
 	                        	Posicion pE = e.obtenerPosicion();
 	                        	if(pE.colisionan(p)) {
 	                        		pE.setX(pE.obtenerAncho()*9);
 	                        		pE.setY(pE.obtenerAlto()*9);
 	                        		gui.actualizarEntidadVisual(e);
-	                        		//ver si hacemos una animacion que salen de la caja
 	                        	}
 	                        }
 	                        gui.eliminarEntidadVisual(explosivo);
+	                        TimersExplosivos.remove(t);
 	                        t.cancel();
 	                    }
 	                }, 
@@ -151,5 +160,13 @@ public class Juego {
 	}
 	public void finalizarJuego() {
 		
+		gui.finalizarJuego();
+	}
+	public void reiniciarJuego() {
+		nivel = 1;
+		puntos = 0;
+		vidas = 3;
+		explosivos = 0;
+		laberinto.pasarNivel();
 	}
 }

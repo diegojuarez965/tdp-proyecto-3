@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import Entidad.Entidad;
 import Estado.Normal;
+import Hilo.Hilo;
 import Juego.Juego;
 import Loot.Loot;
 import Pared.Pared;
@@ -19,6 +20,7 @@ public class Laberinto {
 	private Entidad[][] entidades;
 	private List<Enemigo> enemigos;
 	private PersonajePrincipal personaje;
+	private Hilo controladorEnemigos;
 	
 	public static final int MOVER_ABAJO = 0;
 	public static final int MOVER_ARRIBA = 1;
@@ -30,6 +32,7 @@ public class Laberinto {
 		lootRestante = 0;
 		entidades = new Entidad[20][20];
 		enemigos = new LinkedList<Enemigo>();
+		controladorEnemigos = new Hilo(this);
 	}
 	
 	public synchronized void mover(int direccion) {
@@ -51,34 +54,37 @@ public class Laberinto {
 				break;
 			}
 		}
-		juego.actualizarEntidadVisual(personaje);
-		for(Enemigo e : enemigos) 
-			if(e.obtenerPosicion().colisionan(personaje.obtenerPosicion()))
-				e.accept(personaje.obtenerVisitor());
 	}
 	private void moverDer() {
 		Posicion posicion = personaje.obtenerPosicion();
 		Entidad entidadTemp = entidades[(posicion.obtenerX()/posicion.obtenerAncho())+1][posicion.obtenerY()/posicion.obtenerAlto()];
 		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(personaje.obtenerVisitor()))
+				if(entidadTemp.accept(personaje.obtenerVisitor())) {
 					posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
+					checkearColision();
+				}
 			}
-			else
+			else {
 				posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
-		} 
-			
+				checkearColision();
+			}
+		} 	
 	}
 	private void moverIzq() {
 		Posicion posicion = personaje.obtenerPosicion();
 		Entidad entidadTemp = entidades[(int) Math.round(Math.ceil((double)posicion.obtenerX()/posicion.obtenerAncho()))-1][posicion.obtenerY()/posicion.obtenerAlto()];
 		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(personaje.obtenerVisitor()))
+				if(entidadTemp.accept(personaje.obtenerVisitor())) {
 					posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
+					checkearColision();
+				}
 			}
-			else
+			else {
 				posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
+				checkearColision();
+			}
 		}
 	}
 	private void moverArriba() {
@@ -86,11 +92,15 @@ public class Laberinto {
 		Entidad entidadTemp = entidades[posicion.obtenerX()/posicion.obtenerAncho()][(int) Math.round(Math.ceil((double)posicion.obtenerY()/posicion.obtenerAlto()))-1];
 		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(personaje.obtenerVisitor()))
+				if(entidadTemp.accept(personaje.obtenerVisitor())) {
 					posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
+					checkearColision();
+				}
 			}
-			else
+			else {
 				posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
+				checkearColision();
+			}
 		}
 	}
 	private void moverAbajo() {
@@ -98,14 +108,25 @@ public class Laberinto {
 		Entidad entidadTemp = entidades[posicion.obtenerX()/posicion.obtenerAncho()][(posicion.obtenerY()/posicion.obtenerAlto())+1];
 		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(personaje.obtenerVisitor()))
+				if(entidadTemp.accept(personaje.obtenerVisitor())) {
 					posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
+					checkearColision();
+				}
 			}
-			else
+			else {
 				posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
+				checkearColision();
+			}
 		}
 	}
-	
+	private void checkearColision() {
+		juego.actualizarEntidadVisual(personaje);
+		for(Enemigo e : enemigos) 
+			if(e.obtenerPosicion().colisionan(personaje.obtenerPosicion())) {
+				e.accept(personaje.obtenerVisitor());
+				break;
+			}
+	}
 	public void agregarEnemigo(Enemigo e) {
 		enemigos.add(e);
 		juego.mostrarEntidadVisual(e);
@@ -140,24 +161,24 @@ public class Laberinto {
 		return lootRestante;
 	}
 	public void pasarNivel() {
+		controladorEnemigos.parar();
 		for(int i = 0; i<20; i++)
 			for(int j = 0; j<20; j++) 
-				if(entidades[i][j]!=null)
+				if(entidades[i][j]!=null) 
 					juego.eliminarEntidadVisual(entidades[i][j]);
 		for(Enemigo e : enemigos) 
 			juego.eliminarEntidadVisual(e);
 		juego.eliminarEntidadVisual(personaje);
 		juego.pasarNivel();
 	}
-	public void finalizarJuego() {
-		
+	public void iniciar() {
+		controladorEnemigos.start();
 	}
 	public void restarVida() {
 		for(Enemigo e : enemigos)
 			juego.eliminarEntidadVisual(e);
 		enemigos = new LinkedList<Enemigo>();
 		juego.eliminarEntidadVisual(personaje);
-		personaje = null;
 		juego.restarVida();
 	}
 	public void sumarExplosivo() {

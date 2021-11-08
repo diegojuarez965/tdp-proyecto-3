@@ -24,7 +24,7 @@ public abstract class Enemigo extends Personaje{
 	public void setVulnerable(boolean v) {
 		vulnerable = v;
 	}
-	public void moverSiguientePos() {
+	public synchronized void moverSiguientePos() {
 		estrategia.moverSiguientePos(this);
 	}
 	public boolean accept(Visitor v) {

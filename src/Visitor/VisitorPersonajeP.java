@@ -1,5 +1,7 @@
 package Visitor;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Timer;
 
 import Builder.ConstructorLaberinto;
@@ -22,6 +24,8 @@ import Posicion.Posicion;
 public class VisitorPersonajeP implements Visitor{
 	
 	private PersonajePrincipal personaje;
+	private Timer timerLootEspecial = null;
+	private Timer timerPocionVelocidad = null;
 	
 	public VisitorPersonajeP(PersonajePrincipal p) {
 		personaje = p;
@@ -29,21 +33,24 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitPocionVelocidad(PocionVelocidad pV) {
+		if(timerPocionVelocidad!=null)
+			timerPocionVelocidad.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(pV);
 		PersonajePrincipal p = lab.obtenerPersonajePrincipal();
 		p.setEstado(new Veloz());
 		lab.actualizarEntidadVisual(p);
 		p.aumentarVelocidad();
-		Timer t = new Timer();
-        t.schedule( 
+		timerPocionVelocidad = new Timer();
+		timerPocionVelocidad.schedule( 
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
                         p.setEstado(new Normal());
                         p.disminuirVelocidad();
                         lab.actualizarEntidadVisual(p);
-                        t.cancel();
+                        timerPocionVelocidad.cancel();
+                        timerPocionVelocidad=null;
                     }
                 }, 
                 10000 
@@ -59,6 +66,8 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitLootEspecial1(LootEspecial1 l) {
+		if(timerLootEspecial!=null)
+			timerLootEspecial.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(l);
 		for(Enemigo e : lab.obtenerEnemigos()) {
@@ -67,8 +76,8 @@ public class VisitorPersonajeP implements Visitor{
 			e.disminuirVelocidad();
 			lab.actualizarEntidadVisual(e);
 		}
-		Timer t = new Timer();
-        t.schedule( 
+		timerLootEspecial = new Timer();
+		timerLootEspecial.schedule( 
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
@@ -78,7 +87,8 @@ public class VisitorPersonajeP implements Visitor{
                         	e.aumentarVelocidad();
                         	lab.actualizarEntidadVisual(e);
                         }
-                        t.cancel();
+                        timerLootEspecial.cancel();
+                        timerLootEspecial = null;
                     }
                 }, 
                 15000 

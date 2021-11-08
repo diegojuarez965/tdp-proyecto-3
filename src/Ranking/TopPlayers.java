@@ -27,4 +27,11 @@ public class TopPlayers implements Serializable {
 	public List<Player> getTopPlayers() {
 		return ranking;
 	}
+	
+	public String toString() {
+		String s = "";
+		for(Player p : ranking) 
+			s += p.obtenerNombre()+": "+p.obtenerPuntaje()+"\n";
+		return s;
+	}
 }
