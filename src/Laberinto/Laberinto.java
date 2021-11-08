@@ -1,6 +1,7 @@
 package Laberinto;
 
 import java.math.MathContext;
+import java.util.LinkedList;
 import java.util.List;
 
 import Entidad.Entidad;
@@ -12,13 +13,14 @@ import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 
-public class Laberinto {
+public class Laberinto extends Thread{
 	
 	private int lootRestante;
 	private Juego juego;
 	private Entidad[][] entidades;
 	private List<Enemigo> enemigos;
 	private PersonajePrincipal personaje;
+	private boolean parar;
 	
 	public static final int MOVER_ABAJO = 0;
 	public static final int MOVER_ARRIBA = 1;
@@ -29,6 +31,8 @@ public class Laberinto {
 		juego = j;
 		lootRestante = 0;
 		entidades = new Entidad[20][20];
+		enemigos = new LinkedList<Enemigo>();
+		parar = false;
 	}
 	
 	public synchronized void mover(int direccion) {
@@ -51,6 +55,9 @@ public class Laberinto {
 			}
 		}
 		juego.actualizarEntidadVisual(personaje);
+		for(Enemigo e : enemigos) 
+			if(e.obtenerPosicion().colisionan(personaje.obtenerPosicion()))
+				e.accept(personaje.obtenerVisitor());
 	}
 	private void moverDer() {
 		Posicion posicion = personaje.obtenerPosicion();
@@ -131,5 +138,54 @@ public class Laberinto {
 	}
 	public Iterable<Enemigo> obtenerEnemigos(){
 		return enemigos;
+	}
+	public int obtenerLootRestante() {
+		return lootRestante;
+	}
+	public void pasarNivel() {
+		for(int i = 0; i<20; i++)
+			for(int j = 0; j<20; j++) 
+				if(entidades[i][j]!=null)
+					juego.eliminarEntidadVisual(entidades[i][j]);
+		for(Enemigo e : enemigos) 
+			juego.eliminarEntidadVisual(e);
+		juego.eliminarEntidadVisual(personaje);
+		juego.pasarNivel();
+	}
+	public void finalizarJuego() {
+		
+	}
+	public void restarVida() {
+		for(Enemigo e : enemigos)
+			juego.eliminarEntidadVisual(e);
+		enemigos = new LinkedList<Enemigo>();
+		juego.eliminarEntidadVisual(personaje);
+		personaje = null;
+		juego.restarVida();
+	}
+	public void sumarExplosivo() {
+		juego.sumarExplosivo();
+	}
+	public void eliminarLoot(Loot l) {
+		juego.eliminarEntidadVisual(l);
+		lootRestante--;
+		entidades[l.obtenerPosicion().obtenerX()/l.obtenerPosicion().obtenerAncho()][l.obtenerPosicion().obtenerY()/l.obtenerPosicion().obtenerAlto()] = null;
+		if(lootRestante==0)
+			pasarNivel();
+	}
+	public void sumarPuntos(int puntos) {
+		juego.sumarPuntos(puntos);
+	}
+	public void run() {
+		while(!parar) {
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e1) {e1.printStackTrace();}
+			for(Enemigo e : enemigos)
+				e.moverSiguientePos();
+		}
+	}
+	public void parar() {
+		parar = true;
 	}
 }

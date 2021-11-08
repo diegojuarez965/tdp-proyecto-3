@@ -48,15 +48,13 @@ public class VisitorExplosivo implements Visitor{
 	}
 
 	@Override
-	public void visitPersonajePrincipal(PersonajePrincipal p) {
-		// TODO Auto-generated method stub
-		
+	public boolean visitPersonajePrincipal(PersonajePrincipal p) {
+		return false;
 	}
 
 	@Override
-	public void visitEnemigo(Enemigo e) {
-		// TODO Auto-generated method stub
-		
+	public boolean visitEnemigo(Enemigo e) {
+		return false;
 	}
 
 	@Override

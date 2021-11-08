@@ -10,7 +10,8 @@ public class Launcher {
 		GUI gui = new GUI();
 		Juego juego = new Juego();
 		juego.setGUI(gui);
+		gui.setJuego(juego);
 		gui.mostrarMensajeTemas();
-		gui.setUpJuego(juego);
+		
 	}
 }

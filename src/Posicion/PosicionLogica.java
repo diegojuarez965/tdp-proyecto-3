@@ -4,13 +4,13 @@ import java.awt.Rectangle;
 
 public class PosicionLogica implements Posicion{
 	
-	private int x,y;
-	private final int ancho = 40;
-	private final int alto = 40;
+	private int x, y, alto, ancho;
 	
 	public PosicionLogica(int x,int y) {
 		this.x=x;
 		this.y=y;
+		alto = 40;
+		ancho = 40;
 	}
 	
     public int obtenerX() {
@@ -41,6 +41,16 @@ public class PosicionLogica implements Posicion{
 		Rectangle primero = new Rectangle(x, y, ancho, alto);
 		Rectangle posChequear = new Rectangle(p.obtenerX(),p.obtenerY(),p.obtenerAncho(),p.obtenerAlto());
 		return primero.intersects(posChequear);
+	}
+
+	@Override
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
+	}
+
+	@Override
+	public void setAlto(int alto) {
+		this.alto = alto;
 	}
 	
 }

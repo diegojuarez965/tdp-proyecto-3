@@ -10,9 +10,15 @@ public class Enemigo3 extends Enemigo{
 	}
 
 	@Override
-	public String obtenerSkin() {
+	public void moverSigPosAtaque() {
 		// TODO Auto-generated method stub
-		return null;
+		
+	}
+
+	@Override
+	public void moverSigPosHuida() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
