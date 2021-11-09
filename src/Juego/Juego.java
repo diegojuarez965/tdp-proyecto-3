@@ -37,20 +37,26 @@ public class Juego {
 		explosivos = 0;
 		musica = true;
 		efectos = true;
-		sonido = new Sonido();
 		TimersExplosivos = new HashMap<Timer, Entidad>();
 	}
-	
+	public boolean hayMusica() {
+		return musica;
+	}
+	public boolean hayEfectos() {
+		return efectos;
+	}
 	public void setGUI(GUI g) {
 		gui = g;
 	}
 	public void setTema(FactoryTemas tema) {
 		this.tema = tema;
 	}
+	public void setSonido(Sonido sonido) {
+		this.sonido=sonido;
+	}
 	public void mover(int direccion) {
 		laberinto.mover(direccion);
 	}
-	
 	public void actualizarEntidadVisual(Entidad e) {
 		gui.actualizarEntidadVisual(e);
 	}
@@ -85,13 +91,15 @@ public class Juego {
 		}
 	}
 	public void reproducirMusica() {
-		
+		sonido.play();
+		musica=true;
 	}
 	public void reproducirSonido(String efecto) {
 		
 	}
 	public void pararMusica() {
-		
+		sonido.stop();
+		musica=false;
 	}
 	public void pararEfectos() {
 		

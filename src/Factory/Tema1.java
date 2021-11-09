@@ -13,6 +13,7 @@ import Personajes.Enemigo4;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 import Posicion.PosicionLogica;
+import Sonido.Sonido;
 import Visitor.VisitorEnemigo;
 import Visitor.VisitorExplosivo;
 import Visitor.VisitorLoot1;
@@ -140,9 +141,10 @@ public class Tema1 implements FactoryTemas{
 	}
 	
 	@Override
-	public String nuevoMusica() {
-		// TODO Auto-generated method stub
-		return null;
+	public Sonido nuevoMusica() {
+		String musica= "/Musica/5 minutes of low quality arabic music.wav";
+		Sonido sonido= new Sonido(musica);
+		return sonido;
 	}
 
 	public String toString() {

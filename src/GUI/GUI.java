@@ -119,7 +119,11 @@ public class GUI extends JFrame{
 		botonMusica.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				pararMusica();
+				requestFocus();
+				if(juego.hayMusica())
+				   pararMusica();
+				else
+					playMusica();
 			}
 		});
 		botonMusica.setBackground(Color.DARK_GRAY);
@@ -139,6 +143,7 @@ public class GUI extends JFrame{
 		botonEfectos.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				requestFocus();
 				mutearEfectosSonido();
 			}
 		});
@@ -153,7 +158,6 @@ public class GUI extends JFrame{
 		panelInformacion.add(lblNewLabel_2);
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setBounds(56, 377, 87, 14);
-		
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -204,8 +208,10 @@ public class GUI extends JFrame{
 		FactoryTemas[] temas = {new Tema1(), new Tema2(), new Tema3()};
 		juego.setTema(temas[1]);
 		FactoryTemas temp = ((FactoryTemas) JOptionPane.showInputDialog(contentPane, "Seleccione un Tema grafico", "Seleccion de Tema", JOptionPane.INFORMATION_MESSAGE, null, temas, temas[0]));
-		if(temp!=null)
+		if(temp!=null) {
 			juego.setTema(temp);
+			juego.setSonido(temp.nuevoMusica());
+		}
 	}
 	public void actualizarEntidadVisual(Entidad e) {
 		JLabel grafico = mapeo.get(e);
@@ -264,6 +270,9 @@ public class GUI extends JFrame{
 	}
 	private void pararMusica() {
 		juego.pararMusica();
+	}
+	private void playMusica() {
+		juego.reproducirMusica();;
 	}
 	private void mutearEfectosSonido() {
 		juego.pararEfectos();

@@ -11,6 +11,7 @@ import Personajes.Enemigo2;
 import Personajes.Enemigo3;
 import Personajes.Enemigo4;
 import Personajes.PersonajePrincipal;
+import Sonido.Sonido;
 
 public interface FactoryTemas {
 	
@@ -26,7 +27,7 @@ public interface FactoryTemas {
 	public PocionVelocidad nuevoPocionVelocidad();
 	public Explosivo nuevoExplosivo();
 	
-	public String nuevoMusica();
+	public Sonido nuevoMusica();
 	
 	public String toString();
 }
