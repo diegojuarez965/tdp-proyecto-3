@@ -1,6 +1,9 @@
 package Personajes;
 
+import java.util.Random;
+
 import Comportamiento.Comportamiento;
+import Entidad.Entidad;
 import Posicion.Posicion;
 import Visitor.Visitor;
 
@@ -19,13 +22,10 @@ public abstract class Enemigo extends Personaje{
 		estrategia = e;
 	}
 	public boolean esVulnerable() {
-		return vulnerable;
-	}
-	public void setVulnerable(boolean v) {
-		vulnerable = v;
+		return estrategia.esVulnerable();
 	}
 	public synchronized void moverSiguientePos() {
-		estrategia.moverSiguientePos(this);
+		//estrategia.moverSiguientePos(this);
 	}
 	public boolean accept(Visitor v) {
 		return v.visitEnemigo(this);
@@ -39,8 +39,6 @@ public abstract class Enemigo extends Personaje{
 	public String obtenerSkinHuida() {
 		return skinHuida;
 	}
-	
 	public abstract void moverSigPosAtaque();
-	
 	public abstract void moverSigPosHuida();
 }

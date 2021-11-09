@@ -29,4 +29,7 @@ public abstract class Personaje extends Entidad{
 	public Laberinto obtenerLaberinto() {
 		return laberinto;
 	}
+	public void setLaberinto(Laberinto lab) {
+		laberinto = lab;
+	}
 }

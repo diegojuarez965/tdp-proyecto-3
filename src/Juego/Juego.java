@@ -25,7 +25,7 @@ public class Juego {
 	private Director director;
 	private Laberinto laberinto;
 	private int nivel, puntos, vidas, explosivos;
-	private boolean musica, efectos;
+	private boolean efectos;
 	private Sonido sonido;
 	private ConstructorLaberinto constructor;
 	private HashMap<Timer, Entidad> TimersExplosivos;
@@ -35,15 +35,8 @@ public class Juego {
 		puntos = 0;
 		vidas = 3;
 		explosivos = 0;
-		musica = true;
 		efectos = true;
 		TimersExplosivos = new HashMap<Timer, Entidad>();
-	}
-	public boolean hayMusica() {
-		return musica;
-	}
-	public boolean hayEfectos() {
-		return efectos;
 	}
 	public void setGUI(GUI g) {
 		gui = g;
@@ -92,14 +85,12 @@ public class Juego {
 	}
 	public void reproducirMusica() {
 		sonido.play();
-		musica=true;
 	}
 	public void reproducirSonido(String efecto) {
 		
 	}
 	public void pararMusica() {
 		sonido.stop();
-		musica=false;
 	}
 	public void pararEfectos() {
 		

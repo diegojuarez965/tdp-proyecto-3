@@ -8,4 +8,6 @@ public interface Comportamiento {
 	
 	public String obtenerSkin(Enemigo e);
 	
+	public boolean esVulnerable();
+	
 }

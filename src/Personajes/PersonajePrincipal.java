@@ -19,10 +19,6 @@ public class PersonajePrincipal extends Personaje{
 	public void setEstado(Estado e) {
 		estado = e;
 	}
-	public void setLaberinto(Laberinto lab) {
-		laberinto = lab;
-	}
-	
 	public String obtenerSkinNormal() {
 		return skin;
 	}

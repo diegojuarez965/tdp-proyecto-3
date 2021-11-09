@@ -160,6 +160,9 @@ public class Laberinto {
 	public int obtenerLootRestante() {
 		return lootRestante;
 	}
+	public Entidad obtenerEntidad(int i, int j) {
+		return entidades[i][j];
+	}
 	public void pasarNivel() {
 		controladorEnemigos.parar();
 		for(int i = 0; i<20; i++)

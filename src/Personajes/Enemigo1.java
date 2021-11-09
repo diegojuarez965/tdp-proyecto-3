@@ -11,7 +11,6 @@ public class Enemigo1 extends Enemigo{
 	
 	@Override
 	public void moverSigPosAtaque() {
-		// TODO Auto-generated method stub
 		
 	}
 

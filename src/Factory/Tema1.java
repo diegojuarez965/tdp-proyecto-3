@@ -142,8 +142,8 @@ public class Tema1 implements FactoryTemas{
 	
 	@Override
 	public Sonido nuevoMusica() {
-		String musica= "/Musica/5 minutes of low quality arabic music.wav";
-		Sonido sonido= new Sonido(musica);
+		String musica = "/Musica/arabeMusica.wav";
+		Sonido sonido = new Sonido(musica);
 		return sonido;
 	}
 

@@ -14,6 +14,6 @@ public class Launcher {
 		gui.mostrarMensajeNombre();
 		gui.mostrarMensajeTemas();
 		juego.pasarNivel();
-		juego.reproducirMusica();
+		//juego.reproducirMusica();
 	}
 }

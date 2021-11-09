@@ -142,7 +142,7 @@ public class Tema2 implements FactoryTemas{
 	
 	@Override
 	public Sonido nuevoMusica() {
-		String musica= "/Musica/Minecraft.wav";
+		String musica= "/Musica/minecraftMusica.wav";
 		Sonido sonido= new Sonido(musica);
 		return sonido;
 	}

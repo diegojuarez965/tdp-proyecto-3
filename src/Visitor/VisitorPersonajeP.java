@@ -71,7 +71,6 @@ public class VisitorPersonajeP implements Visitor{
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(l);
 		for(Enemigo e : lab.obtenerEnemigos()) {
-			e.setVulnerable(true);
 			e.setEstrategia(new Huida());
 			e.disminuirVelocidad();
 			lab.actualizarEntidadVisual(e);
@@ -82,7 +81,6 @@ public class VisitorPersonajeP implements Visitor{
                     @Override
                     public void run() {
                         for(Enemigo e: lab.obtenerEnemigos()) {
-                        	e.setVulnerable(false);
                         	e.setEstrategia(new Ataque());
                         	e.aumentarVelocidad();
                         	lab.actualizarEntidadVisual(e);
@@ -128,12 +126,6 @@ public class VisitorPersonajeP implements Visitor{
 			puedeMoverse = true;
 		}
 		else {
-			/*ConstructorLaberinto constructor = lab.obtenerConstructor();
-			for(Enemigo enemigos : lab.obtenerEnemigos())
-				lab.eliminarEntidadVisual(enemigos);
-			lab.eliminarEntidadVisual(lab.obtenerPersonajePrincipal());
-			constructor.construirEnemigos();
-			constructor.construirPersonaje();*/
 			lab.restarVida();
 			puedeMoverse = false;
 		}

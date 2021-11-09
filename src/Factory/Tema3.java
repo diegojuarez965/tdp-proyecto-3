@@ -142,7 +142,7 @@ public class Tema3 implements FactoryTemas{
 	
 	@Override
 	public Sonido nuevoMusica() {
-		String musica= "/Musica/Among Us Drip Theme Song Original (Among Us Trap Remix _ Amogus Meme Music) (1).wav";
+		String musica= "/Musica/amongUsMusica.wav";
 		Sonido sonido= new Sonido(musica);
 		return sonido;
 	}

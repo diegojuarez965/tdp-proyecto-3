@@ -1,26 +1,26 @@
 package Sonido;
 
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Sonido {
 	
-	private String musica;
 	private Clip clip;
 	
 	public Sonido(String musica) {
-		this.musica=musica;
-	}
-	
-	public void play() {
 		try {
 			clip=AudioSystem.getClip();
 			clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(musica)));
-			clip.loop(Clip.LOOP_CONTINUOUSLY);
-		}
-		catch(Exception ex) {
-			System.err.println(ex.getMessage());
-		}
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {	e.printStackTrace();}
+	}
+	
+	public void play() {
+		clip.start();
 	}
 	
 	public void stop() {
