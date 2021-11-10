@@ -20,6 +20,7 @@ import Pared.Pared;
 import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
+import Sonido.ReproductorSonido;
 
 public class VisitorPersonajeP implements Visitor{
 	
@@ -37,6 +38,7 @@ public class VisitorPersonajeP implements Visitor{
 			timerPocionVelocidad.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(pV);
+		ReproductorSonido.obtenerInstancia().reproducirPocionVelocidad();
 		PersonajePrincipal p = lab.obtenerPersonajePrincipal();
 		p.setEstado(new Veloz());
 		lab.actualizarEntidadVisual(p);
@@ -62,6 +64,7 @@ public class VisitorPersonajeP implements Visitor{
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(e);
 		lab.sumarExplosivo();
+		ReproductorSonido.obtenerInstancia().reproducirExplosivo();
 	}
 
 	@Override
@@ -70,6 +73,7 @@ public class VisitorPersonajeP implements Visitor{
 			timerLootEspecial.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(l);
+		ReproductorSonido.obtenerInstancia().reproducirLootEspecial1();
 		for(Enemigo e : lab.obtenerEnemigos()) {
 			e.setEstrategia(new Huida());
 			e.disminuirVelocidad();
@@ -98,6 +102,7 @@ public class VisitorPersonajeP implements Visitor{
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.sumarPuntos(l.obtenerPuntaje());
 		lab.eliminarLoot(l);
+		ReproductorSonido.obtenerInstancia().reproducirLoot1();
 	}
 
 	@Override
@@ -105,6 +110,7 @@ public class VisitorPersonajeP implements Visitor{
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.sumarPuntos(l.obtenerPuntaje());
 		lab.eliminarLoot(l);
+		ReproductorSonido.obtenerInstancia().reproducirLoot2();
 	}
 
 	@Override
@@ -119,6 +125,7 @@ public class VisitorPersonajeP implements Visitor{
 		boolean puedeMoverse;
 		Laberinto lab = personaje.obtenerLaberinto();
 		if(e.esVulnerable()) {
+			ReproductorSonido.obtenerInstancia().reproducirMuerteEnemigo();
 			Posicion posEnemigo = e.obtenerPosicion();
 			posEnemigo.setX(posEnemigo.obtenerAncho()*9);
 			posEnemigo.setY(posEnemigo.obtenerAlto()*9);
@@ -126,9 +133,11 @@ public class VisitorPersonajeP implements Visitor{
 			puedeMoverse = true;
 		}
 		else {
+			ReproductorSonido.obtenerInstancia().reproducirMuertePersonaje();
 			lab.restarVida();
 			puedeMoverse = false;
 		}
+		
 		return puedeMoverse;
 	}
 

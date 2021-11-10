@@ -13,7 +13,7 @@ import Personajes.Enemigo4;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 import Posicion.PosicionLogica;
-import Sonido.Sonido;
+import Sonido.Musica;
 import Visitor.VisitorEnemigo;
 import Visitor.VisitorExplosivo;
 import Visitor.VisitorLoot1;
@@ -141,13 +141,58 @@ public class Tema2 implements FactoryTemas{
 	}
 	
 	@Override
-	public Sonido nuevoMusica() {
+	public Musica nuevoMusica() {
 		String musica= "/Musica/minecraftMusica.wav";
-		Sonido sonido= new Sonido(musica);
+		Musica sonido= new Musica(musica);
 		return sonido;
 	}
 
 	public String toString() {
 		return "Tema Minecraft";
+	}
+
+	@Override
+	public String efectoDot() {
+		return "/Musica/minecraftDot.wav";
+	}
+	
+	@Override
+	public String efectoPower() {
+		return "/Musica/minecraftPower.wav";
+	}
+
+	@Override
+	public String efectoFruit() {
+		return "/Musica/minecraftFruit.wav";
+	}
+
+	@Override
+	public String efectoPocionVelocidad() {
+		return "/Musica/minecraftPocionVelocidad.wav";
+	}
+
+	@Override
+	public String efectoExplosivo() {
+		return "/Musica/minecraftExplosion.wav";
+	}
+
+	@Override
+	public String efectoExplosionInicio() {
+		return "/Musica/minecraftExplosionInicio.wav";
+	}
+
+	@Override
+	public String efectoExplosionFin() {
+		return "/Musica/minecraftExplosionFin.wav";
+	}
+
+	@Override
+	public String efectoMuertePersonaje() {
+		return "/Musica/minecraftMuertePersonaje.wav";
+	}
+	
+	@Override
+	public String efectoMuerteEnemigo() {
+		return "/Musica/minecraftMuerteEnemigo.wav";
 	}
 }

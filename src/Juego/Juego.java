@@ -16,7 +16,9 @@ import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Personajes.Enemigo;
 import Posicion.Posicion;
-import Sonido.Sonido;
+import Sonido.Efectos;
+import Sonido.Musica;
+import Sonido.ReproductorSonido;
 
 public class Juego {
 	
@@ -25,8 +27,9 @@ public class Juego {
 	private Director director;
 	private Laberinto laberinto;
 	private int nivel, puntos, vidas, explosivos;
-	private boolean efectos;
-	private Sonido sonido;
+	private boolean efectosActivados;
+	private Musica musica;
+	private Efectos efectos;
 	private ConstructorLaberinto constructor;
 	private HashMap<Timer, Entidad> TimersExplosivos;
 	
@@ -35,8 +38,9 @@ public class Juego {
 		puntos = 0;
 		vidas = 3;
 		explosivos = 0;
-		efectos = true;
+		efectosActivados = true;
 		TimersExplosivos = new HashMap<Timer, Entidad>();
+		efectos = new Efectos();
 	}
 	public void setGUI(GUI g) {
 		gui = g;
@@ -44,8 +48,8 @@ public class Juego {
 	public void setTema(FactoryTemas tema) {
 		this.tema = tema;
 	}
-	public void setSonido(Sonido sonido) {
-		this.sonido=sonido;
+	public void setMusica(Musica sonido) {
+		musica=sonido;
 	}
 	public void mover(int direccion) {
 		laberinto.mover(direccion);
@@ -84,16 +88,23 @@ public class Juego {
 		}
 	}
 	public void reproducirMusica() {
-		sonido.play();
+		musica.play();
 	}
 	public void reproducirSonido(String efecto) {
-		
+		if(efectosActivados)
+			efectos.playEfecto(efecto);
 	}
 	public void pararMusica() {
-		sonido.stop();
+		musica.stop();
 	}
 	public void pararEfectos() {
-		
+		efectosActivados = false;
+	}
+	public void activarEfectos() {
+		efectosActivados = true;
+	}
+	public FactoryTemas obtenerTema() {
+		return tema;
 	}
 	public int obtenerPuntos() {
 		return puntos;
@@ -132,6 +143,7 @@ public class Juego {
 			gui.mostrarEntidadVisual(explosivo);
 			p.setAncho(200);
 			p.setAlto(200);
+			ReproductorSonido.obtenerInstancia().reproducirExplosivoInicio();
 			Timer t = new Timer();
 			TimersExplosivos.put(t, explosivo);
 	        t.schedule( 
@@ -147,6 +159,7 @@ public class Juego {
 	                        		gui.actualizarEntidadVisual(e);
 	                        	}
 	                        }
+	                        ReproductorSonido.obtenerInstancia().reproducirExplosivoFin();
 	                        gui.eliminarEntidadVisual(explosivo);
 	                        TimersExplosivos.remove(t);
 	                        t.cancel();
@@ -158,7 +171,7 @@ public class Juego {
 		
 	}
 	public void finalizarJuego() {
-		
+		pararMusica();
 		gui.finalizarJuego();
 	}
 	public void reiniciarJuego() {

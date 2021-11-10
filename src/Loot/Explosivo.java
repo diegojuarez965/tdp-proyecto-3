@@ -1,6 +1,7 @@
 package Loot;
 
 import Posicion.Posicion;
+import Sonido.ReproductorSonido;
 import Visitor.Visitor;
 
 public class Explosivo extends LootEspecial2{

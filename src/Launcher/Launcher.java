@@ -2,6 +2,7 @@ package Launcher;
 
 import GUI.GUI;
 import Juego.Juego;
+import Sonido.ReproductorSonido;
 
 public class Launcher {
 	
@@ -14,6 +15,6 @@ public class Launcher {
 		gui.mostrarMensajeNombre();
 		gui.mostrarMensajeTemas();
 		juego.pasarNivel();
-		//juego.reproducirMusica();
+		ReproductorSonido.obtenerInstancia().setJuego(juego);
 	}
 }

@@ -13,7 +13,7 @@ import Personajes.Enemigo4;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 import Posicion.PosicionLogica;
-import Sonido.Sonido;
+import Sonido.Musica;
 import Visitor.VisitorEnemigo;
 import Visitor.VisitorExplosivo;
 import Visitor.VisitorLoot1;
@@ -141,14 +141,68 @@ public class Tema1 implements FactoryTemas{
 	}
 	
 	@Override
-	public Sonido nuevoMusica() {
+	public Musica nuevoMusica() {
 		String musica = "/Musica/arabeMusica.wav";
-		Sonido sonido = new Sonido(musica);
+		Musica sonido = new Musica(musica);
 		return sonido;
 	}
 
 	public String toString() {
 		return "Tema Arabe";
+	}
+
+	@Override
+	public String efectoDot() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String efectoPower() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String efectoFruit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String efectoPocionVelocidad() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String efectoExplosivo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String efectoExplosionInicio() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String efectoExplosionFin() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String efectoMuertePersonaje() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public String efectoMuerteEnemigo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
