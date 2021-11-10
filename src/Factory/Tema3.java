@@ -159,49 +159,41 @@ public class Tema3 implements FactoryTemas{
 	
 	@Override
 	public String efectoPower() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsPower.wav";
 	}
 
 	@Override
 	public String efectoFruit() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsFruit.wav";
 	}
 
 	@Override
 	public String efectoPocionVelocidad() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsPocionVelocidad.wav";
 	}
 
 	@Override
 	public String efectoExplosivo() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsExplosion.wav";
 	}
 
 	@Override
 	public String efectoExplosionInicio() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsExplosionInicio.wav";
 	}
 
 	@Override
 	public String efectoExplosionFin() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsExplosionFin.wav";
 	}
 
 	@Override
 	public String efectoMuertePersonaje() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsMuertePersonaje.wav";
 	}
 	
 	@Override
 	public String efectoMuerteEnemigo() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsMuerteEnemigo.wav";
 	}
 }
