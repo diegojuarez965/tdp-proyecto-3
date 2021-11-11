@@ -1,7 +1,6 @@
 package Loot;
 
 import Posicion.Posicion;
-import Sonido.ReproductorSonido;
 import Visitor.Visitor;
 
 public class Explosivo extends LootEspecial2{
@@ -10,8 +9,8 @@ public class Explosivo extends LootEspecial2{
 		super(p, skin);
 	}
 	
-	public boolean accept(Visitor v) {
+	public void accept(Visitor v) {
 		v.visitExplosivo(this);
-		return true;
 	}
+	
 }

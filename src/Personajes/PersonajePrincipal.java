@@ -5,8 +5,6 @@ import Visitor.Visitor;
 import Estado.Estado;
 import Estado.Normal;
 import Estado.Veloz;
-import Laberinto.Laberinto;
-import Loot.Loot;
 
 public class PersonajePrincipal extends Personaje{
 
@@ -44,7 +42,8 @@ public class PersonajePrincipal extends Personaje{
 		return estado.obtenerSkin();
 	}
 	@Override
-	public boolean accept(Visitor v) {
-		return v.visitPersonajePrincipal(this);
+	public void accept(Visitor v) {
+		v.visitPersonajePrincipal(this);
 	}
+	
 }

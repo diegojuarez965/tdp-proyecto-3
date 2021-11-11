@@ -1,15 +1,7 @@
 package Visitor;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Timer;
 
-import Builder.ConstructorLaberinto;
-import Builder.ConstructorNivel1;
-import Comportamiento.Ataque;
-import Comportamiento.Huida;
-import Estado.Normal;
-import Estado.Veloz;
 import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Loot.Loot1;
@@ -143,7 +135,7 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitPared(Pared p) {
-		//No hago nada
+		personaje.quitarVelocidad();
 	}
 	
 }

@@ -2,9 +2,7 @@ package Personajes;
 
 import java.util.Random;
 
-import Comportamiento.Ataque;
 import Comportamiento.Comportamiento;
-import Comportamiento.Huida;
 import Entidad.Entidad;
 import Posicion.Posicion;
 import Visitor.Visitor;
@@ -23,10 +21,10 @@ public abstract class Enemigo extends Personaje{
 		this.skinHuida = skinHuida;
 	}
 	
-	
 	public boolean esVulnerable() {
 		return estrategia.esVulnerable();
 	}
+	
 	public void moverSiguientePos() {
 		//estrategia.moverSiguientePos(this);
 		Random r = new Random();
@@ -50,81 +48,89 @@ public abstract class Enemigo extends Personaje{
 		}
 		}
 	}
+	
 	private void moverDer() {
 		Posicion posicion = this.obtenerPosicion();
 		Entidad entidadTemp = laberinto.obtenerEntidad((posicion.obtenerX()/posicion.obtenerAncho())+1,posicion.obtenerY()/posicion.obtenerAlto());
 		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(this.obtenerVisitor())) {
-					posicion.setX(posicion.obtenerX()+this.obtenerVelocidad());
-					checkearColision();
+				entidadTemp.accept(this.obtenerVisitor());
+				posicion.setX(posicion.obtenerX()+this.obtenerVelocidad());
+				disminuirVelocidad();
+				checkearColision();
 				}
-			}
 			else {
 				posicion.setX(posicion.obtenerX()+this.obtenerVelocidad());
 				checkearColision();
 			}
-		} 	
+		}
 	}
+	
 	private void moverIzq() {
 		Posicion posicion = this.obtenerPosicion();
 		Entidad entidadTemp = laberinto.obtenerEntidad((int) Math.round(Math.ceil((double)posicion.obtenerX()/posicion.obtenerAncho()))-1,posicion.obtenerY()/posicion.obtenerAlto());
 		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(this.obtenerVisitor())) {
-					posicion.setX(posicion.obtenerX()-this.obtenerVelocidad());
-					checkearColision();
+				entidadTemp.accept(this.obtenerVisitor());
+				posicion.setX(posicion.obtenerX()-this.obtenerVelocidad());
+				disminuirVelocidad();
+				checkearColision();
 				}
-			}
 			else {
 				posicion.setX(posicion.obtenerX()-this.obtenerVelocidad());
 				checkearColision();
 			}
 		}
 	}
+	
 	private void moverArriba() {
 		Posicion posicion = this.obtenerPosicion();
 		Entidad entidadTemp = laberinto.obtenerEntidad(posicion.obtenerX()/posicion.obtenerAncho(),(int) Math.round(Math.ceil((double)posicion.obtenerY()/posicion.obtenerAlto()))-1);
 		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(this.obtenerVisitor())) {
-					posicion.setY(posicion.obtenerY()-this.obtenerVelocidad());
-					checkearColision();
+				entidadTemp.accept(this.obtenerVisitor());
+				posicion.setY(posicion.obtenerY()-this.obtenerVelocidad());
+				disminuirVelocidad();
+				checkearColision();
 				}
-			}
 			else {
 				posicion.setY(posicion.obtenerY()-this.obtenerVelocidad());
 				checkearColision();
 			}
 		}
 	}
+	
 	private void moverAbajo() {
 		Posicion posicion = this.obtenerPosicion();
 		Entidad entidadTemp = laberinto.obtenerEntidad(posicion.obtenerX()/posicion.obtenerAncho(),(posicion.obtenerY()/posicion.obtenerAlto())+1);
 		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
-				if(entidadTemp.accept(this.obtenerVisitor())) {
-					posicion.setY(posicion.obtenerY()+this.obtenerVelocidad());
-					checkearColision();
+				entidadTemp.accept(this.obtenerVisitor());
+				posicion.setY(posicion.obtenerY()+this.obtenerVelocidad());
+				disminuirVelocidad();
+				checkearColision();
 				}
-			}
 			else {
 				posicion.setY(posicion.obtenerY()+this.obtenerVelocidad());
 				checkearColision();
 			}
 		}
 	}
+	
 	private void checkearColision() {
 		laberinto.actualizarEntidadVisual(this);
 		if(laberinto.obtenerPersonajePrincipal().obtenerPosicion().colisionan(this.obtenerPosicion()))
 			this.accept(laberinto.obtenerPersonajePrincipal().obtenerVisitor());
 	}
-	public boolean accept(Visitor v) {
-		return v.visitEnemigo(this);
+	
+	public void accept(Visitor v) {
+		v.visitEnemigo(this);
 	}
+	
 	public String obtenerSkin() {
 		return estrategia.obtenerSkin();
 	}
 	
 	public abstract void setEstrategia(int comportamiento);
+	
 }

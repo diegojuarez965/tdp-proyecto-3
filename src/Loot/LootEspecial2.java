@@ -1,7 +1,6 @@
 package Loot;
 
 import Posicion.Posicion;
-import Visitor.Visitor;
 
 public abstract class LootEspecial2 extends Loot{
 	

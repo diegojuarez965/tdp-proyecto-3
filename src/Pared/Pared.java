@@ -10,11 +10,12 @@ public class Pared extends Entidad{
 		super(p, skin);
 	}
 
-	public boolean accept(Visitor v) {
-		return false;
+	public void accept(Visitor v) {
+		v.visitPared(this);
 	}
 	
 	public String obtenerSkin() {
 		return skin;
 	}
+	
 }

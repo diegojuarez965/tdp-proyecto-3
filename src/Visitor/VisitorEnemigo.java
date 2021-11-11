@@ -59,8 +59,7 @@ public class VisitorEnemigo implements Visitor{
 
 	@Override
 	public void visitPared(Pared p) {
-		// TODO Auto-generated method stub
-		
+		enemigo.quitarVelocidad();
 	}
 	
 }

@@ -24,5 +24,4 @@ public class Enemigo2 extends Enemigo{
 	}
 	}
 
-
 }

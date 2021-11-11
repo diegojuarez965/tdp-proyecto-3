@@ -1,7 +1,6 @@
 package Loot;
 
 import Posicion.Posicion;
-import Sonido.ReproductorSonido;
 import Visitor.Visitor;
 
 public class LootEspecial1 extends Loot{
@@ -15,8 +14,8 @@ public class LootEspecial1 extends Loot{
 		return puntaje;
 	}
 	
-	public boolean accept(Visitor v) {
+	public void accept(Visitor v) {
 		v.visitLootEspecial1(this);
-		return true;
 	}
+	
 }

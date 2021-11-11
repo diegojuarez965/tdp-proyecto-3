@@ -2,7 +2,6 @@ package Loot;
 
 import Entidad.Entidad;
 import Posicion.Posicion;
-import Visitor.Visitor;
 
 public abstract class Loot extends Entidad{
 

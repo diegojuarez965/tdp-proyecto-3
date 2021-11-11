@@ -3,7 +3,6 @@ package Personajes;
 import Comportamiento.AtaqueEnemigo1;
 import Comportamiento.Huida;
 import Posicion.Posicion;
-import Visitor.Visitor;
 
 public class Enemigo1 extends Enemigo{
 
@@ -24,4 +23,5 @@ public class Enemigo1 extends Enemigo{
 			}
 		}
 	}
+	
 }
