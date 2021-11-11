@@ -159,50 +159,42 @@ public class Tema1 implements FactoryTemas{
 	
 	@Override
 	public String efectoPower() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabePower.wav";
 	}
 
 	@Override
 	public String efectoFruit() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabeFruit.wav";
 	}
 
 	@Override
 	public String efectoPocionVelocidad() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabePocionVelocidad.wav";
 	}
 
 	@Override
 	public String efectoExplosivo() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabeExplosion.wav";
 	}
 
 	@Override
 	public String efectoExplosionInicio() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabeExplosionInicio.wav";
 	}
 
 	@Override
 	public String efectoExplosionFin() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabeExplosionFin.wav";
 	}
 
 	@Override
 	public String efectoMuertePersonaje() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabeMuertePersonaje.wav";
 	}
 	
 	@Override
 	public String efectoMuerteEnemigo() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/arabeMuerteEnemigo.wav";
 	}
 
 }
