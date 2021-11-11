@@ -182,7 +182,7 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 	private void crearEnemigo(Enemigo enemigo) {
 		enemigo.obtenerPosicion().setX(9*enemigo.obtenerPosicion().obtenerAncho());
 		enemigo.obtenerPosicion().setY(9*enemigo.obtenerPosicion().obtenerAlto());
-		enemigo.setEstrategia(new Ataque());
+		enemigo.setEstrategia(Enemigo.ATAQUE);
 		enemigo.aumentarVelocidad();
 		enemigo.setLaberinto(lab);
 		lab.agregarEnemigo(enemigo);
@@ -193,7 +193,7 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 		PersonajePrincipal personajePrincipal = Tema.nuevoPersonajePrincipal();
 		personajePrincipal.obtenerPosicion().setX(17*personajePrincipal.obtenerPosicion().obtenerAncho());
 		personajePrincipal.obtenerPosicion().setY(18*personajePrincipal.obtenerPosicion().obtenerAlto());
-		personajePrincipal.setEstado(new Normal());
+		personajePrincipal.setEstado(PersonajePrincipal.NORMAL);
 		personajePrincipal.setLaberinto(lab);
 		lab.agregarPersonajeP(personajePrincipal);
 	}

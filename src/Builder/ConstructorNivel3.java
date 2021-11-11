@@ -178,7 +178,7 @@ public class ConstructorNivel3 implements ConstructorLaberinto{
 	private void crearEnemigo(Enemigo enemigo) {
 		enemigo.obtenerPosicion().setX(9*enemigo.obtenerPosicion().obtenerAncho());
 		enemigo.obtenerPosicion().setY(9*enemigo.obtenerPosicion().obtenerAlto());
-		enemigo.setEstrategia(new Ataque());
+		enemigo.setEstrategia(Enemigo.ATAQUE);
 		enemigo.aumentarVelocidad();
 		enemigo.setLaberinto(lab);
 		lab.agregarEnemigo(enemigo);
@@ -189,7 +189,7 @@ public class ConstructorNivel3 implements ConstructorLaberinto{
 		PersonajePrincipal personajePrincipal = Tema.nuevoPersonajePrincipal();
 		personajePrincipal.obtenerPosicion().setX(9*personajePrincipal.obtenerPosicion().obtenerAncho());
 		personajePrincipal.obtenerPosicion().setY(5*personajePrincipal.obtenerPosicion().obtenerAlto());
-		personajePrincipal.setEstado(new Normal());
+		personajePrincipal.setEstado(PersonajePrincipal.NORMAL);
 		personajePrincipal.setLaberinto(lab);
 		lab.agregarPersonajeP(personajePrincipal);
 	}

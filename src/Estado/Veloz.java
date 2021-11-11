@@ -2,11 +2,11 @@ package Estado;
 
 import Personajes.PersonajePrincipal;
 
-public class Veloz implements Estado {
+public class Veloz extends Estado {
 
-	@Override
-	public String obtenerSkin(PersonajePrincipal p) {
-		return p.obtenerSkinVeloz();
+	public Veloz(PersonajePrincipal p, String skin) {
+		super(p, skin);
 	}
+
 
 }

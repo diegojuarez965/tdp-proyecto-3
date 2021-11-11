@@ -2,12 +2,22 @@ package Comportamiento;
 
 import Personajes.Enemigo;
 
-public interface Comportamiento {
+public abstract class Comportamiento {
 
-	public void moverSiguientePos(Enemigo e);
+	private Enemigo enemigo;
+	private String skin;
 	
-	public String obtenerSkin(Enemigo e);
+	public Comportamiento(Enemigo enemigo, String skin) {
+		this.enemigo = enemigo;
+		this.skin = skin;
+	}
 	
-	public boolean esVulnerable();
+	public String obtenerSkin() {
+		return skin;
+	}
+	
+	public abstract void moverSiguientePos();
+	
+	public abstract boolean esVulnerable();
 	
 }

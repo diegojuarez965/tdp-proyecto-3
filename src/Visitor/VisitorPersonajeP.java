@@ -40,7 +40,7 @@ public class VisitorPersonajeP implements Visitor{
 		lab.eliminarLoot(pV);
 		ReproductorSonido.obtenerInstancia().reproducirPocionVelocidad();
 		PersonajePrincipal p = lab.obtenerPersonajePrincipal();
-		p.setEstado(new Veloz());
+		p.setEstado(PersonajePrincipal.VELOZ);
 		lab.actualizarEntidadVisual(p);
 		p.aumentarVelocidad();
 		timerPocionVelocidad = new Timer();
@@ -48,7 +48,7 @@ public class VisitorPersonajeP implements Visitor{
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
-                        p.setEstado(new Normal());
+                        p.setEstado(PersonajePrincipal.NORMAL);
                         p.disminuirVelocidad();
                         lab.actualizarEntidadVisual(p);
                         timerPocionVelocidad.cancel();
@@ -75,7 +75,7 @@ public class VisitorPersonajeP implements Visitor{
 		lab.eliminarLoot(l);
 		ReproductorSonido.obtenerInstancia().reproducirLootEspecial1();
 		for(Enemigo e : lab.obtenerEnemigos()) {
-			e.setEstrategia(new Huida());
+			e.setEstrategia(Enemigo.HUIDA);
 			e.disminuirVelocidad();
 			lab.actualizarEntidadVisual(e);
 		}
@@ -85,7 +85,7 @@ public class VisitorPersonajeP implements Visitor{
                     @Override
                     public void run() {
                         for(Enemigo e: lab.obtenerEnemigos()) {
-                        	e.setEstrategia(new Ataque());
+                        	e.setEstrategia(Enemigo.ATAQUE);
                         	e.aumentarVelocidad();
                         	lab.actualizarEntidadVisual(e);
                         }
@@ -121,7 +121,7 @@ public class VisitorPersonajeP implements Visitor{
 	}
 
 	@Override
-	public boolean visitEnemigo(Enemigo e) {
+	public synchronized boolean visitEnemigo(Enemigo e) {
 		boolean puedeMoverse;
 		Laberinto lab = personaje.obtenerLaberinto();
 		if(e.esVulnerable()) {

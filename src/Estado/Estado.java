@@ -2,8 +2,18 @@ package Estado;
 
 import Personajes.PersonajePrincipal;
 
-public interface Estado {
+public abstract class Estado {
 	
-	public String obtenerSkin(PersonajePrincipal p);
+	private PersonajePrincipal personaje;
+	private String skin;
+	
+	public Estado(PersonajePrincipal p, String skin) {
+		personaje = p;
+		this.skin = skin;
+	}
+	
+	public String obtenerSkin() {
+		return skin;
+	}
 	
 }

@@ -2,19 +2,15 @@ package Comportamiento;
 
 import Personajes.Enemigo;
 
-public class Huida implements Comportamiento{
+public class Huida extends Comportamiento{
 
-	private String skin;
-	
-	
-	@Override
-	public void moverSiguientePos(Enemigo e) {
-		
+	public Huida(Enemigo enemigo, String skin) {
+		super(enemigo, skin);
 	}
-
+	
 	@Override
-	public String obtenerSkin(Enemigo e) {
-		return e.obtenerSkinHuida();
+	public void moverSiguientePos() {
+		
 	}
 
 	@Override

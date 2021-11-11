@@ -1,5 +1,7 @@
 package Personajes;
 
+import Comportamiento.AtaqueEnemigo3;
+import Comportamiento.Huida;
 import Posicion.Posicion;
 
 public class Enemigo3 extends Enemigo{
@@ -10,15 +12,17 @@ public class Enemigo3 extends Enemigo{
 	}
 
 	@Override
-	public void moverSigPosAtaque() {
-		// TODO Auto-generated method stub
-		
+	public void setEstrategia(int comportamiento) {
+		switch (comportamiento) {
+		case ATAQUE:{
+			estrategia = new AtaqueEnemigo3(this, skin);
+			break;
+		}
+		case HUIDA:{
+			estrategia = new Huida(this, skinHuida);
+			break;
+		}
 	}
-
-	@Override
-	public void moverSigPosHuida() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

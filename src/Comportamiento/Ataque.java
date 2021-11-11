@@ -2,21 +2,17 @@ package Comportamiento;
 
 import Personajes.Enemigo;
 
-public class Ataque implements Comportamiento{
+public abstract class Ataque extends Comportamiento{
 
-	@Override
-	public void moverSiguientePos(Enemigo e) {
-		
-	}
-
-	@Override
-	public String obtenerSkin(Enemigo e) {
-		return e.obtenerSkinAtaque();
+	public Ataque(Enemigo enemigo, String skin) {
+		super(enemigo, skin);
 	}
 
 	@Override
 	public boolean esVulnerable() {
 		return false;
 	}
-
+	
+	@Override
+	public abstract void moverSiguientePos();
 }

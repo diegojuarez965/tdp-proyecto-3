@@ -35,7 +35,7 @@ public class Laberinto {
 		controladorEnemigos = new Hilo(this);
 	}
 	
-	public synchronized void mover(int direccion) {
+	public void mover(int direccion) {
 		switch (direccion) {
 			case MOVER_ABAJO: {
 				moverAbajo();
@@ -69,7 +69,7 @@ public class Laberinto {
 				posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
 				checkearColision();
 			}
-		} 	
+		}	
 	}
 	private void moverIzq() {
 		Posicion posicion = personaje.obtenerPosicion();
