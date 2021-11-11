@@ -70,7 +70,7 @@ public class GUI extends JFrame{
 		setSize(1000,839);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-		
+		this.setIconImage(new ImageIcon(getClass().getResource("/images/arabeSkinNormal.png")).getImage());
 		ranking = new Ranking();
 		cargarRanking();
 		
