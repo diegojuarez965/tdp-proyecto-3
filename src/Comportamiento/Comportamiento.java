@@ -4,8 +4,8 @@ import Personajes.Enemigo;
 
 public abstract class Comportamiento {
 
-	private Enemigo enemigo;
-	private String skin;
+	protected Enemigo enemigo;
+	protected String skin;
 	
 	public Comportamiento(Enemigo enemigo, String skin) {
 		this.enemigo = enemigo;

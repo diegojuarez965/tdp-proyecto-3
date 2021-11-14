@@ -14,15 +14,25 @@ public abstract class Enemigo extends Personaje{
 	protected Comportamiento estrategia;
 	public final static int ATAQUE = 0;
 	public final static int HUIDA = 1;
+	protected int direccion;
 	
 	public Enemigo(Posicion p, String skin, String skinHuida) {
 		super(p, skin);
 		vulnerable = false;
 		this.skinHuida = skinHuida;
+		direccion = 1;
 	}
 	
 	public boolean esVulnerable() {
 		return estrategia.esVulnerable();
+	}
+	
+	public int obtenerDireccion() { 
+		return direccion;
+	}
+	
+	public void establecerDireccion(int d) {
+		direccion = d;
 	}
 	
 	public void moverSiguientePos() {
