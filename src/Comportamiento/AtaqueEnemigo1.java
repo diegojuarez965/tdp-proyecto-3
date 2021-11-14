@@ -22,46 +22,46 @@ public class AtaqueEnemigo1 extends Ataque {
 		switch(enemigo.obtenerDireccion()) {
 			case 1:{//arriba
 				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
-					//mover arriba
+					moverArriba();//mover arriba
 				}
 				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					//mover izquierda
+					moverIzq();//mover izquierda
 				}
 				else {
-					//mover derecha
+					moverDer();//mover derecha
 				}
 			}
 			case 2:{//derecha
 				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					//mover derecha
+					moverDer();//mover derecha
 				}
 				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
-					//mover arriba
+					moverArriba();//mover arriba
 				}
 				else {
-					//mover abajo
+					moverAbajo();//mover abajo
 				}
 			}
 			case 3:{//abajo
 				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) {
-					//mover abajo
+					moverAbajo();//mover abajo
 				}
 				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					//mover izquierda
+					moverIzq();//mover izquierda
 				}
 				else {
-					//mover derecha
+					moverDer();//mover derecha
 				}
 			}
 			case 4:{//izquierda
 				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					//
+					moverIzq();//
 				}
 				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
-					//mover arriba
+					moverArriba();//mover arriba
 				}
 				else {
-					//mover abajo
+					moverAbajo();//mover abajo
 				}
 			}
 			

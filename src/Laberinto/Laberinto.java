@@ -59,19 +59,11 @@ public class Laberinto {
 		Entidad entidadTemp = entidades[(posicion.obtenerX()/posicion.obtenerAncho())+1][posicion.obtenerY()/posicion.obtenerAlto()];
 		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
-				int velocidadAux;
-				if(personaje.obtenerVelocidad()==5)
-					velocidadAux=5;
-				else
-					velocidadAux=10;
+				int velocidadTemp = personaje.obtenerVelocidad();
 				entidadTemp.accept(personaje.obtenerVisitor());
-				int velocidadNueva= personaje.obtenerVelocidad();
-				posicion.setX(posicion.obtenerX()+velocidadNueva);
-				if(velocidadNueva==0)
-					if(velocidadAux==5)
-						personaje.disminuirVelocidad();
-					else
-						personaje.aumentarVelocidad();
+				posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
+				if(personaje.obtenerVelocidad()==0)
+					personaje.setVelocidad(velocidadTemp);
 				checkearColision();
 			}
 			else {
@@ -86,19 +78,11 @@ public class Laberinto {
 		Entidad entidadTemp = entidades[(int) Math.round(Math.ceil((double)posicion.obtenerX()/posicion.obtenerAncho()))-1][posicion.obtenerY()/posicion.obtenerAlto()];
 		if(posicion.obtenerY()%posicion.obtenerAlto()==0) {
 			if(entidadTemp!=null) {
-				int velocidadAux;
-				if(personaje.obtenerVelocidad()==5)
-					velocidadAux=5;
-				else
-					velocidadAux=10;
+				int velocidadTemp = personaje.obtenerVelocidad();
 				entidadTemp.accept(personaje.obtenerVisitor());
-				int velocidadNueva= personaje.obtenerVelocidad();
-				posicion.setX(posicion.obtenerX()-velocidadNueva);
-				if(velocidadNueva==0)
-					if(velocidadAux==5)
-						personaje.disminuirVelocidad();
-					else
-						personaje.aumentarVelocidad();
+				posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
+				if(personaje.obtenerVelocidad()==0)
+					personaje.setVelocidad(velocidadTemp);
 				checkearColision();
 			}
 			else {
@@ -113,19 +97,11 @@ public class Laberinto {
 		Entidad entidadTemp = entidades[posicion.obtenerX()/posicion.obtenerAncho()][(int) Math.round(Math.ceil((double)posicion.obtenerY()/posicion.obtenerAlto()))-1];
 		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
-				int velocidadAux;
-				if(personaje.obtenerVelocidad()==5)
-					velocidadAux=5;
-				else
-					velocidadAux=10;
+				int velocidadTemp = personaje.obtenerVelocidad();
 				entidadTemp.accept(personaje.obtenerVisitor());
-				int velocidadNueva= personaje.obtenerVelocidad(); 
-				posicion.setY(posicion.obtenerY()-velocidadNueva);
-				if(velocidadNueva==0) 
-					if(velocidadAux==5)
-						personaje.disminuirVelocidad();
-					else
-						personaje.aumentarVelocidad();
+				posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
+				if(personaje.obtenerVelocidad()==0)
+					personaje.setVelocidad(velocidadTemp);
 				checkearColision();
 			}
 			else {
@@ -140,19 +116,11 @@ public class Laberinto {
 		Entidad entidadTemp = entidades[posicion.obtenerX()/posicion.obtenerAncho()][(posicion.obtenerY()/posicion.obtenerAlto())+1];
 		if(posicion.obtenerX()%posicion.obtenerAncho()==0) {
 			if(entidadTemp!=null) {
-				int velocidadAux;
-				if(personaje.obtenerVelocidad()==5)
-					velocidadAux=5;
-				else
-					velocidadAux=10;
+				int velocidadTemp = personaje.obtenerVelocidad();
 				entidadTemp.accept(personaje.obtenerVisitor());
-				int velocidadNueva= personaje.obtenerVelocidad();
-				posicion.setY(posicion.obtenerY()+velocidadNueva);
-				if(velocidadNueva==0)
-					if(velocidadAux==5)
-						personaje.disminuirVelocidad();
-					else
-						personaje.aumentarVelocidad();
+				posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
+				if(personaje.obtenerVelocidad()==0)
+					personaje.setVelocidad(velocidadTemp);
 				checkearColision();
 			}
 			else {

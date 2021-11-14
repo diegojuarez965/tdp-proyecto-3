@@ -143,6 +143,8 @@ public class Juego {
 			gui.mostrarEntidadVisual(explosivo);
 			p.setAncho(200);
 			p.setAlto(200);
+			p.setX(p.obtenerX()-p.obtenerAncho()/2);
+			p.setY(p.obtenerY()-p.obtenerAlto()/2);
 			ReproductorSonido.obtenerInstancia().reproducirExplosivoInicio();
 			Timer t = new Timer();
 			TimersExplosivos.put(t, explosivo);

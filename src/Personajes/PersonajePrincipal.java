@@ -45,5 +45,15 @@ public class PersonajePrincipal extends Personaje{
 	public void accept(Visitor v) {
 		v.visitPersonajePrincipal(this);
 	}
+
+	@Override
+	public int obtenerVelocidad() {
+		return estado.obtenerVelocidad();
+	}
+
+	@Override
+	public void setVelocidad(int v) {
+		estado.setVelocidad(v);
+	}
 	
 }

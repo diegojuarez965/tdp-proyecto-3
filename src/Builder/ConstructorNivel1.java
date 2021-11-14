@@ -200,7 +200,6 @@ public class ConstructorNivel1 implements ConstructorLaberinto{
 		enemigo.obtenerPosicion().setX(9*enemigo.obtenerPosicion().obtenerAncho());
 		enemigo.obtenerPosicion().setY(9*enemigo.obtenerPosicion().obtenerAlto());
 		enemigo.setEstrategia(Enemigo.ATAQUE);
-		enemigo.aumentarVelocidad();
 		enemigo.setLaberinto(lab);
 		lab.agregarEnemigo(enemigo);
 	}

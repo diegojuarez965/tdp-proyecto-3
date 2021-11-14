@@ -3,9 +3,10 @@ package Comportamiento;
 import Personajes.Enemigo;
 
 public class Huida extends Comportamiento{
-
+	
 	public Huida(Enemigo enemigo, String skin) {
 		super(enemigo, skin);
+		velocidad = 5;
 	}
 	
 	@Override
@@ -17,5 +18,5 @@ public class Huida extends Comportamiento{
 	public boolean esVulnerable() {
 		return true;
 	}
-
+	
 }

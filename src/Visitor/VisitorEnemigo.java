@@ -59,7 +59,7 @@ public class VisitorEnemigo implements Visitor{
 
 	@Override
 	public void visitPared(Pared p) {
-		enemigo.quitarVelocidad();
+		enemigo.setVelocidad(0);
 	}
 	
 }

@@ -23,7 +23,6 @@ import Juego.Juego;
 import Posicion.Posicion;
 import Ranking.Ranking;
 import Laberinto.Laberinto;
-import Personajes.PersonajePrincipal;
 
 import javax.swing.JProgressBar;
 import javax.swing.JToggleButton;

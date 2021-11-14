@@ -34,14 +34,12 @@ public class VisitorPersonajeP implements Visitor{
 		PersonajePrincipal p = lab.obtenerPersonajePrincipal();
 		p.setEstado(PersonajePrincipal.VELOZ);
 		lab.actualizarEntidadVisual(p);
-		p.aumentarVelocidad();
 		timerPocionVelocidad = new Timer();
 		timerPocionVelocidad.schedule( 
                 new java.util.TimerTask() {
                     @Override
                     public void run() {
                         p.setEstado(PersonajePrincipal.NORMAL);
-                        p.disminuirVelocidad();
                         lab.actualizarEntidadVisual(p);
                         timerPocionVelocidad.cancel();
                         timerPocionVelocidad=null;
@@ -68,7 +66,6 @@ public class VisitorPersonajeP implements Visitor{
 		ReproductorSonido.obtenerInstancia().reproducirLootEspecial1();
 		for(Enemigo e : lab.obtenerEnemigos()) {
 			e.setEstrategia(Enemigo.HUIDA);
-			e.disminuirVelocidad();
 			lab.actualizarEntidadVisual(e);
 		}
 		timerLootEspecial = new Timer();
@@ -78,7 +75,6 @@ public class VisitorPersonajeP implements Visitor{
                     public void run() {
                         for(Enemigo e: lab.obtenerEnemigos()) {
                         	e.setEstrategia(Enemigo.ATAQUE);
-                        	e.aumentarVelocidad();
                         	lab.actualizarEntidadVisual(e);
                         }
                         timerLootEspecial.cancel();
@@ -135,7 +131,7 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitPared(Pared p) {
-		personaje.quitarVelocidad();
+		personaje.setVelocidad(0);
 	}
 	
 }

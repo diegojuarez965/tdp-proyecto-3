@@ -16,7 +16,7 @@ public class Hilo extends Thread{
 	public void run() {
 		while(!parar) {
 			try {
-				Thread.sleep(50);
+				Thread.sleep(200);
 			} catch (InterruptedException e1) {e1.printStackTrace();}
 			for(Enemigo e : lab.obtenerEnemigos()) {
 				e.moverSiguientePos();
