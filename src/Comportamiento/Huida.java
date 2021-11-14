@@ -6,7 +6,7 @@ public class Huida extends Comportamiento{
 	
 	public Huida(Enemigo enemigo, String skin) {
 		super(enemigo, skin);
-		velocidad = 5;
+		velocidad = 1;
 	}
 	
 	@Override

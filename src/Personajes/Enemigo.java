@@ -1,9 +1,6 @@
 package Personajes;
 
-import java.util.Random;
-
 import Comportamiento.Comportamiento;
-import Entidad.Entidad;
 import Posicion.Posicion;
 import Visitor.Visitor;
 

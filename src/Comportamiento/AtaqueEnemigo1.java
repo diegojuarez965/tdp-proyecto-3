@@ -20,7 +20,7 @@ public class AtaqueEnemigo1 extends Ataque {
 		posPersonajeP = personajeP.obtenerPosicion();
 		posEnemigo = enemigo.obtenerPosicion();
 		switch(enemigo.obtenerDireccion()) {
-			case 1:{//arriba
+			case Enemigo.ARRIBA:{//arriba
 				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
 					moverArriba();//mover arriba
 				}
@@ -31,7 +31,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverDer();//mover derecha
 				}
 			}
-			case 2:{//derecha
+			case Enemigo.DERECHA:{//derecha
 				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
 					moverDer();//mover derecha
 				}
@@ -42,7 +42,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverAbajo();//mover abajo
 				}
 			}
-			case 3:{//abajo
+			case Enemigo.ABAJO:{//abajo
 				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) {
 					moverAbajo();//mover abajo
 				}
@@ -53,7 +53,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverDer();//mover derecha
 				}
 			}
-			case 4:{//izquierda
+			case Enemigo.IZQUIERDA:{//izquierda
 				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
 					moverIzq();//
 				}
