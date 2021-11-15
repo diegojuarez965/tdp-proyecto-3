@@ -16,6 +16,7 @@ import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Personajes.Enemigo;
 import Posicion.Posicion;
+import Ranking.Ranking;
 import Sonido.Efectos;
 import Sonido.Musica;
 import Sonido.ReproductorSonido;
@@ -32,6 +33,8 @@ public class Juego {
 	private Efectos efectos;
 	private ConstructorLaberinto constructor;
 	private HashMap<Timer, Entidad> TimersExplosivos;
+	private Ranking ranking;
+	private String jugador;
 	
 	public Juego() {
 		nivel = 1;
@@ -41,6 +44,7 @@ public class Juego {
 		efectosActivados = true;
 		TimersExplosivos = new HashMap<Timer, Entidad>();
 		efectos = new Efectos();
+		ranking = new Ranking();
 	}
 	public void setGUI(GUI g) {
 		gui = g;
@@ -174,6 +178,7 @@ public class Juego {
 	}
 	public void finalizarJuego() {
 		pararMusica();
+		laberinto.finalizar();
 		gui.finalizarJuego();
 	}
 	public void reiniciarJuego() {
@@ -181,6 +186,20 @@ public class Juego {
 		puntos = 0;
 		vidas = 3;
 		explosivos = 0;
-		laberinto.pasarNivel();
+		laberinto.finalizar();
+		pasarNivel();
+	}
+	public void cargarRanking() {
+	    ranking.cargarRanking();
+	}
+	public void guardarRanking() {
+		ranking.agregarJugador(jugador, puntos);
+		ranking.guardarRanking();
+	}
+	public void agregarJugador(String nombre) {
+		jugador = nombre;
+	}
+	public String obtenerRanking() {
+		return ranking.toString();
 	}
 }

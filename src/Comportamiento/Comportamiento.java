@@ -115,7 +115,7 @@ public abstract class Comportamiento {
 	private void checkearColision() {
 		Laberinto lab =  enemigo.obtenerLaberinto();
 		lab.actualizarEntidadVisual(enemigo);
-		if(enemigo.obtenerPosicion().colisionan(lab.obtenerPersonajePrincipal().obtenerPosicion())) 
+		if(lab.obtenerPersonajePrincipal()!=null && enemigo.obtenerPosicion().colisionan(lab.obtenerPersonajePrincipal().obtenerPosicion())) 
 			enemigo.accept(lab.obtenerPersonajePrincipal().obtenerVisitor());
 	}
 }

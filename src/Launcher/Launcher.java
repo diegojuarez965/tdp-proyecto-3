@@ -12,6 +12,7 @@ public class Launcher {
 		Juego juego = new Juego();
 		juego.setGUI(gui);
 		gui.setJuego(juego);
+		gui.cargarRanking();
 		gui.mostrarMensajeNombre();
 		gui.mostrarMensajeTemas();
 		juego.pasarNivel();

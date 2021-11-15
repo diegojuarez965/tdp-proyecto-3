@@ -53,8 +53,6 @@ public class GUI extends JFrame{
 	private Juego juego;
 	private JToggleButton botonMusica;
 	private JToggleButton botonEfectos;
-	private Ranking ranking;
-	private String nombreJugador;
 
 	
 	public GUI() {
@@ -70,8 +68,6 @@ public class GUI extends JFrame{
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		this.setIconImage(new ImageIcon(getClass().getResource("/images/arabeSkinNormal.png")).getImage());
-		ranking = new Ranking();
-		cargarRanking();
 		
 		contentPane = getContentPane();
 		
@@ -203,9 +199,10 @@ public class GUI extends JFrame{
 		repaint();
 	}
 	public void mostrarMensajeNombre() {
-		nombreJugador = (String) JOptionPane.showInputDialog(contentPane, "Ingrese su nombre", "Ingresar Nombre", JOptionPane.WARNING_MESSAGE, null, null, null);
+		String nombreJugador = (String) JOptionPane.showInputDialog(contentPane, "Ingrese su nombre", "Ingresar Nombre", JOptionPane.WARNING_MESSAGE, null, null, null);
 		if(nombreJugador==null || nombreJugador.isEmpty() || nombreJugador.trim().isEmpty())
 			nombreJugador = "Anonimo";
+		juego.agregarJugador(nombreJugador);
 	}
 	public void mostrarMensajeTemas() {
 		FactoryTemas[] temas = {new Tema1(), new Tema2(), new Tema3()};
@@ -266,7 +263,7 @@ public class GUI extends JFrame{
 	}
 	public void finalizarJuego() {
 		guardarRanking();
-		if(JOptionPane.showConfirmDialog(contentPane, "Obtuviste "+juego.obtenerPuntos()+" puntos\nEl ranking es:\n"+ranking.toString()+"Desea reiniciar el juego?", null, JOptionPane.YES_NO_OPTION)==0)
+		if(JOptionPane.showConfirmDialog(contentPane, "Obtuviste "+juego.obtenerPuntos()+" puntos\nEl ranking es:\n"+juego.obtenerRanking()+"Desea reiniciar el juego?", null, JOptionPane.YES_NO_OPTION)==0)
 			reiniciarJuego();
 		else {
 			this.setVisible(false);
@@ -295,11 +292,10 @@ public class GUI extends JFrame{
 		mostrarMensajeTemas();
 		juego.reiniciarJuego();
 	}
-	private void cargarRanking() {
-	    ranking.cargarRanking();
+	public void cargarRanking() {
+	    juego.cargarRanking();
 	}
 	private void guardarRanking() {
-		ranking.agregarJugador(nombreJugador, juego.obtenerPuntos());
-		ranking.guardarRanking();
+		juego.guardarRanking();
 	}
 }

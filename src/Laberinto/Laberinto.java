@@ -184,7 +184,11 @@ public class Laberinto {
 		return entidades[i][j];
 	}
 	
-	public void pasarNivel() {
+	public void iniciar() {
+		controladorEnemigos.start();
+	}
+	
+	public void finalizar() {
 		controladorEnemigos.parar();
 		for(int i = 0; i<20; i++)
 			for(int j = 0; j<20; j++) 
@@ -193,11 +197,6 @@ public class Laberinto {
 		for(Enemigo e : enemigos) 
 			juego.eliminarEntidadVisual(e);
 		juego.eliminarEntidadVisual(personaje);
-		juego.pasarNivel();
-	}
-	
-	public void iniciar() {
-		controladorEnemigos.start();
 	}
 	
 	public void restarVida() {
@@ -205,6 +204,7 @@ public class Laberinto {
 			juego.eliminarEntidadVisual(e);
 		enemigos = new LinkedList<Enemigo>();
 		juego.eliminarEntidadVisual(personaje);
+		personaje = null;
 		juego.restarVida();
 	}
 	
@@ -216,8 +216,10 @@ public class Laberinto {
 		juego.eliminarEntidadVisual(l);
 		lootRestante--;
 		entidades[l.obtenerPosicion().obtenerX()/l.obtenerPosicion().obtenerAncho()][l.obtenerPosicion().obtenerY()/l.obtenerPosicion().obtenerAlto()] = null;
-		if(lootRestante==0)
-			pasarNivel();
+		if(lootRestante==0) {
+			finalizar();
+			juego.pasarNivel();
+		}
 	}
 	
 	public void sumarPuntos(int puntos) {

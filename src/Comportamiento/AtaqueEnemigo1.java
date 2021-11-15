@@ -32,7 +32,7 @@ public class AtaqueEnemigo1 extends Ataque {
 				}
 			}
 			case Enemigo.DERECHA:{//derecha
-				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
+				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) {
 					moverDer();//mover derecha
 				}
 				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {

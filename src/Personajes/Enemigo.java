@@ -21,7 +21,7 @@ public abstract class Enemigo extends Personaje{
 		super(p, skin);
 		vulnerable = false;
 		this.skinHuida = skinHuida;
-		direccion = 1;
+		direccion = ARRIBA;
 	}
 	
 	public boolean esVulnerable() {

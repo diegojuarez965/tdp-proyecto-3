@@ -30,6 +30,7 @@ public class VisitorPersonajeP implements Visitor{
 			timerPocionVelocidad.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(pV);
+		lab.sumarPuntos(pV.obtenerPuntaje());
 		ReproductorSonido.obtenerInstancia().reproducirPocionVelocidad();
 		PersonajePrincipal p = lab.obtenerPersonajePrincipal();
 		p.setEstado(PersonajePrincipal.VELOZ);
@@ -54,6 +55,7 @@ public class VisitorPersonajeP implements Visitor{
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(e);
 		lab.sumarExplosivo();
+		lab.sumarPuntos(e.obtenerPuntaje());
 		ReproductorSonido.obtenerInstancia().reproducirExplosivo();
 	}
 
@@ -63,6 +65,7 @@ public class VisitorPersonajeP implements Visitor{
 			timerLootEspecial.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(l);
+		lab.sumarPuntos(l.obtenerPuntaje());
 		ReproductorSonido.obtenerInstancia().reproducirLootEspecial1();
 		for(Enemigo e : lab.obtenerEnemigos()) {
 			e.setEstrategia(Enemigo.HUIDA);
