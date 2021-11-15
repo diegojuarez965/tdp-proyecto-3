@@ -20,53 +20,42 @@ public class AtaqueEnemigo1 extends Ataque {
 		posPersonajeP = personajeP.obtenerPosicion();
 		posEnemigo = enemigo.obtenerPosicion();
 		switch(enemigo.obtenerDireccion()) {
-			case Enemigo.ARRIBA:{//arriba
-				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
-					moverArriba();//mover arriba
-				}
-				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					moverIzq();//mover izquierda
-				}
-				else {
-					moverDer();//mover derecha
-				}
+			case Enemigo.ARRIBA:{
+				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
+					moverArriba();
+				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX())
+					moverIzq();
+				else 
+					moverDer();
 			}
-			case Enemigo.DERECHA:{//derecha
-				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) {
-					moverDer();//mover derecha
-				}
-				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
-					moverArriba();//mover arriba
-				}
-				else {
-					moverAbajo();//mover abajo
-				}
+			case Enemigo.DERECHA:{
+				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) 
+					moverDer();
+				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
+					moverArriba();
+				else 
+					moverAbajo();
 			}
-			case Enemigo.ABAJO:{//abajo
-				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) {
-					moverAbajo();//mover abajo
-				}
-				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					moverIzq();//mover izquierda
-				}
-				else {
-					moverDer();//mover derecha
-				}
+			case Enemigo.ABAJO:{
+				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) 
+					moverAbajo();
+				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
+					moverIzq();
+				else 
+					moverDer();
 			}
-			case Enemigo.IZQUIERDA:{//izquierda
-				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) {
-					moverIzq();//
-				}
-				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) {
-					moverArriba();//mover arriba
-				}
-				else {
-					moverAbajo();//mover abajo
-				}
+			case Enemigo.IZQUIERDA:{
+				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
+					moverIzq();
+				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
+					moverArriba();
+				else 
+					moverAbajo();
 			}
 			
 		}
 		
 	}
+	
 
 }
