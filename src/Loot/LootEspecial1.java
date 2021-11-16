@@ -9,10 +9,6 @@ public class LootEspecial1 extends Loot{
 		super(p, skin);
 		puntaje = 0;
 	}
-
-	public int obtenerPuntaje() {
-		return puntaje;
-	}
 	
 	public void accept(Visitor v) {
 		v.visitLootEspecial1(this);

@@ -15,6 +15,8 @@ public abstract class Loot extends Entidad{
 		return skin;
 	}
 	
-	public abstract int obtenerPuntaje();
+	public int obtenerPuntaje() {
+		return puntaje;
+	}
 	
 }

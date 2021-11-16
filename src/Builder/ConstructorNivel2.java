@@ -163,7 +163,7 @@ public class ConstructorNivel2 implements ConstructorLaberinto{
 		lab.agregarLoot(explosivoTemp);
 	}
 	private void crearLoot2(int X, int Y) {
-		Loot2 lootTemp = Tema.nuevoLoot2();
+		Loot2 lootTemp = Tema.nuevoLoot2Nivel2();
 		lootTemp.obtenerPosicion().setX(X*lootTemp.obtenerPosicion().obtenerAncho());
 		lootTemp.obtenerPosicion().setY(Y*lootTemp.obtenerPosicion().obtenerAlto());
 		lab.agregarLoot(lootTemp);

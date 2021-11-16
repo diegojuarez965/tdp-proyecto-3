@@ -22,7 +22,9 @@ public interface FactoryTemas {
 	public PersonajePrincipal nuevoPersonajePrincipal();
 	public Pared nuevoPared();
 	public Loot1 nuevoLoot1();
-	public Loot2 nuevoLoot2();
+	public Loot2 nuevoLoot2Nivel1();
+	public Loot2 nuevoLoot2Nivel2();
+	public Loot2 nuevoLoot2Nivel3();
 	public LootEspecial1 nuevoLootEspecial1();
 	public PocionVelocidad nuevoPocionVelocidad();
 	public Explosivo nuevoExplosivo();

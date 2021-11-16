@@ -8,9 +8,5 @@ public abstract class LootEspecial2 extends Loot{
 		super(p, skin);
 		puntaje = 0;
 	}
-
-	public int obtenerPuntaje() {
-		return puntaje;
-	}
 	
 }
