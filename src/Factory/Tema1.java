@@ -1,5 +1,7 @@
 package Factory;
 
+import java.util.Random;
+
 import Loot.Explosivo;
 import Loot.Loot1;
 import Loot.Loot2;
@@ -153,8 +155,11 @@ public class Tema1 implements FactoryTemas{
 
 	@Override
 	public String efectoDot() {
-		// TODO Auto-generated method stub
-		return null;
+		String efecto = null;
+		Random r = new Random();
+		int num = r.nextInt(28);
+		efecto = "/Musica/arabeLoot1("+num+").wav";
+		return efecto;
 	}
 	
 	@Override

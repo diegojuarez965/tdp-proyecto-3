@@ -153,8 +153,7 @@ public class Tema3 implements FactoryTemas{
 
 	@Override
 	public String efectoDot() {
-		// TODO Auto-generated method stub
-		return null;
+		return "/Musica/amongUsDot.wav";
 	}
 	
 	@Override
