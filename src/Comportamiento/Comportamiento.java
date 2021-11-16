@@ -51,6 +51,7 @@ public abstract class Comportamiento {
 				checkearColision();
 			}
 			else {
+				enemigo.setDireccion(Enemigo.DERECHA);
 				posicion.setX(posicion.obtenerX()+enemigo.obtenerVelocidad());
 				checkearColision();
 			}
@@ -76,6 +77,7 @@ public abstract class Comportamiento {
 				checkearColision();
 			}
 			else {
+				enemigo.setDireccion(Enemigo.IZQUIERDA);
 				posicion.setX(posicion.obtenerX()-enemigo.obtenerVelocidad());
 				checkearColision();
 			}
@@ -101,6 +103,7 @@ public abstract class Comportamiento {
 				checkearColision();
 			}
 			else {
+				enemigo.setDireccion(Enemigo.ARRIBA);
 				posicion.setY(posicion.obtenerY()-enemigo.obtenerVelocidad());
 				checkearColision();
 			}
@@ -126,6 +129,7 @@ public abstract class Comportamiento {
 				checkearColision();
 			}
 			else {
+				enemigo.setDireccion(Enemigo.ABAJO);
 				posicion.setY(posicion.obtenerY()+enemigo.obtenerVelocidad());
 				checkearColision();
 			}

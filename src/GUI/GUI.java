@@ -70,7 +70,6 @@ public class GUI extends JFrame{
 		this.setIconImage(new ImageIcon(getClass().getResource("/images/arabeSkinNormal.png")).getImage());
 		
 		contentPane = getContentPane();
-		
 		mapeo = new HashMap<Entidad,JLabel>();
 		
 		panelInformacion = new JPanel();
@@ -222,6 +221,7 @@ public class GUI extends JFrame{
 		if(grafico!=null) {
 			grafico.setLocation(posEntidad.obtenerX(), posEntidad.obtenerY());
 			grafico.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
+			contentPane.setComponentZOrder(grafico, 0);
 		}
 	}
 	public void mostrarEntidadVisual(Entidad e) {
@@ -231,7 +231,8 @@ public class GUI extends JFrame{
 		temp.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
 		temp.setVisible(true);
 		contentPane.add(temp);
-		temp.repaint();
+		contentPane.setComponentZOrder(temp, 1);
+		repaint();
 		mapeo.put(e, temp);
 	}
 	public void eliminarEntidadVisual(Entidad e) {
