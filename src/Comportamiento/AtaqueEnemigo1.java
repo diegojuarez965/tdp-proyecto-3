@@ -27,6 +27,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverIzq();
 				else 
 					moverDer();
+				break;
 			}
 			case Enemigo.DERECHA:{
 				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) 
@@ -35,6 +36,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverArriba();
 				else 
 					moverAbajo();
+				break;
 			}
 			case Enemigo.ABAJO:{
 				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) 
@@ -43,6 +45,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverIzq();
 				else 
 					moverDer();
+				break;
 			}
 			case Enemigo.IZQUIERDA:{
 				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
@@ -51,6 +54,7 @@ public class AtaqueEnemigo1 extends Ataque {
 					moverArriba();
 				else 
 					moverAbajo();
+				break;
 			}
 			
 		}

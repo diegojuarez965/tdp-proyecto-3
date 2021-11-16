@@ -32,7 +32,8 @@ public abstract class Comportamiento {
 	
 	public abstract boolean esVulnerable();
 	
-	protected void moverDer() {
+	protected boolean moverDer() {
+		boolean pudoMoverse = true;
 		Posicion posicion = enemigo.obtenerPosicion();
 		Laberinto lab =  enemigo.obtenerLaberinto();
 		Entidad entidadTemp = lab.obtenerEntidad((posicion.obtenerX()/posicion.obtenerAncho())+1, posicion.obtenerY()/posicion.obtenerAlto());
@@ -41,18 +42,23 @@ public abstract class Comportamiento {
 				int velocidadTemp = enemigo.obtenerVelocidad();
 				entidadTemp.accept(enemigo.obtenerVisitor());
 				posicion.setX(posicion.obtenerX()+enemigo.obtenerVelocidad());
-				enemigo.setDireccion(Enemigo.DERECHA);
-				if(enemigo.obtenerVelocidad()==0)
+				if(enemigo.obtenerVelocidad()==0) {
 					enemigo.setVelocidad(velocidadTemp);
+					pudoMoverse = false;
+				}
+				else
+					enemigo.setDireccion(Enemigo.DERECHA);
 				checkearColision();
 			}
 			else {
 				posicion.setX(posicion.obtenerX()+enemigo.obtenerVelocidad());
 				checkearColision();
 			}
-		}	
+		}
+		return pudoMoverse;
 	}
-	protected void moverIzq() {
+	protected boolean moverIzq() {
+		boolean pudoMoverse = true;
 		Posicion posicion = enemigo.obtenerPosicion();
 		Laberinto lab =  enemigo.obtenerLaberinto();
 		Entidad entidadTemp = lab.obtenerEntidad((int) Math.round(Math.ceil((double)posicion.obtenerX()/posicion.obtenerAncho()))-1, posicion.obtenerY()/posicion.obtenerAlto());
@@ -61,18 +67,23 @@ public abstract class Comportamiento {
 				int velocidadTemp = enemigo.obtenerVelocidad();
 				entidadTemp.accept(enemigo.obtenerVisitor());
 				posicion.setX(posicion.obtenerX()-enemigo.obtenerVelocidad());
-				if(enemigo.obtenerVelocidad()==0)
+				if(enemigo.obtenerVelocidad()==0) {
 					enemigo.setVelocidad(velocidadTemp);
-				enemigo.setDireccion(Enemigo.IZQUIERDA);
+					pudoMoverse = false;
+				}
+				else
+					enemigo.setDireccion(Enemigo.IZQUIERDA);
 				checkearColision();
 			}
 			else {
 				posicion.setX(posicion.obtenerX()-enemigo.obtenerVelocidad());
 				checkearColision();
 			}
-		}	
+		}
+		return pudoMoverse;
 	}
-	protected void moverArriba() {
+	protected boolean moverArriba() {
+		boolean pudoMoverse = true;
 		Laberinto lab =  enemigo.obtenerLaberinto();
 		Posicion posicion = enemigo.obtenerPosicion();
 		Entidad entidadTemp = lab.obtenerEntidad(posicion.obtenerX()/posicion.obtenerAncho(), (int) Math.round(Math.ceil((double)posicion.obtenerY()/posicion.obtenerAlto()))-1);
@@ -81,18 +92,23 @@ public abstract class Comportamiento {
 				int velocidadTemp = enemigo.obtenerVelocidad();
 				entidadTemp.accept(enemigo.obtenerVisitor());
 				posicion.setY(posicion.obtenerY()-enemigo.obtenerVelocidad());
-				enemigo.setDireccion(Enemigo.ARRIBA);
-				if(enemigo.obtenerVelocidad()==0)
+				if(enemigo.obtenerVelocidad()==0) {
 					enemigo.setVelocidad(velocidadTemp);
+					pudoMoverse = false;
+				}
+				else
+					enemigo.setDireccion(Enemigo.ARRIBA);
 				checkearColision();
 			}
 			else {
 				posicion.setY(posicion.obtenerY()-enemigo.obtenerVelocidad());
 				checkearColision();
 			}
-		}	
+		}
+		return pudoMoverse;
 	}
-	protected void moverAbajo() {
+	protected boolean moverAbajo() {
+		boolean pudoMoverse = true;
 		Posicion posicion = enemigo.obtenerPosicion();
 		Laberinto lab =  enemigo.obtenerLaberinto();
 		Entidad entidadTemp = lab.obtenerEntidad(posicion.obtenerX()/posicion.obtenerAncho(), (posicion.obtenerY()/posicion.obtenerAlto())+1);
@@ -101,16 +117,20 @@ public abstract class Comportamiento {
 				int velocidadTemp = enemigo.obtenerVelocidad();
 				entidadTemp.accept(enemigo.obtenerVisitor());
 				posicion.setY(posicion.obtenerY()+enemigo.obtenerVelocidad());
-				enemigo.setDireccion(Enemigo.ABAJO);
-				if(enemigo.obtenerVelocidad()==0)
+				if(enemigo.obtenerVelocidad()==0) {
 					enemigo.setVelocidad(velocidadTemp);
+					pudoMoverse = false;
+				}
+				else
+					enemigo.setDireccion(Enemigo.ABAJO);
 				checkearColision();
 			}
 			else {
 				posicion.setY(posicion.obtenerY()+enemigo.obtenerVelocidad());
 				checkearColision();
 			}
-		}	
+		}
+		return pudoMoverse;
 	}
 	private void checkearColision() {
 		Laberinto lab =  enemigo.obtenerLaberinto();

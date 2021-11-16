@@ -27,6 +27,7 @@ public class Huida extends Comportamiento{
 					moverDer();
 				else 
 					moverIzq();
+				break;
 			}
 			case Enemigo.DERECHA:{
 				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) 
@@ -35,6 +36,7 @@ public class Huida extends Comportamiento{
 					moverAbajo();
 				else 
 					moverArriba();
+				break;
 			}
 			case Enemigo.ABAJO:{
 				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) 
@@ -43,6 +45,7 @@ public class Huida extends Comportamiento{
 					moverDer();
 				else 
 					moverIzq();
+				break;
 			}
 			case Enemigo.IZQUIERDA:{
 				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
@@ -51,6 +54,7 @@ public class Huida extends Comportamiento{
 					moverAbajo();
 				else 
 					moverArriba();
+				break;
 			}
 			
 		}
