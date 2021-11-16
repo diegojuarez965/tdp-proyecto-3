@@ -221,7 +221,6 @@ public class GUI extends JFrame{
 		if(grafico!=null) {
 			grafico.setLocation(posEntidad.obtenerX(), posEntidad.obtenerY());
 			grafico.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
-			contentPane.setComponentZOrder(grafico, 0);
 		}
 	}
 	public void mostrarEntidadVisual(Entidad e) {
@@ -230,9 +229,8 @@ public class GUI extends JFrame{
 		temp.setBounds(posEntidad.obtenerX(), posEntidad.obtenerY(), posEntidad.obtenerAncho(), posEntidad.obtenerAlto());
 		temp.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
 		temp.setVisible(true);
-		contentPane.add(temp);
-		contentPane.setComponentZOrder(temp, 1);
-		repaint();
+		contentPane.add(temp, 0);
+		contentPane.repaint();
 		mapeo.put(e, temp);
 	}
 	public void eliminarEntidadVisual(Entidad e) {
