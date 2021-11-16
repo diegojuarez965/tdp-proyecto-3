@@ -34,24 +34,25 @@ public class Laberinto {
 	}
 	
 	public void mover(int direccion) {
-		switch (direccion) {
-			case MOVER_ABAJO: {
-				moverAbajo();
-				break;
+		if(personaje!=null)
+			switch (direccion) {
+				case MOVER_ABAJO: {
+					moverAbajo();
+					break;
+				}
+				case MOVER_ARRIBA: {
+					moverArriba();
+					break;
+				}
+				case MOVER_DERECHA: {
+					moverDer();
+					break;
+				}
+				case MOVER_IZQUIERDA: {
+					moverIzq();
+					break;
+				}
 			}
-			case MOVER_ARRIBA: {
-				moverArriba();
-				break;
-			}
-			case MOVER_DERECHA: {
-				moverDer();
-				break;
-			}
-			case MOVER_IZQUIERDA: {
-				moverIzq();
-				break;
-			}
-		}
 	}
 	
 	private void moverDer() {
