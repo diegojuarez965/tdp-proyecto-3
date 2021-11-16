@@ -5,6 +5,9 @@ import java.util.Random;
 import Loot.Explosivo;
 import Loot.Loot1;
 import Loot.Loot2;
+import Loot.Loot2Nivel1;
+import Loot.Loot2Nivel2;
+import Loot.Loot2Nivel3;
 import Loot.LootEspecial1;
 import Loot.PocionVelocidad;
 import Pared.Pared;
@@ -93,11 +96,29 @@ public class Tema1 implements FactoryTemas{
 	}
 
 	@Override
-	public Loot2 nuevoLoot2() {
+	public Loot2 nuevoLoot2Nivel1() {
 		Loot2 loot2;
-		String skinLoot2 = "/images/arabeFruit.png";
+		String skinLoot2 = "/images/arabeFruit1.png";
 		Posicion p = new PosicionLogica(0, 0);
-		loot2 = new Loot2(p,skinLoot2);
+		loot2 = new Loot2Nivel1(p,skinLoot2);
+		loot2.setVisitor(new VisitorLoot2(loot2));
+		return loot2;
+	}
+	@Override
+	public Loot2 nuevoLoot2Nivel2() {
+		Loot2 loot2;
+		String skinLoot2 = "/images/arabeFruit2.png";
+		Posicion p = new PosicionLogica(0, 0);
+		loot2 = new Loot2Nivel2(p,skinLoot2);
+		loot2.setVisitor(new VisitorLoot2(loot2));
+		return loot2;
+	}
+	@Override
+	public Loot2 nuevoLoot2Nivel3() {
+		Loot2 loot2;
+		String skinLoot2 = "/images/arabeFruit3.png";
+		Posicion p = new PosicionLogica(0, 0);
+		loot2 = new Loot2Nivel3(p,skinLoot2);
 		loot2.setVisitor(new VisitorLoot2(loot2));
 		return loot2;
 	}
