@@ -21,44 +21,44 @@ public class AtaqueEnemigo1 extends Ataque {
 		posEnemigo = enemigo.obtenerPosicion();
 		switch(enemigo.obtenerDireccion()) {
 			case Enemigo.ARRIBA:{
-				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
-					moverArriba();
-				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX())
+				if(!moverArriba() || posPersonajeP.obtenerY() >= posEnemigo.obtenerY() ) {
+				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX())
 					moverIzq();
 				else 
 					moverDer();
+				}
 				break;
 			}
 			case Enemigo.DERECHA:{
-				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) 
-					moverDer();
-				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
+				if(!moverDer() || posPersonajeP.obtenerX() <= posEnemigo.obtenerX()) {
+				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
 					moverArriba();
 				else 
 					moverAbajo();
+				}
 				break;
 			}
 			case Enemigo.ABAJO:{
-				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) 
-					moverAbajo();
-				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
+				if(!moverAbajo() || posPersonajeP.obtenerY() <= posEnemigo.obtenerY()) { 
+			    if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
 					moverIzq();
 				else 
 					moverDer();
+				}
 				break;
 			}
 			case Enemigo.IZQUIERDA:{
-				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
-					moverIzq();
-				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
+				if(!moverIzq() || posPersonajeP.obtenerX() >= posEnemigo.obtenerX()) { 
+				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
 					moverArriba();
 				else 
 					moverAbajo();
+				}
 				break;
 			}
 			
 		}
-		
+	
 	}
 	
 
