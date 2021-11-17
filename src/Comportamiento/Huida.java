@@ -102,34 +102,40 @@ public class Huida extends Comportamiento{
 					if(x<xE) {
 						if(!moverDer())
 							if(!moverAbajo())
-								moverIzq();
+								if(!moverIzq())
+									moverArriba();
 					}
 					else
 						if(!moverIzq())
 							if(!moverAbajo())
-								moverDer();
+								if(!moverDer())
+									moverArriba();
 				}
 				else {
 					if(y>yE) {
 						if(x<xE) {
 							if(!moverDer())
 								if(!moverAbajo())
-									moverIzq();						
+									if(!moverIzq())
+										moverArriba();
 						}
 						else
 							if(!moverIzq())
 								if(!moverAbajo())
-									moverDer();
+									if(!moverDer())
+										moverArriba();
 					}
 					else {
 						if(!moverAbajo()) {
 							if(x<xE) {
 								if(!moverDer())
-									moverIzq();
+									if(!moverIzq())
+										moverArriba();
 							}
 							else
 								if(!moverIzq())
-									moverDer();
+									if(!moverDer())
+										moverArriba();
 						}
 					}
 				}
