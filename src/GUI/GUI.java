@@ -19,6 +19,7 @@ import Factory.FactoryTemas;
 import Factory.Tema1;
 import Factory.Tema2;
 import Factory.Tema3;
+import Hilo.ControladorMovimiento;
 import Juego.Juego;
 import Posicion.Posicion;
 import Ranking.Ranking;
@@ -161,19 +162,19 @@ public class GUI extends JFrame{
 				switch (e.getKeyCode()) {
 
 				case KeyEvent.VK_RIGHT: {
-					juego.mover(Laberinto.MOVER_DERECHA);
+					juego.mover(ControladorMovimiento.MOVER_DERECHA);
 					break;
 				}
 				case KeyEvent.VK_LEFT: {
-					juego.mover(Laberinto.MOVER_IZQUIERDA);
+					juego.mover(ControladorMovimiento.MOVER_IZQUIERDA);
 					break;
 				}
 				case KeyEvent.VK_DOWN: {
-					juego.mover(Laberinto.MOVER_ABAJO);
+					juego.mover(ControladorMovimiento.MOVER_ABAJO);
 					break;
 				}
 				case KeyEvent.VK_UP: {
-					juego.mover(Laberinto.MOVER_ARRIBA);
+					juego.mover(ControladorMovimiento.MOVER_ARRIBA);
 					break;
 				}
 				case KeyEvent.VK_SPACE: {

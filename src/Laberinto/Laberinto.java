@@ -3,6 +3,7 @@ package Laberinto;
 import java.util.LinkedList;
 import java.util.List;
 import Entidad.Entidad;
+import Hilo.ControladorMovimiento;
 import Hilo.Hilo;
 import Juego.Juego;
 import Loot.Loot;
@@ -20,11 +21,6 @@ public class Laberinto {
 	private PersonajePrincipal personaje;
 	private Hilo controladorEnemigos;
 	
-	public static final int MOVER_ABAJO = 0;
-	public static final int MOVER_ARRIBA = 1;
-	public static final int MOVER_DERECHA = 2;
-	public static final int MOVER_IZQUIERDA = 3;
-	
 	public Laberinto(Juego j) {
 		juego = j;
 		lootRestante = 0;
@@ -36,19 +32,19 @@ public class Laberinto {
 	public void mover(int direccion) {
 		if(personaje!=null)
 			switch (direccion) {
-				case MOVER_ABAJO: {
+				case ControladorMovimiento.MOVER_ABAJO: {
 					moverAbajo();
 					break;
 				}
-				case MOVER_ARRIBA: {
+				case ControladorMovimiento.MOVER_ARRIBA: {
 					moverArriba();
 					break;
 				}
-				case MOVER_DERECHA: {
+				case ControladorMovimiento.MOVER_DERECHA: {
 					moverDer();
 					break;
 				}
-				case MOVER_IZQUIERDA: {
+				case ControladorMovimiento.MOVER_IZQUIERDA: {
 					moverIzq();
 					break;
 				}

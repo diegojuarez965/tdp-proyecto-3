@@ -55,5 +55,10 @@ public class PersonajePrincipal extends Personaje{
 	public void setVelocidad(int v) {
 		estado.setVelocidad(v);
 	}
+
+	@Override
+	public void mover(int d) {
+		laberinto.mover(d);
+	}
 	
 }

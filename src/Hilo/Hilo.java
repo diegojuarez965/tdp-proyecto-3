@@ -16,11 +16,10 @@ public class Hilo extends Thread{
 	public void run() {
 		while(!parar) {
 			try {
-				
 				Thread.sleep(25);
 			} catch (InterruptedException e1) {e1.printStackTrace();}
 			for(Enemigo e : lab.obtenerEnemigos()) {
-				e.moverSiguientePos();
+				ControladorMovimiento.moverPersonaje(e, ControladorMovimiento.MOVER);
 				lab.actualizarEntidadVisual(e);
 			}	
 		}

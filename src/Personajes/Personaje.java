@@ -23,4 +23,6 @@ public abstract class Personaje extends Entidad{
 	public abstract int obtenerVelocidad();
 	
 	public abstract void setVelocidad(int v);
+	
+	public abstract void mover(int d);
 }

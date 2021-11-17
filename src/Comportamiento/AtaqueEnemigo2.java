@@ -1,6 +1,7 @@
 package Comportamiento;
 
 import Personajes.Enemigo;
+import Posicion.Posicion;
 
 public class AtaqueEnemigo2 extends Ataque {
 
@@ -11,8 +12,8 @@ public class AtaqueEnemigo2 extends Ataque {
 
 	@Override
 	public void moverSiguientePos() {
-		// TODO Auto-generated method stub
-
+		Posicion posPersonaje = enemigo.obtenerLaberinto().obtenerPersonajePrincipal().obtenerPosicion();
+		moverHacia(posPersonaje.obtenerX(), posPersonaje.obtenerY());
 	}
 
 }

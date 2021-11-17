@@ -38,7 +38,7 @@ public abstract class Enemigo extends Personaje{
 		direccion = d;
 	}
 	
-	public void moverSiguientePos() {
+	public void mover(int d) {
 		estrategia.moverSiguientePos();
 	}
 	

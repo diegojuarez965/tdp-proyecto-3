@@ -12,6 +12,7 @@ import Builder.Director;
 import Entidad.Entidad;
 import Factory.FactoryTemas;
 import GUI.GUI;
+import Hilo.ControladorMovimiento;
 import Laberinto.Laberinto;
 import Loot.Explosivo;
 import Personajes.Enemigo;
@@ -56,7 +57,7 @@ public class Juego {
 		musica=sonido;
 	}
 	public void mover(int direccion) {
-		laberinto.mover(direccion);
+		ControladorMovimiento.moverPersonaje(laberinto.obtenerPersonajePrincipal(), direccion);
 	}
 	public void actualizarEntidadVisual(Entidad e) {
 		gui.actualizarEntidadVisual(e);
