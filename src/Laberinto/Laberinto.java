@@ -9,6 +9,7 @@ import Juego.Juego;
 import Loot.Loot;
 import Pared.Pared;
 import Personajes.Enemigo;
+import Personajes.Personaje;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 
@@ -61,10 +62,13 @@ public class Laberinto {
 				posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
 				if(personaje.obtenerVelocidad()==0)
 					personaje.setVelocidad(velocidadTemp);
+				else
+					personaje.setDireccion(Personaje.DERECHA);
 				checkearColision();
 			}
 			else {
 				posicion.setX(posicion.obtenerX()+personaje.obtenerVelocidad());
+				personaje.setDireccion(Personaje.DERECHA);
 				checkearColision();
 			}
 		}	
@@ -80,10 +84,13 @@ public class Laberinto {
 				posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
 				if(personaje.obtenerVelocidad()==0)
 					personaje.setVelocidad(velocidadTemp);
+				else
+					personaje.setDireccion(Personaje.IZQUIERDA);
 				checkearColision();
 			}
 			else {
 				posicion.setX(posicion.obtenerX()-personaje.obtenerVelocidad());
+				personaje.setDireccion(Personaje.IZQUIERDA);
 				checkearColision();
 			}
 		}	
@@ -99,10 +106,13 @@ public class Laberinto {
 				posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
 				if(personaje.obtenerVelocidad()==0)
 					personaje.setVelocidad(velocidadTemp);
+				else
+					personaje.setDireccion(Personaje.ARRIBA);
 				checkearColision();
 			}
 			else {
 				posicion.setY(posicion.obtenerY()-personaje.obtenerVelocidad());
+				personaje.setDireccion(Personaje.ARRIBA);
 				checkearColision();
 			}
 		}	
@@ -118,10 +128,13 @@ public class Laberinto {
 				posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
 				if(personaje.obtenerVelocidad()==0)
 					personaje.setVelocidad(velocidadTemp);
+				else
+					personaje.setDireccion(Personaje.ABAJO);
 				checkearColision();
 			}
 			else {
 				posicion.setY(posicion.obtenerY()+personaje.obtenerVelocidad());
+				personaje.setDireccion(Personaje.ABAJO);
 				checkearColision();
 			}
 		}	

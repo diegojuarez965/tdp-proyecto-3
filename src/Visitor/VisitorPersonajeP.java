@@ -13,7 +13,7 @@ import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 import Sonido.ReproductorSonido;
-import javafx.geometry.Pos;
+
 
 public class VisitorPersonajeP implements Visitor{
 	
