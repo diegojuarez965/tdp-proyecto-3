@@ -106,35 +106,41 @@ public abstract class Ataque extends Comportamiento{
 						if(!moverAbajo()) {
 							if(x<xE) {
 								if(!moverIzq())
-									moverDer();
+									if(!moverDer())
+										moverArriba();	//Cuando se intenta mover hacia arriba seria cuando se queda atrapado en la casa de los fantasmas, y la unica vez que invertiria su sentido.
 							}
 							else
 								if(!moverDer())
-									moverIzq();
+									if(!moverIzq())
+										moverArriba();
 						}
 					}
 					else {
 						if(x<xE) {
 							if(!moverIzq())
 								if(!moverDer())
-									moverAbajo();
+									if(!moverAbajo())
+										moverArriba();
 						}
 						else
 							if(!moverDer())
 								if(!moverIzq())
-									moverAbajo();
+									if(!moverAbajo())
+										moverArriba();
 					}
 				}
 				else {
 					if(x<xE) {
 						if(!moverIzq())
 							if(!moverDer())
-								moverAbajo();
+								if(!moverAbajo())
+									moverArriba();
 					}
 					else
 						if(!moverDer())
 							if(!moverIzq())
-								moverAbajo();
+								if(!moverAbajo())
+									moverArriba();
 				}
 				break;
 			}

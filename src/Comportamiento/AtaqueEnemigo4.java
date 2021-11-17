@@ -13,7 +13,6 @@ public class AtaqueEnemigo4 extends Ataque {
 	@Override
 	public void moverSiguientePos() {
 		Posicion posPersonaje = enemigo.obtenerLaberinto().obtenerPersonajePrincipal().obtenerPosicion();
-		moverHacia(posPersonaje.obtenerX(), posPersonaje.obtenerY());
 	}
 
 }
