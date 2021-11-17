@@ -3,7 +3,6 @@ package Comportamiento;
 import Entidad.Entidad;
 import Laberinto.Laberinto;
 import Personajes.Enemigo;
-import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 
 public abstract class Comportamiento {

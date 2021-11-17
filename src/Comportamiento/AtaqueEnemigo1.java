@@ -1,9 +1,7 @@
 package Comportamiento;
 
 import Personajes.Enemigo;
-import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
-import Laberinto.Laberinto;
 
 public class AtaqueEnemigo1 extends Ataque {
 
