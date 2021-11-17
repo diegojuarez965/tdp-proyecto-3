@@ -3,6 +3,7 @@ package Comportamiento;
 import Entidad.Entidad;
 import Laberinto.Laberinto;
 import Personajes.Enemigo;
+import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 
 public abstract class Comportamiento {
@@ -46,7 +47,7 @@ public abstract class Comportamiento {
 					enemigo.setVelocidad(velocidadTemp);
 					pudoMoverse = false;
 				}
-				else
+				else 
 					enemigo.setDireccion(Enemigo.DERECHA);
 				checkearColision();
 			}
@@ -55,6 +56,9 @@ public abstract class Comportamiento {
 				posicion.setX(posicion.obtenerX()+enemigo.obtenerVelocidad());
 				checkearColision();
 			}
+		}
+		else {
+			pudoMoverse = false;
 		}
 		return pudoMoverse;
 	}
@@ -82,6 +86,9 @@ public abstract class Comportamiento {
 				checkearColision();
 			}
 		}
+		else {
+			pudoMoverse = false;
+		}
 		return pudoMoverse;
 	}
 	protected boolean moverArriba() {
@@ -108,6 +115,9 @@ public abstract class Comportamiento {
 				checkearColision();
 			}
 		}
+		else {
+			pudoMoverse = false;
+		}
 		return pudoMoverse;
 	}
 	protected boolean moverAbajo() {
@@ -133,6 +143,9 @@ public abstract class Comportamiento {
 				posicion.setY(posicion.obtenerY()+enemigo.obtenerVelocidad());
 				checkearColision();
 			}
+		}
+		else {
+			pudoMoverse = false;
 		}
 		return pudoMoverse;
 	}

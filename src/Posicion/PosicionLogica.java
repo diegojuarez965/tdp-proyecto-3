@@ -13,11 +13,11 @@ public class PosicionLogica implements Posicion{
 		ancho = 40;
 	}
 	
-    public int obtenerX() {
+    public synchronized int obtenerX() {
     	return x;
     }
 	
-	public int obtenerY() {
+	public synchronized int obtenerY() {
 		return y;
 	}
 	

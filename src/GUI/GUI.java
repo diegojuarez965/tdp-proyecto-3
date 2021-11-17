@@ -230,7 +230,7 @@ public class GUI extends JFrame{
 		temp.setIcon(new ImageIcon(GUI.class.getResource(e.obtenerSkin())));
 		temp.setVisible(true);
 		contentPane.add(temp, 0);
-		contentPane.repaint();
+		temp.repaint();
 		mapeo.put(e, temp);
 	}
 	public void eliminarEntidadVisual(Entidad e) {

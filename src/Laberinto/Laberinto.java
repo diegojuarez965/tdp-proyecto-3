@@ -201,8 +201,9 @@ public class Laberinto {
 	}
 	
 	public void restarVida() {
-		for(Enemigo e : enemigos)
+		for(Enemigo e: enemigos)
 			juego.eliminarEntidadVisual(e);
+		enemigos.clear();
 		enemigos = new LinkedList<Enemigo>();
 		juego.eliminarEntidadVisual(personaje);
 		personaje = null;

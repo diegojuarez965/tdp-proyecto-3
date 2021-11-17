@@ -16,41 +16,162 @@ public class Huida extends Comportamiento{
 	public void moverSiguientePos() {
 		Laberinto lab = enemigo.obtenerLaberinto();
 		PersonajePrincipal personajeP = lab.obtenerPersonajePrincipal();
-		Posicion posPersonajeP, posEnemigo;
-		posPersonajeP = personajeP.obtenerPosicion();
-		posEnemigo = enemigo.obtenerPosicion();
+		Posicion posPersonajeP = personajeP.obtenerPosicion(), posEnemigo = enemigo.obtenerPosicion();
+		int xE = posEnemigo.obtenerX(), x = posPersonajeP.obtenerX();
+		int yE = posEnemigo.obtenerY(), y = posPersonajeP.obtenerY();
+		int difX = Math.abs(xE-x);
+		int difY = Math.abs(yE-y);
 		switch(enemigo.obtenerDireccion()) {
 			case Enemigo.ARRIBA:{
-				if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
-					moverAbajo();
-				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX())
-					moverDer();
-				else 
-					moverIzq();
+				if(difY>difX) {
+					if(x<xE) {
+						if(!moverDer())
+							if(!moverIzq())
+								moverArriba();
+					}
+					else
+						if(!moverIzq())
+							if(!moverDer()) 
+								moverArriba();
+				}
+				else {
+					if(y>=yE) {
+						if(!moverArriba()) {
+							if(x<xE) {
+								if(!moverDer())
+									moverIzq();
+							}
+							else
+								if(!moverIzq())
+									moverDer();
+						}
+					}
+					else 
+						if(x<xE) {
+							if(!moverDer())
+								if(!moverIzq())
+									moverArriba();
+						}
+						else
+							if(!moverIzq())
+								if(!moverDer())
+									moverArriba();
+				}
+				break;
 			}
 			case Enemigo.DERECHA:{
-				if(posPersonajeP.obtenerX() > posEnemigo.obtenerX()) 
-					moverIzq();
-				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
-					moverAbajo();
-				else 
-					moverArriba();
+				if(difX>difY) {
+					if(y<yE) {
+						if(!moverAbajo())
+							if(!moverDer())
+								moverArriba();
+					}
+					else
+						if(!moverArriba())
+							if(!moverDer())
+								moverAbajo();
+				}
+				else {
+					if(x>xE) {
+						if(y<yE) {
+							if(!moverAbajo())
+								if(!moverDer())
+									moverArriba();
+						}
+						else
+							if(!moverArriba())
+								if(!moverDer())
+									moverAbajo();
+					}
+					else {
+						if(!moverDer()) {
+							if(y<yE) {
+								if(!moverAbajo())
+									moverArriba();
+							}
+							else
+								if(!moverArriba())
+									moverAbajo();
+						}
+					}
+				}
+				break;
 			}
 			case Enemigo.ABAJO:{
-				if(posPersonajeP.obtenerY() > posEnemigo.obtenerY()) 
-					moverArriba();
-				else if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
-					moverDer();
-				else 
-					moverIzq();
+				if(difY>difX) {
+					if(x<xE) {
+						if(!moverDer())
+							if(!moverAbajo())
+								moverIzq();
+					}
+					else
+						if(!moverIzq())
+							if(!moverAbajo())
+								moverDer();
+				}
+				else {
+					if(y>yE) {
+						if(x<xE) {
+							if(!moverDer())
+								if(!moverAbajo())
+									moverIzq();						
+						}
+						else
+							if(!moverIzq())
+								if(!moverAbajo())
+									moverDer();
+					}
+					else {
+						if(!moverAbajo()) {
+							if(x<xE) {
+								if(!moverDer())
+									moverIzq();
+							}
+							else
+								if(!moverIzq())
+									moverDer();
+						}
+					}
+				}
+				break;
 			}
 			case Enemigo.IZQUIERDA:{
-				if(posPersonajeP.obtenerX() < posEnemigo.obtenerX()) 
-					moverDer();
-				else if(posPersonajeP.obtenerY() < posEnemigo.obtenerY()) 
-					moverAbajo();
-				else 
-					moverArriba();
+				if(difX>difY) {
+					if(y<yE) {
+						if(!moverAbajo())
+							if(!moverIzq())
+								moverArriba();
+					}
+					else
+						if(!moverArriba())
+							if(!moverIzq())
+								moverAbajo();
+				} 
+				else {
+					if(x<xE) {
+						if(y<yE) {
+							if(!moverAbajo())
+								if(!moverIzq())
+									moverArriba();
+						}
+						else
+							if(!moverArriba())
+								if(!moverIzq())
+									moverAbajo();
+					}
+					else {
+						if(!moverIzq()) {
+							if(y<yE) {
+								if(!moverAbajo())
+									moverArriba();
+							}
+							else
+								if(!moverArriba())
+									moverAbajo();
+						}
+					}
+				}
+				break;
 			}
 			
 		}

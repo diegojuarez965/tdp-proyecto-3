@@ -9,8 +9,10 @@ public abstract class Enemigo extends Personaje{
 	protected boolean vulnerable;
 	protected String skinHuida;
 	protected Comportamiento estrategia;
+	
 	public final static int ATAQUE = 0;
 	public final static int HUIDA = 1;
+	
 	public final static int ARRIBA = 0;
 	public final static int DERECHA = 1;
 	public final static int ABAJO = 2;

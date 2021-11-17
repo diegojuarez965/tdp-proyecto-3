@@ -13,6 +13,7 @@ import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 import Sonido.ReproductorSonido;
+import javafx.geometry.Pos;
 
 public class VisitorPersonajeP implements Visitor{
 	
@@ -77,6 +78,10 @@ public class VisitorPersonajeP implements Visitor{
                     @Override
                     public void run() {
                         for(Enemigo e: lab.obtenerEnemigos()) {
+                        	Posicion p = e.obtenerPosicion();
+                        	while(!(p.obtenerX()%2==0 && p.obtenerY()%2==0)) {
+                        		
+                        	}
                         	e.setEstrategia(Enemigo.ATAQUE);
                         	lab.actualizarEntidadVisual(e);
                         }
@@ -84,7 +89,7 @@ public class VisitorPersonajeP implements Visitor{
                         timerLootEspecial = null;
                     }
                 }, 
-                15000 
+                15000
         );
 	}
 
@@ -112,7 +117,7 @@ public class VisitorPersonajeP implements Visitor{
 	}
 
 	@Override
-	public synchronized boolean visitEnemigo(Enemigo e) {
+	public boolean visitEnemigo(Enemigo e) {
 		boolean puedeMoverse;
 		Laberinto lab = personaje.obtenerLaberinto();
 		if(e.esVulnerable()) {
