@@ -14,7 +14,6 @@ import Factory.FactoryTemas;
 import GUI.GUI;
 import Hilo.ControladorMovimiento;
 import Laberinto.Laberinto;
-import Loot.Explosivo;
 import Personajes.Enemigo;
 import Posicion.Posicion;
 import Ranking.Ranking;
@@ -178,7 +177,7 @@ public class Juego {
 		}
 		
 	}
-	public void finalizarJuego() {
+	public synchronized void finalizarJuego() {
 		pararMusica();
 		laberinto.finalizar();
 		gui.finalizarJuego();

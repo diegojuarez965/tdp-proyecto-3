@@ -11,7 +11,8 @@ public class ControladorMovimiento {
 	public static final int MOVER_IZQUIERDA = 4;
 
 	public static synchronized void moverPersonaje(Personaje p, int direccion) {
-		p.mover(direccion);
+		if(p!=null)
+	    	p.mover(direccion);
 	}
 
 }

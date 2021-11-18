@@ -3,6 +3,7 @@ package GUI;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
@@ -22,8 +23,6 @@ import Factory.Tema3;
 import Hilo.ControladorMovimiento;
 import Juego.Juego;
 import Posicion.Posicion;
-import Ranking.Ranking;
-import Laberinto.Laberinto;
 
 import javax.swing.JProgressBar;
 import javax.swing.JToggleButton;
@@ -55,7 +54,6 @@ public class GUI extends JFrame{
 	private JToggleButton botonMusica;
 	private JToggleButton botonEfectos;
 
-	
 	public GUI() {
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -263,13 +261,20 @@ public class GUI extends JFrame{
 	}
 	public void finalizarJuego() {
 		guardarRanking();
-		if(JOptionPane.showConfirmDialog(contentPane, "Obtuviste "+juego.obtenerPuntos()+" puntos\nEl ranking es:\n"+juego.obtenerRanking()+"Desea reiniciar el juego?", null, JOptionPane.YES_NO_OPTION)==0)
-			reiniciarJuego();
-		else {
-			this.setVisible(false);
-			this.dispose();
-			System.exit(0);
-		}
+		mensajeReiniciar();
+	}
+	private void mensajeReiniciar() {
+		EventQueue.invokeLater(new Runnable() {
+		        public void run(){
+		        	if(JOptionPane.showConfirmDialog(null, "Obtuviste "+juego.obtenerPuntos()+" puntos\nEl ranking es:\n"+juego.obtenerRanking()+"Desea reiniciar el juego?", null, JOptionPane.YES_NO_OPTION)==0)
+		        		reiniciarJuego();
+			        	else {
+			        		setVisible(false);
+			    			dispose();
+			    			System.exit(0);
+			        	}
+		        }
+		    });
 	}
 	private void pararMusica() {
 		juego.pararMusica();
