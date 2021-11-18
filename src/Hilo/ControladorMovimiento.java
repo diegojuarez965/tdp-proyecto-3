@@ -11,7 +11,7 @@ public class ControladorMovimiento {
 	public static final int MOVER_IZQUIERDA = 4;
 
 	public static synchronized void moverPersonaje(Personaje p, int direccion) {
-		if(p!=null)
+		if(p!=null && p.obtenerLaberinto().obtenerPersonajePrincipal()!=null)
 	    	p.mover(direccion);
 	}
 
