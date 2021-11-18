@@ -127,6 +127,7 @@ public class Juego {
 		else {
 			constructor.construirEnemigos();
 			constructor.construirPersonaje();
+			laberinto.iniciar();
 		}
 	}
 	public void sumarExplosivo() {

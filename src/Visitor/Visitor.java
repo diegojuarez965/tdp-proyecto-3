@@ -17,6 +17,6 @@ public interface Visitor {
 	public void visitLoot1(Loot1 l);
 	public void visitLoot2(Loot2 l);
 	public void visitPared(Pared p);
-	public boolean visitPersonajePrincipal(PersonajePrincipal p);
-	public boolean visitEnemigo(Enemigo e);
+	public void visitPersonajePrincipal(PersonajePrincipal p);
+	public void visitEnemigo(Enemigo e);
 }

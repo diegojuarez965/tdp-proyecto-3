@@ -110,15 +110,12 @@ public class VisitorPersonajeP implements Visitor{
 	}
 
 	@Override
-	public boolean visitPersonajePrincipal(PersonajePrincipal p) {
-		return false;
-		// TODO Auto-generated method stub
+	public void visitPersonajePrincipal(PersonajePrincipal p) {
 		
 	}
 
 	@Override
-	public boolean visitEnemigo(Enemigo e) {
-		boolean puedeMoverse;
+	public void visitEnemigo(Enemigo e) {
 		Laberinto lab = personaje.obtenerLaberinto();
 		if(e.esVulnerable()) {
 			ReproductorSonido.obtenerInstancia().reproducirMuerteEnemigo();
@@ -126,15 +123,11 @@ public class VisitorPersonajeP implements Visitor{
 			posEnemigo.setX(posEnemigo.obtenerAncho()*9);
 			posEnemigo.setY(posEnemigo.obtenerAlto()*9);
 			lab.actualizarEntidadVisual(e);
-			puedeMoverse = true;
 		}
 		else {
 			ReproductorSonido.obtenerInstancia().reproducirMuertePersonaje();
 			lab.restarVida();
-			puedeMoverse = false;
 		}
-		
-		return puedeMoverse;
 	}
 
 	@Override

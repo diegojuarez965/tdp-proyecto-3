@@ -48,16 +48,12 @@ public class VisitorLoot2 implements Visitor{
 	}
 
 	@Override
-	public boolean visitPersonajePrincipal(PersonajePrincipal p) {
-		return false;
-		// TODO Auto-generated method stub
+	public void visitPersonajePrincipal(PersonajePrincipal p) {
 		
 	}
 
 	@Override
-	public boolean visitEnemigo(Enemigo e) {
-		return false;
-		// TODO Auto-generated method stub
+	public void visitEnemigo(Enemigo e) {
 		
 	}
 

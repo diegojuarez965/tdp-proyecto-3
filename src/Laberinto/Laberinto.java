@@ -210,6 +210,8 @@ public class Laberinto {
 	}
 	
 	public void restarVida() {
+		controladorEnemigos.parar();
+		controladorEnemigos = new Hilo(this);
 		for(Enemigo e: enemigos)
 			juego.eliminarEntidadVisual(e);
 		enemigos.clear();

@@ -18,11 +18,11 @@ public class AtaqueEnemigo4 extends Ataque {
 		int personajeY = posPersonaje.obtenerY();
 		int enemigoX = posEnemigo.obtenerX();
 		int enemigoY = posEnemigo.obtenerY();
-		double distancia = Math.sqrt(Math.pow(enemigoX - personajeX, 2) + Math.pow(enemigoY - posPersonaje.obtenerY(), 2));
-		if(distancia/40 <= 4)
-			moverHacia(personajeX, personajeY);
+		double distancia = Math.sqrt(Math.pow(enemigoX - personajeX, 2) + Math.pow(enemigoY - personajeY, 2));
+		if(distancia/posPersonaje.obtenerAncho() <= 4)
+			moverHacia(posPersonaje.obtenerAncho(), 18*posPersonaje.obtenerAncho());
 		else
-			moverHacia(0, 18);
+			moverHacia(personajeX, personajeY);
 	}
 
 }

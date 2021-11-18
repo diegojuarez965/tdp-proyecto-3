@@ -1,5 +1,7 @@
 package Hilo;
 
+import java.util.LinkedList;
+
 import Laberinto.Laberinto;
 import Personajes.Enemigo;
 
@@ -14,6 +16,24 @@ public class Hilo extends Thread{
 	}
 	
 	public void run() {
+		LinkedList<Enemigo> enemigos = new LinkedList<Enemigo>();
+		int i;
+		for(Enemigo e : lab.obtenerEnemigos()) {
+			enemigos.add(e);
+			i = 0;
+			while(!parar && i<50) {
+				for(Enemigo enemigoLista : enemigos) {
+					ControladorMovimiento.moverPersonaje(enemigoLista, ControladorMovimiento.MOVER);
+					lab.actualizarEntidadVisual(enemigoLista);
+				}
+				try {
+					Thread.sleep(25);
+				} catch (InterruptedException e1) {e1.printStackTrace();}
+				i++;
+			}
+			if(parar)
+				break;
+		}
 		while(!parar) {
 			try {
 				Thread.sleep(25);
