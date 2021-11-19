@@ -199,7 +199,9 @@ public class Laberinto {
 	}
 	
 	public void finalizar() {
-		controladorEnemigos.parar();
+		if(controladorEnemigos!=null)
+			controladorEnemigos.parar();
+		controladorEnemigos = null;
 		for(int i = 0; i<20; i++)
 			for(int j = 0; j<20; j++) 
 				if(entidades[i][j]!=null) 

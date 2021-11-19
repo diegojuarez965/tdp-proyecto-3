@@ -11,6 +11,7 @@ import Personajes.PersonajePrincipal;
 
 public class VisitorLoot1 implements Visitor{
 	
+	@SuppressWarnings("unused")
 	private Loot1 loot1;
 	
 	public VisitorLoot1(Loot1 l1) {

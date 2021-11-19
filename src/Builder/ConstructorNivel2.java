@@ -1,7 +1,5 @@
 package Builder;
 
-import Comportamiento.Ataque;
-import Estado.Normal;
 import Factory.FactoryTemas;
 import Juego.Juego;
 import Laberinto.Laberinto;

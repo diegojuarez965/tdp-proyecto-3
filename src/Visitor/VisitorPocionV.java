@@ -11,6 +11,7 @@ import Personajes.PersonajePrincipal;
 
 public class VisitorPocionV implements Visitor{
 	
+	@SuppressWarnings("unused")
 	private PocionVelocidad pocionVelocidad;
 	
 	public VisitorPocionV(PocionVelocidad pV) {

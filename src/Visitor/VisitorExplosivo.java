@@ -11,6 +11,7 @@ import Personajes.PersonajePrincipal;
 
 public class VisitorExplosivo implements Visitor{
 
+	@SuppressWarnings("unused")
 	private Explosivo explosivo;
 	
 	public VisitorExplosivo(Explosivo ex) {

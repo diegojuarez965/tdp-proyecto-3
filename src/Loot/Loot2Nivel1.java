@@ -1,7 +1,6 @@
 package Loot;
 
 import Posicion.Posicion;
-import Visitor.Visitor;
 
 public class Loot2Nivel1 extends Loot2 {
 

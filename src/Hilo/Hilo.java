@@ -25,10 +25,13 @@ public class Hilo extends Thread{
 				for(Enemigo enemigoLista : enemigos) {
 					ControladorMovimiento.moverPersonaje(enemigoLista, ControladorMovimiento.MOVER);
 					lab.actualizarEntidadVisual(enemigoLista);
+					if(parar)
+						break;
 				}
-				try {
-					Thread.sleep(25);
-				} catch (InterruptedException e1) {e1.printStackTrace();}
+				if(!parar)
+					try {
+						Thread.sleep(25);
+					} catch (InterruptedException e1) {e1.printStackTrace();}
 				i++;
 			}
 			if(parar)
@@ -41,11 +44,16 @@ public class Hilo extends Thread{
 			for(Enemigo e : lab.obtenerEnemigos()) {
 				ControladorMovimiento.moverPersonaje(e, ControladorMovimiento.MOVER);
 				lab.actualizarEntidadVisual(e);
+				if(parar)
+					break;
 			}	
 		}
 	}
 	public void parar() {
 		parar = true;
+		try {
+			finalize();
+		} catch (Throwable e) {e.printStackTrace();}
 	}
 
 }

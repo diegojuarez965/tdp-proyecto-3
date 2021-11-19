@@ -4,6 +4,7 @@ import Personajes.PersonajePrincipal;
 
 public abstract class Estado {
 	
+	@SuppressWarnings("unused")
 	private PersonajePrincipal personaje;
 	private String skin;
 	protected int velocidad;
