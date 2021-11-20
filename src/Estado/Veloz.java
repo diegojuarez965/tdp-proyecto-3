@@ -9,5 +9,4 @@ public class Veloz extends Estado {
 		velocidad = 10;
 	}
 
-
 }

@@ -8,4 +8,5 @@ public class Loot2Nivel1 extends Loot2 {
 		super(p, skin);
 		puntaje = 100;
 	}
+
 }

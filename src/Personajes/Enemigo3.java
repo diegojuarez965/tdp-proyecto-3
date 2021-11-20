@@ -4,25 +4,24 @@ import Comportamiento.AtaqueEnemigo3;
 import Comportamiento.Huida;
 import Posicion.Posicion;
 
-public class Enemigo3 extends Enemigo{
+public class Enemigo3 extends Enemigo {
 
 	public Enemigo3(Posicion p, String skin, String skinHuida) {
 		super(p, skin, skinHuida);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void setEstrategia(int comportamiento) {
 		switch (comportamiento) {
-		case ATAQUE:{
+		case ATAQUE: {
 			estrategia = new AtaqueEnemigo3(this, skin);
 			break;
 		}
-		case HUIDA:{
+		case HUIDA: {
 			estrategia = new Huida(this, skinHuida);
 			break;
 		}
-	}
+		}
 	}
 
 }

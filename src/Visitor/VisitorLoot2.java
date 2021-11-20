@@ -9,11 +9,11 @@ import Pared.Pared;
 import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 
-public class VisitorLoot2 implements Visitor{
+public class VisitorLoot2 implements Visitor {
 
 	@SuppressWarnings("unused")
 	private Loot2 loot2;
-	
+
 	public VisitorLoot2(Loot2 l2) {
 		loot2 = l2;
 	}
@@ -21,47 +21,47 @@ public class VisitorLoot2 implements Visitor{
 	@Override
 	public void visitPocionVelocidad(PocionVelocidad pV) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitExplosivo(Explosivo e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitLootEspecial1(LootEspecial1 l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitLoot1(Loot1 l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitLoot2(Loot2 l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitPersonajePrincipal(PersonajePrincipal p) {
-		
+
 	}
 
 	@Override
 	public void visitEnemigo(Enemigo e) {
-		
+
 	}
 
 	@Override
 	public void visitPared(Pared p) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 }

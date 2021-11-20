@@ -9,10 +9,10 @@ import Pared.Pared;
 import Personajes.Enemigo;
 import Personajes.PersonajePrincipal;
 
-public class VisitorPared implements Visitor{
+public class VisitorPared implements Visitor {
 
 	public Pared pared;
-	
+
 	public VisitorPared(Pared p) {
 		pared = p;
 	}
@@ -20,46 +20,47 @@ public class VisitorPared implements Visitor{
 	@Override
 	public void visitPocionVelocidad(PocionVelocidad pV) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitExplosivo(Explosivo e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitLootEspecial1(LootEspecial1 l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitLoot1(Loot1 l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitLoot2(Loot2 l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void visitPersonajePrincipal(PersonajePrincipal p) {
-		
+
 	}
 
 	@Override
 	public void visitEnemigo(Enemigo e) {
-		
+
 	}
 
 	@Override
 	public void visitPared(Pared p) {
 		// TODO Auto-generated method stub
-		
+
 	}
+	
 }

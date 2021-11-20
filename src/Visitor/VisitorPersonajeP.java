@@ -14,20 +14,19 @@ import Personajes.PersonajePrincipal;
 import Posicion.Posicion;
 import Sonido.ReproductorSonido;
 
+public class VisitorPersonajeP implements Visitor {
 
-public class VisitorPersonajeP implements Visitor{
-	
 	private PersonajePrincipal personaje;
 	private Timer timerLootEspecial = null;
 	private Timer timerPocionVelocidad = null;
-	
+
 	public VisitorPersonajeP(PersonajePrincipal p) {
 		personaje = p;
 	}
 
 	@Override
 	public void visitPocionVelocidad(PocionVelocidad pV) {
-		if(timerPocionVelocidad!=null)
+		if (timerPocionVelocidad != null)
 			timerPocionVelocidad.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(pV);
@@ -37,18 +36,15 @@ public class VisitorPersonajeP implements Visitor{
 		p.setEstado(PersonajePrincipal.VELOZ);
 		lab.actualizarEntidadVisual(p);
 		timerPocionVelocidad = new Timer();
-		timerPocionVelocidad.schedule( 
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        p.setEstado(PersonajePrincipal.NORMAL);
-                        lab.actualizarEntidadVisual(p);
-                        timerPocionVelocidad.cancel();
-                        timerPocionVelocidad=null;
-                    }
-                }, 
-                10000 
-        );
+		timerPocionVelocidad.schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				p.setEstado(PersonajePrincipal.NORMAL);
+				lab.actualizarEntidadVisual(p);
+				timerPocionVelocidad.cancel();
+				timerPocionVelocidad = null;
+			}
+		}, 10000);
 	}
 
 	@Override
@@ -62,35 +58,32 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitLootEspecial1(LootEspecial1 l) {
-		if(timerLootEspecial!=null)
+		if (timerLootEspecial != null)
 			timerLootEspecial.cancel();
 		Laberinto lab = personaje.obtenerLaberinto();
 		lab.eliminarLoot(l);
 		lab.sumarPuntos(l.obtenerPuntaje());
 		ReproductorSonido.obtenerInstancia().reproducirLootEspecial1();
-		for(Enemigo e : lab.obtenerEnemigos()) {
+		for (Enemigo e : lab.obtenerEnemigos()) {
 			e.setEstrategia(Enemigo.HUIDA);
 			lab.actualizarEntidadVisual(e);
 		}
 		timerLootEspecial = new Timer();
-		timerLootEspecial.schedule( 
-                new java.util.TimerTask() {
-                    @Override
-                    public void run() {
-                        for(Enemigo e: lab.obtenerEnemigos()) {
-                        	Posicion p = e.obtenerPosicion();
-                        	while(!(p.obtenerX()%2==0 && p.obtenerY()%2==0)) {
-                        		
-                        	}
-                        	e.setEstrategia(Enemigo.ATAQUE);
-                        	lab.actualizarEntidadVisual(e);
-                        }
-                        timerLootEspecial.cancel();
-                        timerLootEspecial = null;
-                    }
-                }, 
-                15000
-        );
+		timerLootEspecial.schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				for (Enemigo e : lab.obtenerEnemigos()) {
+					Posicion p = e.obtenerPosicion();
+					while (!(p.obtenerX() % 2 == 0 && p.obtenerY() % 2 == 0)) {
+
+					}
+					e.setEstrategia(Enemigo.ATAQUE);
+					lab.actualizarEntidadVisual(e);
+				}
+				timerLootEspecial.cancel();
+				timerLootEspecial = null;
+			}
+		}, 15000);
 	}
 
 	@Override
@@ -111,20 +104,19 @@ public class VisitorPersonajeP implements Visitor{
 
 	@Override
 	public void visitPersonajePrincipal(PersonajePrincipal p) {
-		
+
 	}
 
 	@Override
 	public void visitEnemigo(Enemigo e) {
 		Laberinto lab = personaje.obtenerLaberinto();
-		if(e.esVulnerable()) {
+		if (e.esVulnerable()) {
 			ReproductorSonido.obtenerInstancia().reproducirMuerteEnemigo();
 			Posicion posEnemigo = e.obtenerPosicion();
-			posEnemigo.setX(posEnemigo.obtenerAncho()*9);
-			posEnemigo.setY(posEnemigo.obtenerAlto()*9);
+			posEnemigo.setX(posEnemigo.obtenerAncho() * 9);
+			posEnemigo.setY(posEnemigo.obtenerAlto() * 9);
 			lab.actualizarEntidadVisual(e);
-		}
-		else {
+		} else {
 			ReproductorSonido.obtenerInstancia().reproducirMuertePersonaje();
 			lab.restarVida();
 		}
@@ -134,5 +126,5 @@ public class VisitorPersonajeP implements Visitor{
 	public void visitPared(Pared p) {
 		personaje.setVelocidad(0);
 	}
-	
+
 }

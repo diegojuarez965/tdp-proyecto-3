@@ -7,7 +7,6 @@ public class AtaqueEnemigo4 extends Ataque {
 
 	public AtaqueEnemigo4(Enemigo enemigo, String skin) {
 		super(enemigo, skin);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -19,8 +18,8 @@ public class AtaqueEnemigo4 extends Ataque {
 		int enemigoX = posEnemigo.obtenerX();
 		int enemigoY = posEnemigo.obtenerY();
 		double distancia = Math.sqrt(Math.pow(enemigoX - personajeX, 2) + Math.pow(enemigoY - personajeY, 2));
-		if(distancia/posPersonaje.obtenerAncho() <= 4)
-			moverHacia(posPersonaje.obtenerAncho(), 18*posPersonaje.obtenerAncho());
+		if (distancia / posPersonaje.obtenerAncho() <= 4)
+			moverHacia(posPersonaje.obtenerAncho(), 18 * posPersonaje.obtenerAncho());
 		else
 			moverHacia(personajeX, personajeY);
 	}

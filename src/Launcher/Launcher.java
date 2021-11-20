@@ -5,9 +5,8 @@ import Juego.Juego;
 import Sonido.ReproductorSonido;
 
 public class Launcher {
-	
-	
-	public static void main(String []args) {
+
+	public static void main(String[] args) {
 		GUI gui = new GUI();
 		Juego juego = new Juego();
 		juego.setGUI(gui);
@@ -18,4 +17,5 @@ public class Launcher {
 		juego.pasarNivel();
 		ReproductorSonido.obtenerInstancia().setJuego(juego);
 	}
+
 }

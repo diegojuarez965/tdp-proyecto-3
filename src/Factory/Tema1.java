@@ -28,8 +28,8 @@ import Visitor.VisitorPared;
 import Visitor.VisitorPersonajeP;
 import Visitor.VisitorPocionV;
 
-public class Tema1 implements FactoryTemas{
-	
+public class Tema1 implements FactoryTemas {
+
 	@Override
 	public Enemigo1 nuevoEnemigo1() {
 		Enemigo1 enemigo;
@@ -90,7 +90,7 @@ public class Tema1 implements FactoryTemas{
 		Loot1 loot1;
 		String skinLoot1 = "/images/arabePacDot.png";
 		Posicion p = new PosicionLogica(0, 0);
-		loot1 = new Loot1(p,skinLoot1);
+		loot1 = new Loot1(p, skinLoot1);
 		loot1.setVisitor(new VisitorLoot1(loot1));
 		return loot1;
 	}
@@ -100,25 +100,27 @@ public class Tema1 implements FactoryTemas{
 		Loot2 loot2;
 		String skinLoot2 = "/images/arabeFruit1.png";
 		Posicion p = new PosicionLogica(0, 0);
-		loot2 = new Loot2Nivel1(p,skinLoot2);
+		loot2 = new Loot2Nivel1(p, skinLoot2);
 		loot2.setVisitor(new VisitorLoot2(loot2));
 		return loot2;
 	}
+
 	@Override
 	public Loot2 nuevoLoot2Nivel2() {
 		Loot2 loot2;
 		String skinLoot2 = "/images/arabeFruit2.png";
 		Posicion p = new PosicionLogica(0, 0);
-		loot2 = new Loot2Nivel2(p,skinLoot2);
+		loot2 = new Loot2Nivel2(p, skinLoot2);
 		loot2.setVisitor(new VisitorLoot2(loot2));
 		return loot2;
 	}
+
 	@Override
 	public Loot2 nuevoLoot2Nivel3() {
 		Loot2 loot2;
 		String skinLoot2 = "/images/arabeFruit3.png";
 		Posicion p = new PosicionLogica(0, 0);
-		loot2 = new Loot2Nivel3(p,skinLoot2);
+		loot2 = new Loot2Nivel3(p, skinLoot2);
 		loot2.setVisitor(new VisitorLoot2(loot2));
 		return loot2;
 	}
@@ -152,17 +154,17 @@ public class Tema1 implements FactoryTemas{
 		ex.setVisitor(new VisitorExplosivo(ex));
 		return ex;
 	}
-	
+
 	@Override
 	public Pared nuevoPared() {
 		Pared pared;
 		String skinPared = "/images/arabePared.png";
 		Posicion p = new PosicionLogica(0, 0);
-		pared = new Pared(p,skinPared);
+		pared = new Pared(p, skinPared);
 		pared.setVisitor(new VisitorPared(pared));
 		return pared;
 	}
-	
+
 	@Override
 	public Musica nuevoMusica() {
 		String musica = "/Musica/arabeMusica.wav";
@@ -179,10 +181,10 @@ public class Tema1 implements FactoryTemas{
 		String efecto = null;
 		Random r = new Random();
 		int num = r.nextInt(28);
-		efecto = "/Musica/arabeLoot1("+num+").wav";
+		efecto = "/Musica/arabeLoot1(" + num + ").wav";
 		return efecto;
 	}
-	
+
 	@Override
 	public String efectoPower() {
 		return "/Musica/arabePower.wav";
@@ -217,7 +219,7 @@ public class Tema1 implements FactoryTemas{
 	public String efectoMuertePersonaje() {
 		return "/Musica/arabeMuertePersonaje.wav";
 	}
-	
+
 	@Override
 	public String efectoMuerteEnemigo() {
 		return "/Musica/arabeMuerteEnemigo.wav";

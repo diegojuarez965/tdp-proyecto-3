@@ -3,7 +3,7 @@ package Hilo;
 import Personajes.Personaje;
 
 public class ControladorMovimiento {
-	
+
 	public static final int MOVER = 0;
 	public static final int MOVER_ABAJO = 1;
 	public static final int MOVER_ARRIBA = 2;
@@ -11,8 +11,8 @@ public class ControladorMovimiento {
 	public static final int MOVER_IZQUIERDA = 4;
 
 	public static synchronized void moverPersonaje(Personaje p, int direccion) {
-		if(p!=null && p.obtenerLaberinto().obtenerPersonajePrincipal()!=null)
-	    	p.mover(direccion);
+		if (p != null && p.obtenerLaberinto().obtenerPersonajePrincipal() != null)
+			p.mover(direccion);
 	}
 
 }

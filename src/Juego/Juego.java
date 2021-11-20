@@ -22,7 +22,7 @@ import Sonido.Musica;
 import Sonido.ReproductorSonido;
 
 public class Juego {
-	
+
 	private GUI gui;
 	private FactoryTemas tema;
 	private Director director;
@@ -35,7 +35,7 @@ public class Juego {
 	private HashMap<Timer, Entidad> TimersExplosivos;
 	private Ranking ranking;
 	private String jugador;
-	
+
 	public Juego() {
 		nivel = 1;
 		puntos = 0;
@@ -46,41 +46,61 @@ public class Juego {
 		efectos = new Efectos();
 		ranking = new Ranking();
 	}
+
+	public FactoryTemas obtenerTema() {
+		return tema;
+	}
+
+	public int obtenerPuntos() {
+		return puntos;
+	}
+
+	public String obtenerRanking() {
+		return ranking.toString();
+	}
+
 	public void setGUI(GUI g) {
 		gui = g;
 	}
+
 	public void setTema(FactoryTemas tema) {
 		this.tema = tema;
 	}
+
 	public void setMusica(Musica sonido) {
-		musica=sonido;
+		musica = sonido;
 	}
+
 	public void mover(int direccion) {
 		ControladorMovimiento.moverPersonaje(laberinto.obtenerPersonajePrincipal(), direccion);
 	}
+
 	public void actualizarEntidadVisual(Entidad e) {
 		gui.actualizarEntidadVisual(e);
 	}
+
 	public void mostrarEntidadVisual(Entidad e) {
 		gui.mostrarEntidadVisual(e);
 	}
+
 	public void eliminarEntidadVisual(Entidad e) {
 		gui.eliminarEntidadVisual(e);
 	}
+
 	public void pasarNivel() {
-		for(Entry<Timer, Entidad> e : TimersExplosivos.entrySet()) {
+		for (Entry<Timer, Entidad> e : TimersExplosivos.entrySet()) {
 			e.getKey().cancel();
 			gui.eliminarEntidadVisual(e.getValue());
 		}
 		TimersExplosivos = new HashMap<Timer, Entidad>();
-		if(nivel>3)
+		if (nivel > 3)
 			finalizarJuego();
 		else {
-			if(nivel==1)
+			if (nivel == 1)
 				constructor = new ConstructorNivel1(tema);
-			else if(nivel==2)
+			else if (nivel == 2)
 				constructor = new ConstructorNivel2(tema);
-			else if(nivel==3)
+			else if (nivel == 3)
 				constructor = new ConstructorNivel3(tema);
 			nivel++;
 			director = new Director(constructor);
@@ -91,37 +111,38 @@ public class Juego {
 			gui.setMaxProgreso(laberinto.obtenerLootRestante());
 		}
 	}
+
 	public void reproducirMusica() {
 		musica.play();
 	}
+
 	public void reproducirSonido(String efecto) {
-		if(efectosActivados)
+		if (efectosActivados)
 			efectos.playEfecto(efecto);
 	}
+
 	public void pararMusica() {
 		musica.stop();
 	}
+
 	public void pararEfectos() {
 		efectosActivados = false;
 	}
+
 	public void activarEfectos() {
 		efectosActivados = true;
 	}
-	public FactoryTemas obtenerTema() {
-		return tema;
-	}
-	public int obtenerPuntos() {
-		return puntos;
-	}
+
 	public void sumarPuntos(int puntos) {
 		this.puntos += puntos;
 		gui.setPuntaje(this.puntos);
 		gui.incrementarProgreso();
 	}
+
 	public void restarVida() {
 		vidas--;
 		gui.setVidas(vidas);
-		if(vidas==0)
+		if (vidas == 0)
 			finalizarJuego();
 		else {
 			constructor.construirEnemigos();
@@ -129,16 +150,19 @@ public class Juego {
 			laberinto.iniciar();
 		}
 	}
+
 	public void sumarExplosivo() {
 		explosivos++;
 		gui.setExplosivos(explosivos);
 	}
+
 	public void restarExplosivo() {
 		explosivos--;
 		gui.setExplosivos(explosivos);
 	}
+
 	public void ponerExplosivo() {
-		if(explosivos>0) {
+		if (explosivos > 0) {
 			restarExplosivo();
 			Entidad explosivo = tema.nuevoExplosivo();
 			Posicion p = explosivo.obtenerPosicion();
@@ -148,40 +172,39 @@ public class Juego {
 			gui.mostrarEntidadVisual(explosivo);
 			p.setAncho(200);
 			p.setAlto(200);
-			p.setX(p.obtenerX()-p.obtenerAncho()/2);
-			p.setY(p.obtenerY()-p.obtenerAlto()/2);
+			p.setX(p.obtenerX() - p.obtenerAncho() / 2);
+			p.setY(p.obtenerY() - p.obtenerAlto() / 2);
 			ReproductorSonido.obtenerInstancia().reproducirExplosivoInicio();
 			Timer t = new Timer();
 			TimersExplosivos.put(t, explosivo);
-	        t.schedule( 
-	                new java.util.TimerTask() {
-	                    @Override
-	                    public void run() {
-	                    	
-	                        for(Enemigo e: laberinto.obtenerEnemigos()) {
-	                        	Posicion pE = e.obtenerPosicion();
-	                        	if(pE.colisionan(p)) {
-	                        		pE.setX(pE.obtenerAncho()*9);
-	                        		pE.setY(pE.obtenerAlto()*9);
-	                        		gui.actualizarEntidadVisual(e);
-	                        	}
-	                        }
-	                        ReproductorSonido.obtenerInstancia().reproducirExplosivoFin();
-	                        gui.eliminarEntidadVisual(explosivo);
-	                        TimersExplosivos.remove(t);
-	                        t.cancel();
-	                    }
-	                }, 
-	                4000 
-	        );
+			t.schedule(new java.util.TimerTask() {
+				@Override
+				public void run() {
+
+					for (Enemigo e : laberinto.obtenerEnemigos()) {
+						Posicion pE = e.obtenerPosicion();
+						if (pE.colisionan(p)) {
+							pE.setX(pE.obtenerAncho() * 9);
+							pE.setY(pE.obtenerAlto() * 9);
+							gui.actualizarEntidadVisual(e);
+						}
+					}
+					ReproductorSonido.obtenerInstancia().reproducirExplosivoFin();
+					gui.eliminarEntidadVisual(explosivo);
+					TimersExplosivos.remove(t);
+					t.cancel();
+				}
+			}, 4000);
 		}
-		
+
 	}
+
 	public synchronized void finalizarJuego() {
 		pararMusica();
 		laberinto.finalizar();
 		gui.finalizarJuego();
 	}
+
 	public void reiniciarJuego() {
 		nivel = 1;
 		puntos = 0;
@@ -190,17 +213,18 @@ public class Juego {
 		laberinto.finalizar();
 		pasarNivel();
 	}
+
 	public void cargarRanking() {
-	    ranking.cargarRanking();
+		ranking.cargarRanking();
 	}
+
 	public void guardarRanking() {
 		ranking.agregarJugador(jugador, puntos);
 		ranking.guardarRanking();
 	}
+
 	public void agregarJugador(String nombre) {
 		jugador = nombre;
 	}
-	public String obtenerRanking() {
-		return ranking.toString();
-	}
+
 }
