@@ -1,5 +1,7 @@
 package Ranking;
 
+import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,22 +12,37 @@ import java.io.ObjectOutputStream;
 public class Ranking {
 
 	private TopPlayers jugadores;
+	private File CONFIG_HOME;
+	
+	public Ranking() {
+	    String home = System.getenv("APPDATA");
+	    if (home!=null && !home.isEmpty()) {
+	        home = System.getProperty("user.home");
+	    }
+	    CONFIG_HOME = new File(home, "Man-Pac").getAbsoluteFile();
+	    CONFIG_HOME.mkdir();
+	}
 
 	public void cargarRanking() {
 		try {
-			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("ranking.proyecto"));
+			File r = new File(CONFIG_HOME.getAbsolutePath()+"/ranking.proyecto");
+			r.getParentFile().mkdirs();
+			r.createNewFile();
+			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(r));
 			jugadores = (TopPlayers) objectInputStream.readObject();
 			objectInputStream.close();
-		} catch (ClassNotFoundException | IOException e) {
+		} 
+		catch(EOFException e) {
+			jugadores = new TopPlayers();
+		}
+		catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
-		if (jugadores == null)
-			jugadores = new TopPlayers();
 	}
 
 	public void guardarRanking() {
 		try {
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("ranking.proyecto"));
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(CONFIG_HOME.getAbsolutePath()+"/ranking.proyecto"));
 			objectOutputStream.writeObject(jugadores);
 			objectOutputStream.flush();
 			objectOutputStream.close();

@@ -173,7 +173,7 @@ public class Tema1 implements FactoryTemas {
 	}
 
 	public String toString() {
-		return "Tema Arabe";
+		return "Arab theme";
 	}
 
 	@Override

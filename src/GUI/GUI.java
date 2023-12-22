@@ -74,31 +74,31 @@ public class GUI extends JFrame {
 		panelInformacion.setBounds(800, 0, 184, 800);
 		panelInformacion.setLayout(null);
 
-		labelVidas = new JLabel("Vidas: 3");
+		labelVidas = new JLabel("Lives: 3");
 		labelVidas.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelVidas.setForeground(Color.WHITE);
 		labelVidas.setBounds(10, 36, 164, 14);
 		panelInformacion.add(labelVidas);
 
-		labelExplosivos = new JLabel("Explosivos: 0");
+		labelExplosivos = new JLabel("Explosives: 0");
 		labelExplosivos.setForeground(Color.WHITE);
 		labelExplosivos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		labelExplosivos.setBounds(10, 61, 164, 14);
+		labelExplosivos.setBounds(10, 61, 164, 20);
 		panelInformacion.add(labelExplosivos);
 
-		labelPuntos = new JLabel("Puntos: 0");
+		labelPuntos = new JLabel("Points: 0");
 		labelPuntos.setForeground(Color.WHITE);
 		labelPuntos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelPuntos.setBounds(10, 11, 164, 14);
 		panelInformacion.add(labelPuntos);
 
 		barraProgreso = new JProgressBar();
-		barraProgreso.setToolTipText("Progreso");
+		barraProgreso.setToolTipText("Progress");
 		barraProgreso.setForeground(Color.GREEN);
 		barraProgreso.setBounds(10, 151, 164, 14);
 		panelInformacion.add(barraProgreso);
 
-		JLabel lblNewLabel = new JLabel("Progreso");
+		JLabel lblNewLabel = new JLabel("Progress");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(68, 137, 60, 14);
 		panelInformacion.add(lblNewLabel);
@@ -122,10 +122,10 @@ public class GUI extends JFrame {
 		botonMusica.setContentAreaFilled(false);
 		botonMusica.setOpaque(true);
 
-		JLabel lblNewLabel_1 = new JLabel("Musica ON/OFF");
+		JLabel lblNewLabel_1 = new JLabel("Music ON/OFF");
 		panelInformacion.add(lblNewLabel_1);
 		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setBounds(56, 296, 87, 14);
+		lblNewLabel_1.setBounds(53, 296, 100, 14);
 
 		botonEfectos = new JToggleButton("");
 		panelInformacion.add(botonEfectos);
@@ -146,36 +146,36 @@ public class GUI extends JFrame {
 		botonEfectos.setContentAreaFilled(false);
 		botonEfectos.setOpaque(true);
 
-		JLabel lblNewLabel_2 = new JLabel("Efectos ON/OFF");
+		JLabel lblNewLabel_2 = new JLabel("Effects ON/OFF");
 		panelInformacion.add(lblNewLabel_2);
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(56, 377, 87, 14);
+		lblNewLabel_2.setBounds(53, 376, 110, 14);
 
-		JLabel lblNewLabel_3 = new JLabel("Mover Izquierda: \u2190");
+		JLabel lblNewLabel_3 = new JLabel("Move Left: \u2190");
 		lblNewLabel_3.setToolTipText("");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setBounds(10, 503, 98, 14);
 		panelInformacion.add(lblNewLabel_3);
 
-		JLabel lblNewLabel_3_1 = new JLabel("Mover Derecha: \u2192");
+		JLabel lblNewLabel_3_1 = new JLabel("Move Right: \u2192");
 		lblNewLabel_3_1.setToolTipText("");
 		lblNewLabel_3_1.setForeground(Color.WHITE);
 		lblNewLabel_3_1.setBounds(10, 478, 98, 14);
 		panelInformacion.add(lblNewLabel_3_1);
 
-		JLabel lblNewLabel_3_1_1 = new JLabel("Mover Arriba: \u2191");
+		JLabel lblNewLabel_3_1_1 = new JLabel("Move Up: \u2191");
 		lblNewLabel_3_1_1.setToolTipText("");
 		lblNewLabel_3_1_1.setForeground(Color.WHITE);
 		lblNewLabel_3_1_1.setBounds(10, 427, 98, 14);
 		panelInformacion.add(lblNewLabel_3_1_1);
 
-		JLabel lblNewLabel_3_1_1_1 = new JLabel("Mover Abajo: \u2193");
+		JLabel lblNewLabel_3_1_1_1 = new JLabel("Move Down: \u2193");
 		lblNewLabel_3_1_1_1.setToolTipText("");
 		lblNewLabel_3_1_1_1.setForeground(Color.WHITE);
 		lblNewLabel_3_1_1_1.setBounds(10, 453, 98, 14);
 		panelInformacion.add(lblNewLabel_3_1_1_1);
 
-		JLabel lblNewLabel_3_2 = new JLabel("Usar Explosivo: Barra Espaciadora");
+		JLabel lblNewLabel_3_2 = new JLabel("Place Explosive: Spacebar");
 		lblNewLabel_3_2.setToolTipText("");
 		lblNewLabel_3_2.setForeground(Color.WHITE);
 		lblNewLabel_3_2.setBounds(10, 528, 186, 14);
@@ -224,10 +224,10 @@ public class GUI extends JFrame {
 	}
 
 	public void mostrarMensajeNombre() {
-		String nombreJugador = (String) JOptionPane.showInputDialog(contentPane, "Ingrese su nombre", "Ingresar Nombre",
+		String nombreJugador = (String) JOptionPane.showInputDialog(contentPane, "Enter a nickname", "Nickname",
 				JOptionPane.WARNING_MESSAGE, null, null, null);
 		if (nombreJugador == null || nombreJugador.isEmpty() || nombreJugador.trim().isEmpty())
-			nombreJugador = "Anonimo";
+			nombreJugador = "Anonymous";
 		juego.agregarJugador(nombreJugador);
 	}
 
@@ -235,8 +235,8 @@ public class GUI extends JFrame {
 		FactoryTemas[] temas = { new Tema1(), new Tema2(), new Tema3() };
 		juego.setTema(temas[1]);
 		juego.setMusica(temas[1].nuevoMusica());
-		FactoryTemas temp = ((FactoryTemas) JOptionPane.showInputDialog(contentPane, "Seleccione un Tema grafico",
-				"Seleccion de Tema", JOptionPane.INFORMATION_MESSAGE, null, temas, temas[0]));
+		FactoryTemas temp = ((FactoryTemas) JOptionPane.showInputDialog(contentPane, "Select a theme",
+				"Themes selection", JOptionPane.INFORMATION_MESSAGE, null, temas, temas[0]));
 		if (temp != null) {
 			juego.setTema(temp);
 			juego.setMusica(temp.nuevoMusica());
@@ -286,15 +286,15 @@ public class GUI extends JFrame {
 	}
 
 	public void setPuntaje(int p) {
-		labelPuntos.setText("Puntos: " + p);
+		labelPuntos.setText("Points: " + p);
 	}
 
 	public void setVidas(int v) {
-		labelVidas.setText("Vidas: " + v);
+		labelVidas.setText("Lives: " + v);
 	}
 
 	public void setExplosivos(int e) {
-		labelExplosivos.setText("Explosivos: " + e);
+		labelExplosivos.setText("Explosives: " + e);
 	}
 
 	public void setJuego(Juego j) {
@@ -310,8 +310,8 @@ public class GUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				if (JOptionPane.showConfirmDialog(
-						null, "Obtuviste " + juego.obtenerPuntos() + " puntos\nEl ranking es:\n"
-								+ juego.obtenerRanking() + "Desea reiniciar el juego?",
+						null, "You got " + juego.obtenerPuntos() + " points\n\nThe ranking is:\n"
+								+ juego.obtenerRanking() + "\nRestart the game?",
 						null, JOptionPane.YES_NO_OPTION) == 0)
 					reiniciarJuego();
 				else {

@@ -1,5 +1,6 @@
 package Sonido;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -12,7 +13,7 @@ public class Efectos {
 		if (efecto != null)
 			try {
 				Clip clip = AudioSystem.getClip();
-				clip.open(AudioSystem.getAudioInputStream(getClass().getResourceAsStream(efecto)));
+				clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(getClass().getResourceAsStream(efecto))));
 				clip.start();
 			} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 				e.printStackTrace();

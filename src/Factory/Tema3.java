@@ -171,7 +171,7 @@ public class Tema3 implements FactoryTemas {
 	}
 
 	public String toString() {
-		return "Tema Among Us";
+		return "Among Us theme";
 	}
 
 	@Override

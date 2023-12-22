@@ -171,7 +171,7 @@ public class Tema2 implements FactoryTemas {
 	}
 
 	public String toString() {
-		return "Tema Minecraft";
+		return "Minecraft theme";
 	}
 
 	@Override
